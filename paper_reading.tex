@@ -1,0 +1,92 @@
+\documentclass[10pt,onecolumn]{book}
+
+\usepackage{times} % font
+\usepackage{graphicx} % picture reference
+\usepackage{amsmath} % split of mathematical formulas
+\usepackage{amssymb} % special mathematical symbols
+\usepackage{geometry} % margin
+\usepackage{setspace} % letter-spacing
+\usepackage{indentfirst} % indent
+\geometry{left=2cm,right=2cm, top=2cm, bottom=2cm}
+\usepackage{hyperref} % hyperlink
+\usepackage{cite}
+\usepackage[sectionbib]{chapterbib}
+
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{todonotes}
+
+%\usepackage{fancy}%页眉页脚包
+%\pagestyle{plain}%页眉页脚设置
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\def\ie{\emph{i.e.}}
+\def\eg{\emph{e.g.}}
+\def\etal{\em {et al.}}
+
+\newcommand{\bm}[1]{\mbox{\boldmath{$#1$}}}
+\newcommand{\figref}[1]{Fig. \ref{#1}}
+\newcommand{\tabref}[1]{Tab. \ref{#1}}
+\newcommand{\equref}[1]{(\ref{#1})}
+\newcommand{\secref}[1]{Sect. \ref{#1}}
+\newcommand{\algref}[1]{Alg. \ref{#1}}
+\newcommand{\myPara}[1]{\vspace{.05in}\noindent\textbf{#1}}
+\newcommand{\rev}[1]{\textcolor{blue}{#1}}
+\newcommand{\rr}[1]{\textcolor{red}{#1}}
+\newcommand{\cg}[1]{\textcolor{green}{#1}}
+\newcommand{\bb}[1]{\textcolor{blue}{#1}}
+\newcommand{\bl}[1]{\textbf{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+
+\begin{document}
+\date{}
+
+\title{\textbf{Paper Reading}}
+\author{Jinming Su}
+
+\maketitle
+
+\thispagestyle{empty}
+\newpage
+\pagenumbering{Roman}
+\newpage
+\tableofcontents
+%\newpage
+%\listoffigures
+%\newpage
+%\listoftables
+%\newpage
+%\pagenumbering{arabic}
+\newpage
+\listoftodos
+
+\newpage
+\pagenumbering{arabic}
+\mainmatter
+
+\chapter{Salient Object Detection}
+\section{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection, arxiv, 2019.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{figures_paper_reading/DNA_Deeply-supervised_Nonlinear_Aggregation_for_Salient_Object_Detection.png}
+\caption{Residual Learning.}
+\label{fig:1-1_residual_learning}
+\end{figure}
+
+This paper has two contributions: 
+(1) \uline{theoretically and experimentally} analyze the natural limitaion of traditional side-output aggregration which can only make limited use of multi-scale side-ouput informantion; 
+(2) propose Deeply-supervised nonlinear aggregration (DNA) for side-output features. 
+(3) As experience, in DNA, convolution layers with kernels of $n \times 1$ and $1 \times n$ are used, which is proved to be effective. Moreover, authers claim that large kernel size in DNA can improve performance.
+
+
+{\small
+\bibliographystyle{plain}
+\bibliography{Ref_paper_reading}
+}
+
+\end{document}

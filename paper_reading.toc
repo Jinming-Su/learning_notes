@@ -1,0 +1,2 @@
+\contentsline {chapter}{\numberline {1}Salient Object Detection}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection, arxiv, 2019.}{1}{section.1.1}
