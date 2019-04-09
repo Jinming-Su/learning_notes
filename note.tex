@@ -13,9 +13,15 @@
 \usepackage[sectionbib]{chapterbib}
 
 \usepackage{multirow}
-\usepackage{color}
+%\usepackage{color}
 \usepackage{ulem}
-\usepackage{todonotes}
+%\usepackage{todonotes}
+\usepackage{xargs}
+\usepackage[pdftex,dvipsnames]{xcolor}
+\usepackage[colorinlistoftodos,prependcaption]{todonotes}
+\newcommandx{\note}[2][1=]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 
 %\usepackage{fancy}%页眉页脚包
 %\pagestyle{plain}%页眉页脚设置
@@ -124,7 +130,7 @@ The expected value and invarance  of a Bernoulli variable $X$ are
 	\end{array}
 \right.
 \end{equation}
-{\color{red}{Note in Eq.~\ref{eq:bernoulli_distribution_e_var}, maybe $P(X = 1)$ is equivalent $P(X^2 = 1^2)$}, which ensures the establishment of this equation.}
+\note[inline]{Note in Eq.~\ref{eq:bernoulli_distribution_e_var}, maybe $P(X = 1)$ is equivalent $P(X^2 = 1^2)$, which ensures the establishment of this equation.}
 
 \textbf{Binomial distribution} with parameters $n$ and $p$ is \uline{the discrete probability distribution of the number of successes in a sequence of n independent experiments.} Each experiment is a Bernoulli trial. In general, if the ramdom variable $X$ follows the binomial distribution with parameters $n \in \mathbb{N}$ and $p \in [0, 1]$, we write $X \sim B(n, p)$. The probability of getting exactly $k$ successes in $n$ trails is given by the probability mass function:
 \begin{equation}
@@ -148,7 +154,7 @@ The expected value and invariance of a Binomial variable $X$ are
 	\end{array}
 \right.
 \end{equation}
-{\color{red}{There exists another solution directly through derivation of the probability mass function of Binomial distribution.}}
+\note[inline]{There exists another solution directly through derivation of the probability mass function of Binomial distribution.}
 
 \textbf{Poisson distribution} is \uline{a discrete probability distribution that expresses the probability of a given number $k$ of events occurring in a fixed interval of time or space} if these events occure with a known constant rate $\lambda$ and independently of the time since the last events. If $X$ is a Poisson variable with the average number of events $\lambda$, we write $X \sim Possion(\lambda)$. The probability mass function is
 \begin{equation}
@@ -176,8 +182,8 @@ The expected value and invariance of a Poission variable $X$ are
 	\end{array}
 \right.
 \end{equation}
-{\color{red}{Note there exists Taylor Expansion $e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \sum_{i=0}^{\infty} \frac{x^i}{i!}$.}} 
-\todo[inline]{Taylor's formula.}
+\note[inline]{Note there exists Taylor Expansion $e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \sum_{i=0}^{\infty} \frac{x^i}{i!}$.} 
+\improvement[inline]{Taylor's formula.}
 
 \subsection{Continuous probability distribution}
 For \textbf{continuous uniform distribution}, \uline{all intervals of the same length on the distribution's support are equally probable}. The support is defined by the two parameters, $a$ and $b$, which are its minimum and maximum values. The distribution is often abbreviated $U(a, b)$. The probability density function of the continuous uniform distribution is 
@@ -218,7 +224,7 @@ The probability density function of the \textbf{normal distribution} is
 \begin{equation}
 f(x; \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}},
 \end{equation}
-where $\mu$ is the expectation and $\sigma$ is the standard deviation. If a random variable $X$ is distributed normally with mean $\mu$ and variance $\sigma^2$, one may write $X \sim N(\mu, \sigma^2)$. {\color{red}{The derivation of the expectation and invariance of normal distribution requires multiple integration operations.}}
+where $\mu$ is the expectation and $\sigma$ is the standard deviation. If a random variable $X$ is distributed normally with mean $\mu$ and variance $\sigma^2$, one may write $X \sim N(\mu, \sigma^2)$. \note[inline]{The derivation of the expectation and invariance of normal distribution requires multiple integration operations.}
 
 \textbf{Exponential distribution} is the probability distribution that describes the time between events in a Poisson point process, $i.e.$ a process in which event occur continuously and independently at a constant average rate. The distribution is often abbreviated $Exponential(\lambda)$. The probability density function of an exponential distribution is 
 \begin{equation}
@@ -239,8 +245,8 @@ The expected value and invariance of a Exponential variable $X$ are
 	\end{array}
 \right.
 \end{equation}
-{\color{red}{The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}} 
-\todo[inline]{Beta distribution.}
+\note[inline]{The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}
+\improvement[inline]{Beta distribution.}
 
 \section{Prior and posterior}
 The prior probability is the probability of \uline{a cause inferred from experience}, denoted as $P(\theta)$. The posterior probability is the probability of \uline{the cause estimated from the result}, denoted as $P(\theta|x)$. The posterior probability is defined as 
@@ -252,18 +258,81 @@ P(\theta|x) = \frac{P(x|\theta) P(\theta)}{P(x)}
 where $P(x|\theta)$ represents likelihood of $x$. \uline{In fact, likelihood is the function of parameters. Likelihood is equal to the probability of the result occurring caused by a cause (paramters) based on the cause. Likelihood is the viewpoint of the frequency. In the frequency, the parameter is a true value, not a random variable, so the parameter has no distribution and no probability.}
 
 \chapter{Machine Learning}
-\todo{Random forest}
 
-\chapter{Deep Network}
 \section{Why can't perceptron solve XOR problem?}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{figures/XOR_problem.png}
+\includegraphics[width=0.4\textwidth]{figures/XOR_problem.png}
 \caption{Residual Learning.}
 \label{fig:1-1_residual_learning}
 \end{figure}
  \uline{Linear classification models can't classify linear non-separable problems.} Perceptron is a linear classificatioin model, and XOR problem is a linear non-separable problem, so perceptron can't solve the XOR problem.
 
+\subsection{Definition of perceptron}
+Suppose the input space is $\mathcal{X} \subseteq \mathbb{R}^n$, and the output space is $\mathcal{Y} = \left\{+1, -1\right\}$. For an example $x \in \mathcal{X}$ where $x$ is an n-dimensional vector [$x_{1}, x_{2}, \cdot \cdot \cdot, x_{n}$], $y \in \mathcal{Y}$ represents the category of $x$. Then, we get the perceptron model from the input space to output space: 
+\begin{equation}
+f(x) = \mathrm{sign}(\vec{w}^\mathrm{T} * \vec{x} + b),
+\end{equation}
+where $\vec{w}$ is weight and $b$ is bias. And $\mathrm{sign}$ is a sign function, $i. e.$
+\begin{equation}
+\mathrm{sign}(x)=
+\left\{
+	\begin{array}{ll}
+		+1, \quad x \ge 0  \\
+		-1, \quad x < 0
+	\end{array}
+\right.
+\end{equation}
+
+There exists \uline{a geometric interpretation} that a hyperpalne whose normal vector is $\vec{w}$ and intercept is $b$.
+
+\subsection{Learning}
+Given a \uline{linear separable} dataset $T = {(x_{1}, y_{1}), (x_{2}, y_{2}), \cdot \cdot \cdot, (x_{N}, y_{N})}$, where $x_{i} \in \mathcal{X} \subseteq \mathbb{R}^n$, and $y_{i} \in \mathcal{Y} = {+1, -1}, i = 1, 2, \cdot \cdot \cdot, N$, we can construct a perspectron model to classify this dataset. 
+
+(1) construct the loss function. we define the loss function as \uline{the total distance from misclassified points to hyperplane}. Toward this end, the distance from any point $x_{0}$ to hyperplane:
+\begin{equation}
+\frac{1}{||\vec{w}||} |\vec{w}^\mathrm{T}  \cdot \vec{x_{0}} + b|
+\end{equation}
+where ${||\vec{w}||}$ means the $L_{2}$ norm of $\vec{w}$.\\
+\indent As for missclassified points, $\vec{w}^\mathrm{T}  \cdot \vec{x_{0}} + b > 0$ when $y_{i}=-1$, and $\vec{w}^\mathrm{T}  \cdot \vec{x_{0}} + b < 0$ when $y_{i}=+1$. So the total distance from all the misscalssified points to hyperplane is 
+\begin{equation}\label{eq:perceptron_loss}
+-\frac{1}{||w||}\sum_{\vec{x_{i}} \in M} y_{i} (\vec{w}^\mathrm{T}  \cdot \vec{x_{i}} + b),
+\end{equation}
+where $M$ is the set of misclassfied points.
+
+\indent \uline{In Eq.~\ref{eq:perceptron_loss}, $\frac{1}{||w||}$ can be ignored. The reason is (a) $\frac{1}{||w||}$ doesn't affcet postive or negative judgment of $y_{i} (\vec{w}^\mathrm{T}  \cdot \vec{x_{i}} + b)$ and (b) $\frac{1}{||w||}$ doesn't affcet the final optimization result of Eq.~\ref{eq:perceptron_loss}. The final optimization result is there are no points with wrong classification, which leads to the loss of 0.} Toward this end, the loss function of preceptron is 
+\begin{equation}\label{eq:perceptron_loss}
+L(\vec{w}, b) = - \sum_{\vec{x_{i}} \in M} y_{i} (\vec{w}^\mathrm{T}  \cdot \vec{x_{i}} + b),
+\end{equation}
+and the optimization object is 
+\begin{equation}\label{eq:perceptron_loss}
+\min_{\vec{w}, b}L(\vec{w}, b) = \min_{\vec{w}, b}- \sum_{\vec{x_{i}} \in M} y_{i} (\vec{w}^\mathrm{T}  \cdot \vec{x_{i}} + b).
+\end{equation}
+
+(2) We adopt stochastic gradient descent algorithm to train the perceptron model. Suppose the set of misclassified points is fixed, thus the gradient of loss function $L(\vec{w}, b)$:
+\begin{equation}
+\begin{split}
+	\nabla_{\vec{w}}L(\vec{w}, b) & = - \sum_{\vec{x_i} \in M} y_i \vec{x_i} \\
+	\nabla_{b}L(\vec{w}, b)       & = - \sum_{\vec{x_i} \in M} y_i
+\end{split}.
+\end{equation}
+So, the stratagies of $\vec{w}$ and $b$ based on one misclassified point are:
+\begin{equation}
+\begin{split}
+	\vec{w} & \gets \vec{w} + \eta y_i \vec{x} \\
+	b & \gets b + \eta y_i
+\end{split},
+\end{equation}
+where $\eta$ is the learning rate.
+
+(3) \note[inline]{The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}
+
+\section{Generative model and discriminative model}
+(1) Generative model: perceptron
+
+\improvement[inline]{Random forest}
+
+\chapter{Deep Network}
 \section{Why does residual learning work?}
 \begin{figure}[h]
 \centering
