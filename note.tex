@@ -183,7 +183,7 @@ The expected value and invariance of a Poission variable $X$ are
 \right.
 \end{equation}
 \note[inline]{Note there exists Taylor Expansion $e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \sum_{i=0}^{\infty} \frac{x^i}{i!}$.} 
-\improvement[inline]{Taylor's formula.}
+\improvement[inline]{Todo: Taylor's formula.}
 
 \subsection{Continuous probability distribution}
 For \textbf{continuous uniform distribution}, \uline{all intervals of the same length on the distribution's support are equally probable}. The support is defined by the two parameters, $a$ and $b$, which are its minimum and maximum values. The distribution is often abbreviated $U(a, b)$. The probability density function of the continuous uniform distribution is 
@@ -246,7 +246,7 @@ The expected value and invariance of a Exponential variable $X$ are
 \right.
 \end{equation}
 \note[inline]{The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}
-\improvement[inline]{Beta distribution.}
+\improvement[inline]{Todo: Beta distribution.}
 
 \section{Prior and posterior}
 The prior probability is the probability of \uline{a cause inferred from experience}, denoted as $P(\theta)$. The posterior probability is the probability of \uline{the cause estimated from the result}, denoted as $P(\theta|x)$. The posterior probability is defined as 
@@ -269,9 +269,9 @@ where $P(x|\theta)$ represents likelihood of $x$. \uline{In fact, likelihood is 
  \uline{Linear classification models can't classify linear non-separable problems.} Perceptron is a linear classificatioin model, and XOR problem is a linear non-separable problem, so perceptron can't solve the XOR problem.
 
 \subsection{Definition of perceptron}
-Suppose the input space is $\mathcal{X} \subseteq \mathbb{R}^n$, and the output space is $\mathcal{Y} = \left\{+1, -1\right\}$. For an example $x \in \mathcal{X}$ where $x$ is an n-dimensional vector [$x_{1}, x_{2}, \cdot \cdot \cdot, x_{n}$], $y \in \mathcal{Y}$ represents the category of $x$. Then, we get the perceptron model from the input space to output space: 
+Suppose the input space is $\mathcal{X} \subseteq \mathbb{R}^n$, and the output space is $\mathcal{Y} = \left\{+1, -1\right\}$. For an example $x \in \mathcal{X}$ where $x$ is an n-dimensional vector $(x_{1}, x_{2}, \cdot \cdot \cdot, x_{n})^\mathrm{T}$, $y \in \mathcal{Y}$ represents the category of $x$. Then, we get the perceptron model from the input space to output space: 
 \begin{equation}
-f(x) = \mathrm{sign}(\vec{w}^\mathrm{T} * \vec{x} + b),
+f(\vec{x}) = \mathrm{sign}(\vec{w}^\mathrm{T} \vec{x} + b),
 \end{equation}
 where $\vec{w}$ is weight and $b$ is bias. And $\mathrm{sign}$ is a sign function, $i. e.$
 \begin{equation}
@@ -286,7 +286,7 @@ where $\vec{w}$ is weight and $b$ is bias. And $\mathrm{sign}$ is a sign functio
 
 There exists \uline{a geometric interpretation} that a hyperpalne whose normal vector is $\vec{w}$ and intercept is $b$.
 
-\subsection{Learning}
+\subsection{Learning Algorithm}
 Given a \uline{linear separable} dataset $T = {(x_{1}, y_{1}), (x_{2}, y_{2}), \cdot \cdot \cdot, (x_{N}, y_{N})}$, where $x_{i} \in \mathcal{X} \subseteq \mathbb{R}^n$, and $y_{i} \in \mathcal{Y} = {+1, -1}, i = 1, 2, \cdot \cdot \cdot, N$, we can construct a perspectron model to classify this dataset. 
 
 (1) construct the loss function. we define the loss function as \uline{the total distance from misclassified points to hyperplane}. Toward this end, the distance from any point $x_{0}$ to hyperplane:
@@ -317,7 +317,7 @@ and the optimization object is
 \end{split}.
 \end{equation}
 So, the stratagies of $\vec{w}$ and $b$ based on one misclassified point are:
-\begin{equation}
+\begin{equation}\label{eq:perceptron_parameter_update}
 \begin{split}
 	\vec{w} & \gets \vec{w} + \eta y_i \vec{x} \\
 	b & \gets b + \eta y_i
@@ -325,12 +325,77 @@ So, the stratagies of $\vec{w}$ and $b$ based on one misclassified point are:
 \end{equation}
 where $\eta$ is the learning rate.
 
-(3) \note[inline]{The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}
+(3) The standard form of perceptron learing algorithm: \\
+\indent	\indent input: \uline{linear seperable training set}: $T = \left\{ (x_1, y_1), (x_2, y_2), \cdots, (x_n ,y_n) \right\}$, where $\vec{x_i} \in \mathcal{X} \subseteq \mathbb{R}^n$ and $y_i \in \mathcal{Y} = \left\{-1, +1\right\}, i = 1, 2, \cdots, N$. In addition, the learning rate is denoted 
+as $\eta (0 < \eta \le 1)$. \\
+\indent \indent output: $\vec{w}, b$. And the perceptron model $f(\vec{x}) = \mathrm{sign}(\vec{w}^\mathrm{T} \vec{x} + b)$. \\
+\indent \indent (a) choose initial values, $\vec{w_0}, b_0$, and usually $\vec{w_0} = 0, b_0 = 0$; \\
+\indent \indent (b) choose one example $(\vec{x_i}, y_i)$ from the traning set; \\
+\indent \indent (c) if $y_{i} (\vec{w}^\mathrm{T}  \cdot \vec{x_{i}} + b) \le 0$:
+\begin{equation}
+\begin{split}
+\vec{w} & \gets \vec{w} + \eta y_i \vec{x} \\
+	b & \gets b + \eta y_i
+\end{split};
+\end{equation} \\
+\indent \indent (d)go to (b) until there are no misclassified points in training set.
+
+
+(4) \note[inline]{The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}
+
+\subsection{Dual form of perceptron learning algorithm}
+From Eq.~\ref{eq:perceptron_parameter_update}, $\vec{w}$ and $b$ are updated for many times. Suppose the number of updates about each example is $n_i (i = 1, 2, \dots N)$, and we define $\alpha_i = n_i \eta$. Then, the final learned $\vec{w}$ and $b$ can be expressed as
+\begin{equation}
+\begin{split}
+	\vec{w} & = \sum_{i = 1}^{N} \alpha_i y_i \vec{x_i} \\
+	b 		& = \sum_{i = 1}^{N} \alpha_i y_i
+\end{split}.
+\end{equation}
+
+Then, we can obtain the dual form of perceptron learning algorithm.\\
+\indent	\indent input: \uline{linear seperable training set}: $T = \left\{ (x_1, y_1), (x_2, y_2), \cdots, (x_n ,y_n) \right\}$, where $\vec{x_i} \in \mathcal{X} \subseteq \mathbb{R}^n$ and $y_i \in \mathcal{Y} = \left\{-1, +1\right\}, i = 1, 2, \cdots, N$. In addition, the learning rate is denoted 
+as $\eta (0 < \eta \le 1)$. \\
+\indent \indent output: $\vec{\alpha} = (\alpha_1, \alpha_2, \cdots, \alpha_N)^\mathrm{T}, b$. And the perceptron model $f(\vec{x}) = \mathrm{sign}(\sum_{j=1}^{N} \alpha_j y_j \vec{x_j}^\mathrm{T} \vec{x} + b )$. \\
+\indent \indent (a) choose initial values, $\vec{\alpha}, b_0$, and usually $\vec{\alpha} = 0, b_0 = 0$; \\
+\indent \indent (b) choose one example $(\vec{x_i}, y_i)$ from the traning set; \\
+\indent \indent (c) if $y_{i} (\sum_{j=1}^{N} \alpha_j y_j \vec{x_j}^\mathrm{T} \vec{x} + b) \le 0$:
+\begin{equation}
+\begin{split}
+\vec{\alpha_i} & \gets \alpha_i + \eta \\
+	b & \gets b + \eta y_i
+\end{split};
+\end{equation} \\
+\indent \indent (d)go to (b) until there are no misclassified points in training set.
+
+\section{How to get the update rule of parameters of backpropagation in gradient descent algorithm?}
+An intuitive and imprecise proof is as follows. Assuming that there is a differentiable loss function $\mathcal{L}$ on training set with respect to parameter $\vec{w} = (w_1, w_2, \cdots, w_n)$ of the training model. Then, the total increment of $\mathcal{L}$ is
+\begin{equation}
+\begin{split}
+\Delta \mathcal{L} & = \frac{\partial \mathcal{L}}{\partial w_1} \Delta w_1 + \frac{\partial \mathcal{L}}{\partial w_2} \Delta w_2 + \cdots + \frac{\partial \mathcal{L}}{\partial w_n} \Delta w_n + o(\rho) \\
+				   & \approx \frac{\partial \mathcal{L}}{\partial w_1} \Delta w_1 + \frac{\partial \mathcal{L}}{\partial w_2} \Delta w_2 + \cdots + \frac{\partial \mathcal{L}}{\partial w_n} \Delta w_n
+\end{split}.
+\end{equation}
+Define $\nabla \mathcal{L}_{\vec{w}} = (\frac{\partial \mathcal{L}}{\partial w_1}, \frac{\partial \mathcal{L}}{\partial w_2}, \cdots, \frac{\partial \mathcal{L}}{\partial w_n})^\mathrm{T}$, which represents the vector of gradients. Therefore, 
+\begin{equation}
+\Delta \mathcal{L} \approx \nabla \mathcal{L}_{\vec{w}}^\mathrm{T} \cdot \Delta \vec{w}.
+\end{equation}
+Our goal is to reduce the loss function $\mathcal{L}$, which is equivalent to making the total increment $\Delta \mathcal{L}$ negative. Toward this end, construct 
+\begin{equation}
+\Delta \vec{w} = -\eta \nabla \mathcal{L}_{\vec{w}},
+\end{equation}
+which ensure that $\Delta \mathcal{L} \approx \nabla \mathcal{L}_{\vec{w}}^\mathrm{T} \cdot \Delta \vec{w} = - \eta ||\nabla \mathcal{L}_{\vec{w}}^\mathrm{T}||_2^2 \le 0$. So, the update rule of parameter $\vec{w}$ is 
+\begin{equation}
+\vec{w} \gets \vec{w} -\eta \nabla \mathcal{L}_{\vec{w}}.
+\end{equation}
+\uline{In other word, in gradient descent algorithm, the direction of parameter update is opposite to its gradient direction.}
 
 \section{Generative model and discriminative model}
 (1) Generative model: perceptron
 
-\improvement[inline]{Random forest}
+\section{Support vector machine}
+\improvement[inline]{Todo: SVM}
+
+\improvement[inline]{Todo: Random forest}
 
 \chapter{Deep Network}
 \section{Why does residual learning work?}
@@ -345,20 +410,12 @@ In the process of optimization in deep network, the input and output are usually
 
 \uline{The real purpose of residual learning is that even if the network deepens, the performance of this network will not degenerate, thus ensuring the leaning of deeper network (even 1000 layers).}
 
-\chapter{Non-pointed Reference}
-\cite{he2016deep}
-\cite{he2016deep1}
-\cite{he2016deep2}
-
+\chapter{Contents specifically referenced}
+$\bullet$ the chapter of (2)Perceptron in \cite{hangli2012};
 
 {\small
 \bibliographystyle{plain}
 \bibliography{RefNote}
 }
-
-%{\small
-%\bibliographystyle{ieee}
-%\bibliography{RefNote}
-%}
 
 \end{document}

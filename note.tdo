@@ -1,9 +1,10 @@
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Note in Eq.\nobreakspace {}\ref {eq:bernoulli_distribution_e_var}, maybe $P(X = 1)$ is equivalent $P(X^2 = 1^2)$, which ensures the establishment of this equation.}{2}{section*.3}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ There exists another solution directly through derivation of the probability mass function of Binomial distribution.}{2}{section*.4}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Note there exists Taylor Expansion $e^x = 1 + \frac {x}{1!} + \frac {x^2}{2!} + \frac {x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \DOTSB \sum@ \slimits@ _{i=0}^{\infty } \frac {x^i}{i!}$.}{2}{section*.5}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Taylor's formula.}{2}{section*.6}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Taylor's formula.}{2}{section*.6}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of normal distribution requires multiple integration operations.}{3}{section*.7}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}{3}{section*.8}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Beta distribution.}{3}{section*.9}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Beta distribution.}{3}{section*.9}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}{6}{section*.10}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Random forest}{6}{section*.11}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: SVM}{7}{section*.11}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Random forest}{7}{section*.12}

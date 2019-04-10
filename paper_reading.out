@@ -1,7 +1,9 @@
-\BOOKMARK [0][-]{chapter.1}{Salient Object Detection}{}% 1
-\BOOKMARK [1][-]{section.1.1}{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{chapter.1}% 2
-\BOOKMARK [0][-]{chapter.2}{Object Detection}{}% 3
-\BOOKMARK [1][-]{section.2.1}{What Object Should I Use? - Task Driven Object Detection. CVPR, 2019.}{chapter.2}% 4
-\BOOKMARK [0][-]{chapter.3}{Others}{}% 5
-\BOOKMARK [1][-]{section.3.1}{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{chapter.3}% 6
-\BOOKMARK [1][-]{section.3.2}{Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{chapter.3}% 7
+\BOOKMARK [0][-]{chapter.1}{Classification}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Res2Net: A New Multi-scale Backbone Architecture, arxiv, 2019.}{chapter.1}% 2
+\BOOKMARK [0][-]{chapter.2}{Salient Object Detection}{}% 3
+\BOOKMARK [1][-]{section.2.1}{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{chapter.2}% 4
+\BOOKMARK [0][-]{chapter.3}{Object Detection}{}% 5
+\BOOKMARK [1][-]{section.3.1}{What Object Should I Use? - Task Driven Object Detection. CVPR, 2019.}{chapter.3}% 6
+\BOOKMARK [0][-]{chapter.4}{Others}{}% 7
+\BOOKMARK [1][-]{section.4.1}{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{chapter.4}% 8
+\BOOKMARK [1][-]{section.4.2}{Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{chapter.4}% 9
