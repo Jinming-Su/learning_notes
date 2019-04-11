@@ -23,6 +23,8 @@
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 
+%\numberwithin{equation}{section} % the number of equation
+
 %\usepackage{fancy}%页眉页脚包
 %\pagestyle{plain}%页眉页脚设置
 \usepackage{fancyhdr}
@@ -263,8 +265,7 @@ where $P(x|\theta)$ represents likelihood of $x$. \uline{In fact, likelihood is 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/XOR_problem.png}
-\caption{Residual Learning.}
-\label{fig:1-1_residual_learning}
+\caption{XOR problem.}
 \end{figure}
  \uline{Linear classification models can't classify linear non-separable problems.} Perceptron is a linear classificatioin model, and XOR problem is a linear non-separable problem, so perceptron can't solve the XOR problem.
 
@@ -398,12 +399,103 @@ which ensure that $\Delta \mathcal{L} \approx \nabla \mathcal{L}_{\vec{w}}^\math
 \improvement[inline]{Todo: Random forest}
 
 \chapter{Deep Network}
+\section{How does backpropagation work?}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/neural_network.png}
+\caption{Neural network.}
+\end{figure}
+First, symbol definition is carried out. We use $w^l_{jk}$ to denote the weight for the connection from the $k$th neuron in the $(l - 1)$th layer to the $j$th neuron in the $l$th layer. Moreover, we use $b^l_j$ for the bias of $j$th neuron in $l$th layer and we use $a^l_j$ for the activation of the $j$th neuron in $l$th layer. We also use $z^l_j$ as the \uline{weighted input}  of $j$th neuron in $l$th layer. Then
+\begin{equation}
+\begin{split}
+z^l_j & = \sum_k w^l_{jk} a^{l - 1} _ k + b^l_j, \\
+a^l_j & = \sigma(\sum_k w^l_{jk} a^{l - 1} _ k + b^l_j) \\
+	  & = \sigma(z^l_j).
+\end{split}
+\label{eq:neural_network}
+\end{equation}
+where $\sigma$ is the activation function, such as Sigmoid function. Then, Eq.~\ref{eq:neural_network} can be expresented in a vector form. In detail, we use $\vec{a^l}$ for the activation vector in $l$th layer. $\vec{z^l}$ is the same. Moreover, we use $\bm{w^l}$ for the \uline{weight matrix} and $\vec{b^l}$ for the bias vector in $l$th layer. Then, 
+\begin{equation}
+\begin{split}
+\vec{z^l} & = \bm{w^l}a^{l - 1} + b^l, \\
+\vec{a^l} & = \sigma(\bm{w^l}a^{l - 1} + b^l) \\
+		  & = \sigma(\vec{z^l}).
+\end{split}
+\end{equation}
+
+The understanding of backpropagation is about how to chang the weights and biases in a network to change the cost function. Utimately, this means computing the partial derivatives $\frac{\partial \mathcal{L}}{\partial w^l_{jk}} $ and $\frac{\partial \mathcal{L}}{\partial b^l_j} $. To compute those, we first introduce an intermedia quantity $\delta^l_j$, which we call the \uline{error} of the $j$th neuroon in the $l$th layer. In the actual calculation process, backpropagation will give us a predure to compute $\delta^l_j$, and then will relate $\delta^l_j$ to $\frac{\partial \mathcal{L}}{\partial w^l_{jk}} $ and $\frac{\partial \mathcal{L}}{\partial b^l_j} $.
+
+We define the error of the $j$th neuroon in the $l$th layer by
+\begin{equation}
+\delta^l_j = \frac{\partial \mathcal{L}}{\partial z^l_j}.
+\end{equation}
+Then, we can get \uline{the error of the output layer} $\delta^L$, and the components of $\delta^L$ are given by
+\begin{equation}\label{eq:backpropagation_1}
+\begin{split}
+\delta^L_j & = \frac{\partial \mathcal{L}}{\partial z^L_j} 
+		   = \frac{\partial \mathcal{L}}{\partial a^L_j}\frac{\partial a^L_j}{\partial z^L_j} \\
+		   & = \frac{\partial \mathcal{L}}{\partial a^L_j} \sigma'(z^L_j).
+\end{split}
+\tag{BP1}
+\end{equation}
+Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_1} by
+\begin{equation}
+\overrightarrow{\delta^L} = \nabla_{\overrightarrow{a^L}} \otimes \sigma'(\overrightarrow{z^L}).
+\end{equation}
+
+Then, we can obtain \uline{the error $\delta^l$ in terms of the error in the next layer $\delta^{l+1}$}. In particular, 
+\begin{equation}\label{eq:backpropagation_2}
+\begin{split}
+\delta^l_j & = \frac{\partial \mathcal{L}}{\partial z^l_j} 
+		    = \sum_k \frac{\partial \mathcal{L}}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j}
+		    = \sum_k \delta^{l+1}_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \\
+		   & = \sum_k \delta^{l+1}_k \frac{\partial \sum_j w^{l+1}_{kj} \sigma(z^l_j) + b^l_k}{\partial z^l_j} \\
+		   & = \sum_k \delta^{l+1}_k w^{l+1}_{kj} \sigma'(z^l_j)
+\end{split}
+\tag{BP2}
+\end{equation}
+Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_2} by
+\begin{equation}
+\begin{split}
+\overrightarrow{\delta^l} = ((\overrightarrow{w^{l+1}})^\mathrm{T}\delta^{l+1}) \otimes \sigma'(\overrightarrow{z^l}).
+\end{split}
+\end{equation}
+
+Next, we can obtain \uline{the rate of change of the cost with respect to any weight in the network}. In particlular, 
+\begin{equation}\label{eq:backpropagation_3}
+\begin{split}
+\frac{\partial \mathcal{L}}{\partial w^l_{jk}} & = \frac{\partial \mathcal{L}}{\partial z^l_j} \frac{\partial z^l_j}{\partial w^l_{jk}}
+	= \frac{\partial \mathcal{L}}{\partial z^l_j} \frac{\partial \sum_k w^l_{jk} a^{l-1}_k + b^l_j}{\partial w^l_{jk}} \\
+	& = \frac{\partial \mathcal{L}}{\partial z^l_j} a^{l - 1}_k \\
+	& = \delta^l_j a^{l - 1}_k.
+\end{split}
+\tag{BP3}
+\end{equation}
+Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_3} by
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial \bm{w^l}} = \overrightarrow{\delta^l} (\overrightarrow{a^{l-1}})^\mathrm{T}.
+\end{equation}
+
+We can obtain \uline{the rate of change of the cost with respect to any bias in the network}. In particlular, 
+\begin{equation}\label{eq:backpropagation_4}
+\begin{split}
+\frac{\partial \mathcal{L}}{\partial b^l_j} & = \frac{\partial \mathcal{L}}{\partial z^l_j} \frac{\partial z^l_j}{\partial b^l_j}
+	= \frac{\partial \mathcal{L}}{\partial z^l_j} \frac{\partial \sum_k w^l_{jk} a^{l-1}_k + b^l_j}{\partial b^l_j} \\
+	& = \frac{\partial \mathcal{L}}{\partial z^l_j} \\
+	& = \delta^l_j.
+\end{split}
+\tag{BP4}
+\end{equation}
+Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_4} by
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial \overrightarrow{b^l}} = \overrightarrow{\delta^l}.
+\end{equation}
+
 \section{Why does residual learning work?}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.2\textwidth]{figures/residual_learning_block.png}
+\includegraphics[width=0.4\textwidth]{figures/residual_learning_block.png}
 \caption{Residual Learning.}
-\label{fig:1-1_residual_learning}
 \end{figure}
 
 In the process of optimization in deep network, the input and output are usually close in the latter layers. In some latter layers, we define the input is $\rm{x}$ and the output is $\mathcal{H(\rm{x})}$. From above experience, we assume $\rm{x}$ and $\mathcal{H(\rm{x})}$ are close. Thus, the function of these layers is mapping from $\rm{x}$ to $\mathcal{H(\rm{x})}$. But usually this process is difficult becuase the relative gap between $\rm{x}$ and $\mathcal{H(\rm{x})}$ is small. Toward this end, we construct the residual as \uline{$\mathcal{F(\rm{x})} = \mathcal{H(\rm{x})} - \rm{x}$} to learning the gap. We can hypothesize that it is easier to optimize the residual mapping than to optimize the original mapping. To the extreme, if the mapping from input to output is indentity, it would be easier to push the residual to zero than to directly fit an identity mapping.

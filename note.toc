@@ -13,5 +13,6 @@
 \contentsline {section}{\numberline {2.3}Generative model and discriminative model}{7}{section.2.3}
 \contentsline {section}{\numberline {2.4}Support vector machine}{7}{section.2.4}
 \contentsline {chapter}{\numberline {3}Deep Network}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Why does residual learning work?}{9}{section.3.1}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{11}{chapter.4}
+\contentsline {section}{\numberline {3.1}How does backpropagation work?}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Why does residual learning work?}{11}{section.3.2}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{13}{chapter.4}
