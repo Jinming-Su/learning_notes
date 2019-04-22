@@ -106,6 +106,15 @@ This paper has two contributions:
 (1) construct a COCO-Tasks dataset which comprises about 40,000 images where the most suitable objects for 14 \uline{tasks} have been annotated;
 (2) proposes a method buliding on \uline{Gated Graph Neural Network} to detect the most suitable objects for a given task. 
 
+\chapter{Semantic Segmentation}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figures_paper_reading/ADVENT_Adversarial_Entropy_Minimization_for_Domain_Adaptation_in_Semantic_Segmentation_CVPR2019.png}
+\caption{Advsarial entropy.}
+\label{fig}
+\end{figure}
+This paper focuses on the problem of domain adapation in semantic segmentation. In detail, the contributions are as follows: (1) propose to minimize the pixel-level entropy of target domain to penalize low-confident predictions on target domain; (2) propose a entropy-based adversarial traing approach to privide the structure adaptation; (3) extra two trick: a) training on specific entropy ranges and b) add class-ratio priors.
+
 \chapter{Others}
 \section{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}
 This paper introduces dark channel prior that is an observation -most local patches in haze-free outdoor images contain some pixels which have very low intensities in at least one color channel. \uline{This is the one of most famous papers in the domain of dehazing.} 
@@ -123,6 +132,8 @@ The unofficial python code can be found in \url{https://github.com/su526664687/d
 \end{figure}
 
 This paper presents a ranking cnn to deal with dehazing. The ranking-cnn mainly means a ranking layer. In this layer, the values in a feature map are ranked, and the same operation is conducted for each feature map. Moreover, this paper introduce a method to synthesize haze images.
+
+~\cite{su2019for}
 
 {\small
 \bibliographystyle{plain}

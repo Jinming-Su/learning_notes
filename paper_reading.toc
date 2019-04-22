@@ -4,6 +4,7 @@
 \contentsline {section}{\numberline {2.1}DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{3}{section.2.1}
 \contentsline {chapter}{\numberline {3}Object Detection}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}What Object Should I Use? - Task Driven Object Detection. CVPR, 2019.}{5}{section.3.1}
-\contentsline {chapter}{\numberline {4}Others}{7}{chapter.4}
-\contentsline {section}{\numberline {4.1}Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{7}{section.4.1}
-\contentsline {section}{\numberline {4.2}Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{7}{section.4.2}
+\contentsline {chapter}{\numberline {4}Semantic Segmentation}{7}{chapter.4}
+\contentsline {chapter}{\numberline {5}Others}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{9}{section.5.1}
+\contentsline {section}{\numberline {5.2}Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{9}{section.5.2}
