@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  22 APR 2019 17:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  23 APR 2019 22:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -828,7 +828,7 @@ Package amsmath Warning: Cannot use `split' here;
 
 ]
 Chapter 2.
-<figures/XOR_problem.png, id=185, 504.88625pt x 156.585pt>
+<figures/XOR_problem.png, id=209, 504.88625pt x 156.585pt>
 File: figures/XOR_problem.png Graphic file (type png)
 
 <use figures/XOR_problem.png>
@@ -845,76 +845,91 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Chapter 3.
-<figures/neural_network.png, id=223, 667.49374pt x 323.2075pt>
+<figures/neural_network.png, id=247, 667.49374pt x 323.2075pt>
 File: figures/neural_network.png Graphic file (type png)
 
 <use figures/neural_network.png>
 Package pdftex.def Info: figures/neural_network.png used on input line 405.
 (pdftex.def)             Requested size: 250.24199pt x 121.16798pt.
- [9 <./figures/neural_network.png>]
-<figures/residual_learning_block.png, id=240, 281.05pt x 152.57pt>
-File: figures/residual_learning_block.png Graphic file (type png)
-
-<use figures/residual_learning_block.png>
-Package pdftex.def Info: figures/residual_learning_block.png used on input line
- 497.
-(pdftex.def)             Requested size: 200.19054pt x 108.67465pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10pdfTeX warning (ext4): destination with the same identifier (name{equation.3
-.1.4}) has been already used, duplicate ignored
+ [9 <./figures/neural_network.png>] [10pdfTeX warning (ext4): destination with 
+the same identifier (name{equation.3.1.4}) has been already used, duplicate ign
+ored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.502 
+l.499 
       pdfTeX warning (ext4): destination with the same identifier (name{equatio
 n.3.1.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.502 
+l.499 
       pdfTeX warning (ext4): destination with the same identifier (name{equatio
 n.3.1.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.502 
+l.499 
       pdfTeX warning (ext4): destination with the same identifier (name{equatio
 n.3.1.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.502 
-      ] [11 <./figures/residual_learning_block.png>] [12
+l.499 
+      ]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 500.
 
-]
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Overfull \hbox (37.9055pt too wide) in paragraph at lines 500--501
+\OT1/ptm/m/n/10 (re-fer-ring to []$\OT1/pcr/m/n/10 https : / / support . minita
+b . com / en-[]us / minitab / 18 / help-[]and-[]how-[]to / modeling-[]statistic
+s /
+ []
+
+<figures/sigmoid.png, id=281, 527.72156pt x 342.5297pt>
+File: figures/sigmoid.png Graphic file (type png)
+
+<use figures/sigmoid.png>
+Package pdftex.def Info: figures/sigmoid.png used on input line 532.
+(pdftex.def)             Requested size: 250.24199pt x 162.42105pt.
+ [11 <./figures/sigmoid.png>]
+<figures/residual_learning_block.png, id=293, 281.05pt x 152.57pt>
+File: figures/residual_learning_block.png Graphic file (type png)
+
+<use figures/residual_learning_block.png>
+Package pdftex.def Info: figures/residual_learning_block.png used on input line
+ 554.
+(pdftex.def)             Requested size: 200.19054pt x 108.67465pt.
+ [12 <./figures/residual_learning_block.png>]
 Chapter 4.
-(./note.bbl [13] [14
+(./note.bbl [13
+
+] [14
 
 ]) [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 513.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 513.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 571.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 571.
  (./note.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 513.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 513.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 571.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 571.
 Package rerunfilecheck Info: File `note.out' has not changed.
-(rerunfilecheck)             Checksum: 5B3180F8BC5D2CA07D040DEDAEB01BD4;1428.
+(rerunfilecheck)             Checksum: C53E6B14E018E75D0DE871D238016757;1747.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 513.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 571.
  ) 
 Here is how much of TeX's memory you used:
- 17638 strings out of 494910
- 325163 string characters out of 6179835
- 413367 words of memory out of 5000000
- 20471 multiletter control sequences out of 15000+600000
- 32042 words of font info for 76 fonts, out of 8000000 for 9000
+ 17700 strings out of 494910
+ 326125 string characters out of 6179835
+ 413593 words of memory out of 5000000
+ 20516 multiletter control sequences out of 15000+600000
+ 32557 words of font info for 78 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 62i,27n,80p,895b,631s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,27n,80p,850b,631s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -928,13 +943,14 @@ s/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/times/utmr8a.pfb>
-Output written on note.pdf (19 pages, 304158 bytes).
+live/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb>
+Output written on note.pdf (19 pages, 352263 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
- 172 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 396 PDF objects out of 1000 (max. 8388607)
+ 347 compressed objects within 4 object streams
+ 106 named destinations out of 1000 (max. 500000)
+ 209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

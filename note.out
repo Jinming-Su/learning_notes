@@ -14,5 +14,9 @@
 \BOOKMARK [1][-]{section.2.4}{Support vector machine}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Deep Network}{}% 15
 \BOOKMARK [1][-]{section.3.1}{How does backpropagation work?}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{Why does residual learning work?}{chapter.3}% 17
-\BOOKMARK [0][-]{chapter.4}{Contents specifically referenced}{}% 18
+\BOOKMARK [1][-]{section.3.2}{How does batch normalization work?}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.2.1}{Dataset shift and covariate shift}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.2}{Internal covariate shift}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.3}{Batch normalization}{section.3.2}% 20
+\BOOKMARK [1][-]{section.3.3}{Why does residual learning work?}{chapter.3}% 21
+\BOOKMARK [0][-]{chapter.4}{Contents specifically referenced}{}% 22

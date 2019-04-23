@@ -8,3 +8,5 @@
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}{6}{section*.10}
 \contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: SVM}{7}{section*.11}
 \contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Random forest}{7}{section*.12}
+\contentsline {todo}{\color@fb@x {}{red}{}{red!25}{\leavevmode {\color {red!25}o}}\ A more precise definition of \textbf {covariate} can't be found.}{11}{section*.17}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ PCA whitening and ZCA Whitening.}{11}{section*.18}

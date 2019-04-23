@@ -96,14 +96,14 @@ $X$ is a random variable whose values are $X_{1}, X_{2}, ..., X_{n}$. $P(X_{1}),
 and
 \begin{equation}
 \begin{split}
-	Var(x) & = \sum_{i = 1}^{n} (X_{i} - E(X))^2 P(X_{i}) \text{\ for discrete variable} \\
+	Var(X) & = \sum_{i = 1}^{n} (X_{i} - E(X))^2 P(X_{i}) \text{\ for discrete variable} \\
 		 & = \int_{X}(x - E(X))^2 f(x) dx  \text{\ for continous variable} \\	
 \end{split}.
 \end{equation}
 For discrete variable, 
 \begin{equation}
 \begin{split}
-	Var(x) & = \sum_{i = 1}^{n} (X_{i} - E(X))^2 P(X_{i}) \\
+	Var(X) & = \sum_{i = 1}^{n} (X_{i} - E(X))^2 P(X_{i}) \\
 		   & = E[(X - E(X))^2] \\
 		   & = E[X^2 + E(X)^2 - 2XE(X)] \\
 		   & = E(X^2) + E(X)^2 - 2E(X)E(X) \\
@@ -491,14 +491,72 @@ Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_4} by
 \frac{\partial \mathcal{L}}{\partial \overrightarrow{b^l}} = \overrightarrow{\delta^l}.
 \end{equation}
 
+\section{How does batch normalization work?}
+\subsection{Dataset shift and covariate shift}
+There exists a inherent hypothesis in supervised learning: \uline{The training data in source domain and testing data in target domain are independent and identically drawn from the same distribution}. 
+
+Usually, the distrbutions of training data and testing data are not exactly the same, especiallt when the training data is insufficient. This phenomenon is named as ``\uline{dataset shift}''. 
+
+In analysis of covariance (ANOVA), convate is any continuous variable that is usually not controlled during data collection. (referring to \url{https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/anova-models/understanding-covariates/}). 
+
+For the input variable $x$ (also named as explanatory variable or covariate in scene of batch normalizatio), $y$ is the corresponding label, which is regarded as response variable. If the conditional probabilities of training data and testing data are the same but the marinal probabilities are different, $i.e.$
+\begin{equation}\label{eq:covariate_shift}
+\begin{split}
+P_{tr}(y|x) & = P_{te}(y|x) \\
+P_{tr}(x) & \ne p_{te}(y)
+\end{split},
+\end{equation}
+we call this phenomenon as ``\uline{covariate shift}''. Covariate shift is a special kind of dataset shift. 
+
+Moreover, we can deduce the Eq.~\ref{eq:covariate_shift} as follows:
+\begin{equation}
+\begin{split}
+P_{tr}(x, y) = P_{tr}(y|x)P_{tr}(x) \\
+P_{te}(x, y) = P_{te}(y|x)P_{te}(x)
+\end{split},
+\end{equation}
+and we know the joint probabilities of traning data and testing data are different, $i. e.$, 
+\begin{equation}\label{eq:covariate_shift_2}
+P_{tr}(x, y) \ne P_{te}(x, y).
+\end{equation}.
+From Eq.~\ref{eq:covariate_shift_2}, this scene violates the independence hypothesis of supervised learning, so the prediction is inaccurate.
+
+\unsure[inline]{A more precise definition of \textbf{covariate} can't be found.}
+
+\subsection{Internal covariate shift}
+\uline{Internal covariate shift} is defined as the change in the distribution of network activations due to the change in network parameters during training. 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/sigmoid.png}
+\caption{Derivative of sigmoid function.}
+\end{figure}
+
+
+\textbf{Consequences of internal covariate shift: }(1) Intuitively, the layers need to continuously adapt to the new distribution, which lead to a decrease in training speed. (2) Objectively, the changes of $W$ and $b$ during training will likely move many dimensions of $x$ into the saturated regime of the nonlinearity ($e.g.$ sigmoid and tanh) and slow down the convergence. The saturation problem is usually addressed by using ReLU, careful initialization and small learning rates. Moreover, if the distribution of nonlinearity inputs remains more stable at the sensitive regions in nonlinearity as the network trains, the optimizer would be less likely to get stuck in the staturated regime, and the training would accelerate.
+
+\improvement[inline]{PCA whitening and ZCA Whitening.}
+
+\subsection{Batch normalization}
+Because whitening is expensive and maybe change the representation ability of a network by discarding the absolute scale of activations, batch nomalization emerges.
+
+There are two simplifications for batchnorm to address above two problems. The first is instaed of whitening the features in layer inputs and outputs jountly, batchnorm normalizes each scalar feature independently, by making it have the mean of 0 and the variance of 1. For a layer with $d$-dimensional input $x=[x^(1), x^(2), \cdots, x^(k)]$,  each dimension is normalized as follows 
+\begin{equation}
+\hat{x}^{(k)} = \frac{x^{(k)} - E[x^{(k)}]}{\sqrt{Var(x^{(k)})}}
+\end{equation}
+
+
 \section{Why does residual learning work?}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/residual_learning_block.png}
 \caption{Residual Learning.}
 \end{figure}
 
-In the process of optimization in deep network, the input and output are usually close in the latter layers. In some latter layers, we define the input is $\rm{x}$ and the output is $\mathcal{H(\rm{x})}$. From above experience, we assume $\rm{x}$ and $\mathcal{H(\rm{x})}$ are close. Thus, the function of these layers is mapping from $\rm{x}$ to $\mathcal{H(\rm{x})}$. But usually this process is difficult becuase the relative gap between $\rm{x}$ and $\mathcal{H(\rm{x})}$ is small. Toward this end, we construct the residual as \uline{$\mathcal{F(\rm{x})} = \mathcal{H(\rm{x})} - \rm{x}$} to learning the gap. We can hypothesize that it is easier to optimize the residual mapping than to optimize the original mapping. To the extreme, if the mapping from input to output is indentity, it would be easier to push the residual to zero than to directly fit an identity mapping.
+In the process of optimization in deep networ
+k, the input and output are usually close in the latter layers. In some latter layers, we define the input is $\rm{x}$ and the output is $\mathcal{H(\rm{x})}$. From above experience, we assume $\rm{x}$ and $\mathcal{H(\rm{x})}$ are close. Thus, the function of these layers is mapping from $\rm{x}$ to $\mathcal{H(\rm{x})}$. But usually this process is difficult becuase the relative gap between $\rm{x}$ and $\mathcal{H(\rm{x})}$ is small. Toward this end, we construct the residual as \uline{$\mathcal{F(\rm{x})} = \mathcal{H(\rm{x})} - \rm{x}$} to learning the gap. We can hypothesize that it is easier to optimize the residual mapping than to optimize the original mapping. To the extreme, if the mapping from input to output is indentity, it would be easier to push the residual to zero than to directly fit an identity mapping.
 
 \uline{The real purpose of residual learning is that even if the network deepens, the performance of this network will not degenerate, thus ensuring the leaning of deeper network (even 1000 layers).}
 
