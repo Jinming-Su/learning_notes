@@ -5,11 +5,10 @@
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of normal distribution requires multiple integration operations.}{3}{section*.7}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}{3}{section*.8}
 \contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Beta distribution.}{3}{section*.9}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ It is easy to prove above equations.}{4}{section*.10}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}{6}{section*.11}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: SVM}{7}{section*.12}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Random forest}{7}{section*.13}
-\contentsline {todo}{\color@fb@x {}{red}{}{red!25}{\leavevmode {\color {red!25}o}}\ A more precise definition of \textbf {covariate} can't be found.}{11}{section*.18}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ PCA whitening and ZCA Whitening.}{11}{section*.19}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Why is multi-layr linear network equivalent to the represetation ability of a single layer linear network.}{12}{section*.20}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ There exists $\DOTSB \sum@ \slimits@ _i$ for $y_i$ because gradient from each $y_i$ will backpropagate for $\gamma $ and the effect of summation is achieved.}{13}{section*.21}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}{6}{section*.10}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: SVM}{7}{section*.11}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Random forest}{7}{section*.12}
+\contentsline {todo}{\color@fb@x {}{red}{}{red!25}{\leavevmode {\color {red!25}o}}\ A more precise definition of \textbf {covariate} can't be found.}{11}{section*.17}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ PCA whitening and ZCA Whitening.}{11}{section*.18}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Why is multi-layr linear network equivalent to the represetation ability of a single layer linear network.}{12}{section*.19}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ There exists $\DOTSB \sum@ \slimits@ _i$ for $y_i$ because gradient from each $y_i$ will backpropagate for $\gamma $ and the effect of summation is achieved.}{13}{section*.20}

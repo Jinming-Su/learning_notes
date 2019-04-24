@@ -264,8 +264,25 @@ The expected value and invariance of a Exponential variable $X$ are
 S^2 = \frac{1}{n - 1} \sum_{i=1}^n(X_i - \bar{X})^2.
 \end{equation}
 
-The above definitions follow the theorem: \uline{sample mean is unbiased estimation of population mean and sample variance is unbiased estimation of population variance.}
-\improvement[inline]{Todo: it is easy to prove above equations.}
+The above definitions follow the theorem: \uline{sample mean is unbiased estimation of population mean and sample variance is unbiased estimation of population variance.}　
+
+\textbf{proof:}
+\begin{equation}\label{eq:unbiased_estimation_of_sample_mean_and_variance}
+\begin{split}
+E[\bar{X}] &= E[\frac{1}{n} \sum_{i=1}^n X_i] \\
+			&= \frac{1}{n} \sum_{i=1}^n E[X_i] \\
+			&= \frac{1}{n} n E(X) \\
+			&= E(X) \\
+E[S^2] &= E[\frac{1}{n - 1} \sum_{i=1}^n(X_i - \bar{X})^2] \\
+		&= \frac{1}{n-1}E[\sum_{i=1}^n(X_i ^ 2 + \bar{X} ^ 2 - 2 X_i \bar{X})] \\
+		&= \frac{1}{n-1}(E[\sum_{i=1}^nX_i ^ 2] + n\bar{X}^2 - 2n\bar{X}^2) \\
+		&= \frac{1}{n-1}(nE[X ^ 2] - nE[\bar{X}^2]) \\
+		&= \frac{n}{n-1}(Var[X] + E[X]^2 - Var[\bar{X}] - E[\bar{X}]^2) \\
+		&= \frac{n}{n-1}(Var[X] - Var[\bar{X}]) \\
+		&= \frac{n}{n-1}(Var[X] - \frac{1}{n}Var[X]) \\
+		&= Var[X]
+\end{split}
+\end{equation}
 
 \section{Prior and posterior}
 The prior probability is the probability of \uline{a cause inferred from experience}, denoted as $P(\theta)$. The posterior probability is the probability of \uline{the cause estimated from the result}, denoted as $P(\theta|x)$. The posterior probability is defined as 
@@ -508,7 +525,7 @@ Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_4} by
 \frac{\partial \mathcal{L}}{\partial \overrightarrow{b^l}} = \overrightarrow{\delta^l}.
 \end{equation}
 
-\section{How does batch normalization work?}
+\section{Why does batch normalization work?}
 \subsection{Dataset shift and covariate shift}
 There exists a inherent hypothesis in supervised learning: \uline{The training data in source domain and testing data in target domain are independent and identically drawn from the same distribution}. 
 
@@ -556,7 +573,7 @@ From Eq.~\ref{eq:covariate_shift_2}, this scene violates the independence hypoth
 \improvement[inline]{PCA whitening and ZCA Whitening.}
 
 \subsection{Batch normalization}
-Because whitening is expensive and maybe change the representation ability of a network by discarding the absolute scale of activations, batch nomalization emerges.
+\textbf{Problem: } because whitening is expensive and maybe change the representation ability of a network by discarding the absolute scale of activations, batch nomalization emerges.
 
 There are two treatments for batchnorm to address above two problems. (1) The first is instead of whitening the features in layer inputs and outputs jountly, batchnorm normalizes each scalar feature independently, by making it have the mean of 0 and the variance of 1. For a layer with $d$-dimensional input $x=[x^{(1)}, x^{(2)}, \cdots, x^{(k)}]$,  each dimension is normalized as follows 
 \begin{equation}
@@ -618,7 +635,7 @@ We compute the gradients with respect to the parameters of the BN thansform of l
 \end{split}
 \end{equation}
 \note[inline]{There exists $\sum_i$ for $y_i$ because gradient from each $y_i$ will backpropagate for $\gamma$ and the effect of summation is achieved.}
-For the process of backpropagation, we also need to compute $\frac{\partial \mathcal{L}}{\partial x_i}$, which is got by:
+For the process of \textbf{backpropagation}, we also need to compute $\frac{\partial \mathcal{L}}{\partial x_i}$, which is got by:
 \begin{equation}
 \begin{split}
 \frac{\partial \mathcal{L}}{\partial \hat{x}_i} & = \frac{\partial \mathcal{L}}{\partial y_i}  \frac{\partial y_i}{\partial \hat{x}_i} \\
@@ -638,12 +655,16 @@ For the process of backpropagation, we also need to compute $\frac{\partial \mat
 \end{split}
 \end{equation}
 
-For the inference of the network, sometimes we want the output to depend only on the few or one input. At this time, $\mu$ and $\sigma^2$ are computed by each mini-batch $\mu_\mathcal{B}$ and $\sigma^2_\mathcal{B}$ as follows:
+For the \textbf{inference} of the network, sometimes we want the output to depend only on the few or one input. At this time, $\mu$ and $\sigma^2$ are computed by each mini-batch $\mu_\mathcal{B}$ and $\sigma^2_\mathcal{B}$ by their unbiased estimations as proved in~\ref{eq:unbiased_estimation_of_sample_mean_and_variance}:
 \begin{equation}
 \begin{split}
-test
+\mu &= E(\mu_\mathcal{B}), \\
+\sigma^2 &= \frac{n}{n-1}E(\sigma^2_\mathcal{B}), \\
+BN(X) & = \gamma \frac{X - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta.
 \end{split}
 \end{equation}
+
+The advantages of batch normalization is as follows: (1) batch normalization ensure the stable distributions of input in each layer, which reduces the learning pressure at the later layer and improves the learning speed; (2) batch normalization makes the model less sensitive to the parameters in the network, which simplifies the parameter adjustment precess, and makes the learning of this network more stable; (3) batch normalization can make the input of activation fall into the unsaturated region through the normalization operation, thus alleviating the problem of gradient vanishing.
 
 \section{Why does residual learning work?}
 
@@ -659,7 +680,8 @@ k, the input and output are usually close in the latter layers. In some latter l
 \uline{The real purpose of residual learning is that even if the network deepens, the performance of this network will not degenerate, thus ensuring the leaning of deeper network (even 1000 layers).}
 
 \chapter{Contents specifically referenced}
-$\bullet$ the chapter of (2)Perceptron in \cite{hangli2012};
+\noindent $\bullet$ the chapter of (2)Perceptron in \cite{hangli2012}; \\
+$\bullet$ BatchNorm from~\cite{ioffe2015batch};
 
 {\small
 \bibliographystyle{plain}
