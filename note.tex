@@ -30,6 +30,9 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+\usepackage{boxedminipage}
+\usepackage{algorithm, algorithmic}
+
 
 \def\ie{\emph{i.e.}}
 \def\eg{\emph{e.g.}}
@@ -541,11 +544,92 @@ From Eq.~\ref{eq:covariate_shift_2}, this scene violates the independence hypoth
 \subsection{Batch normalization}
 Because whitening is expensive and maybe change the representation ability of a network by discarding the absolute scale of activations, batch nomalization emerges.
 
-There are two simplifications for batchnorm to address above two problems. The first is instaed of whitening the features in layer inputs and outputs jountly, batchnorm normalizes each scalar feature independently, by making it have the mean of 0 and the variance of 1. For a layer with $d$-dimensional input $x=[x^(1), x^(2), \cdots, x^(k)]$,  each dimension is normalized as follows 
+There are two treatments for batchnorm to address above two problems. (1) The first is instead of whitening the features in layer inputs and outputs jountly, batchnorm normalizes each scalar feature independently, by making it have the mean of 0 and the variance of 1. For a layer with $d$-dimensional input $x=[x^{(1)}, x^{(2)}, \cdots, x^{(k)}]$,  each dimension is normalized as follows 
 \begin{equation}
-\hat{x}^{(k)} = \frac{x^{(k)} - E[x^{(k)}]}{\sqrt{Var(x^{(k)})}}
+\hat{x}^{(k)} = \frac{x^{(k)} - E[x^{(k)}]}{\sqrt{Var(x^{(k)})}}.
+\end{equation}
+(2)Simply normalizeing each input of a layer may reduce what the layer can represent. For example, nomalizing the inputs of a sigmoid would constrain them to the linear regime of the nonlinearity.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/sigmoid_batchnorm.png}
+\caption{Sigmoid function.}
+\end{figure}
+In this way, batchnorm turns the multi-layer nonlinear neural network into a multi-layer linear neural network, which is equivalent to the representation ability of a single layer linear network. The reduces the representation ability of the network. So, introduce $\gamma ^ {(k)}, \beta^{(k)}$ to scale and shift the normalized value:
+\begin{equation}
+y^{(k)} = \gamma ^ {(k)} \hat{x} ^ {(k)} + \beta ^ {(k)},
+\end{equation}
+which guarantee the representation ability of the network.
+\improvement[inline]{Why is multi-layr linear network equivalent to the represetation ability of a single layer linear network.}
+
+In addition, use mini-batch in stochatic gradient training, each mini-batch produces estimates of the man and variance of each activation. And obtain the forward algorithm of batch normalization as follows: \\
+
+\begin{algorithm}
+	\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+	\renewcommand{\algorithmicensure}{\textbf{Output:}}
+	\caption{Forward algorithm of batch normalization.}
+	\begin{algorithmic}[1]
+		\REQUIRE values of $x$ over a mini-batch: $\mathcal{B}=\{x_1, x_2, \cdots, x_m\}$, parameters to be learned: $\gamma, \beta$
+		\ENSURE$y_i = BN_{\gamma, \beta}(x_i)$
+		\begin{equation}
+		\begin{split}
+		& \mu_\mathcal{B} \gets \frac{1}{m} \sum_{i=1}^m x_i \\
+		& \sigma^2_\mathcal{B} \gets \frac{1}{m} \sum_{i=1}^m (x_i - \mu_\mathcal{B})^2 \\
+		& \hat{x}_i \gets \frac{x_i - \mu_\mathcal{B}}{\sqrt{\sigma^2_\mathcal{B} + \epsilon}} \\
+		& y_i \gets \gamma\hat{x}_i + \beta = BN_{\gamma, \beta}(x_i)
+		\end{split}
+		\notag
+		\end{equation}
+	\end{algorithmic}  
+\end{algorithm}
+In this manner, we know 
+\begin{equation}
+\begin{split}
+E[\hat{x}] &= E[\frac{x_i - \mu_\mathcal{B}}{\sqrt{\sigma^2_\mathcal{B} + \epsilon}}] \\
+		&= \frac{1}{\sqrt{\sigma^2_\mathcal{B} + \epsilon}} (E[x_i] - E[\mu_\mathcal{B}]) \\
+		&= 0 \\
+Var[\hat{x}] &= E[\hat{x}^2] - (E[\hat{x}])^2 \\
+			&= E[(\frac{x_i - \mu_\mathcal{B}}{\sqrt{\sigma^2_\mathcal{B} + \epsilon}})^2] + 0 \\
+			& = \frac{1}{\sigma^2_\mathcal{B} + \epsilon} E[(x_i - \mu_\mathcal{B})^2] \\
+			& = \frac{1}{\sigma^2_\mathcal{B} + \epsilon} \sigma^2_\mathcal{B} \\
+			& \approx 1
+\end{split}.
+\end{equation}
+The distribution of values of any $\hat{x}$ has the expected value of 0 and the invariance of 1, as long as the elements of each mini-batch are sampled from the same distribution, and if we neglect $\epsilon$. This distribution can be seen as an approximate standard normal distribution $N(0, 1)$.
+
+We compute the gradients with respect to the parameters of the BN thansform of loss $\mathcal{L}$ for backpropagation. The chain rule is used as follows:
+\begin{equation}
+\begin{split}
+& \frac{\partial \mathcal{L}}{\partial \gamma} = \sum_i \frac{\partial \mathcal{L}}{\partial y_i}  \frac{\partial y_i}{\partial \gamma} = \sum_i \frac{\partial \mathcal{L}}{\partial y_i} \hat{x}_i, \\
+& \frac{\partial \mathcal{L}}{\partial \beta} = \sum_i \frac{\partial \mathcal{L}}{\partial y_i}  \frac{\partial y_i}{\partial \beta} = \sum_i \frac{\partial \mathcal{L}}{\partial y_i}. \\
+\end{split}
+\end{equation}
+\note[inline]{There exists $\sum_i$ for $y_i$ because gradient from each $y_i$ will backpropagate for $\gamma$ and the effect of summation is achieved.}
+For the process of backpropagation, we also need to compute $\frac{\partial \mathcal{L}}{\partial x_i}$, which is got by:
+\begin{equation}
+\begin{split}
+\frac{\partial \mathcal{L}}{\partial \hat{x}_i} & = \frac{\partial \mathcal{L}}{\partial y_i}  \frac{\partial y_i}{\partial \hat{x}_i} \\
+&= \frac{\partial \mathcal{L}}{\partial y_i} \gamma 
+\\
+\frac{\partial \mathcal{L}}{\partial \sigma^2_\mathcal{B}} &= \sum_i \frac{\partial \mathcal{L}}{\partial \hat{x}_i}  \frac{\partial \hat{x}_i}{\partial \sigma^2_\mathcal{B}} \\
+&= \sum_i \frac{\partial \mathcal{L}}{\partial \hat{x}_i} (x_i - \mu_\mathcal{B}) (-\frac{1}{2}) (\sigma^2_\mathcal{B} + \epsilon)^{-\frac{3}{2}} \\
+&=-\frac{1}{2} \sum_i \frac{\partial \mathcal{L}}{\partial \hat{x}_i} (x_i - \mu_\mathcal{B}) (\sigma^2_\mathcal{B} + \epsilon)^{-\frac{3}{2}} 
+\\
+\frac{\partial \mathcal{L}}{\partial \mu_\mathcal{B}} &= \frac{\partial \mathcal{L}}{\partial \hat{x}_i} \frac{\partial \hat{x}_i}{\partial \mu_\mathcal{B}} + \frac{\partial \mathcal{L}}{\partial \sigma^2_\mathcal{B}} \frac{\partial \sigma^2_\mathcal{B}}{\partial \mu_\mathcal{B}} \\
+&= \sum_i \frac{\partial \mathcal{L}}{\partial \hat{x}_i}(-1)(\sigma^2_\mathcal{B} + \epsilon)^{-\frac{1}{2}} + \frac{\partial \mathcal{L}}{\partial \sigma^2_\mathcal{B}}\frac{1}{m}\sum_i (-2) (x_i - \mu_\mathcal{B}) \\
+&= -\sum_i \frac{\partial \mathcal{L}}{\partial \hat{x}_i}\frac{1}{\sqrt{\sigma^2_\mathcal{B} + \epsilon}} - \frac{\partial \mathcal{L}}{\partial \sigma^2_\mathcal{B}}\frac{2}{m}\sum_i(x_i - \mu_\mathcal{B})
+\\
+\frac{\partial \mathcal{L}}{\partial x_i} &= \frac{\partial \mathcal{L}}{\partial \hat{x}_i} \frac{\partial \hat{x}_i}{\partial x_i} + \frac{\partial \mathcal{L}}{\partial \sigma^2_\mathcal{B}} \frac{\partial \sigma^2_\mathcal{B}}{\partial x_i}+ \frac{\partial \mathcal{L}}{\partial \mu_\mathcal{B}} \frac{\partial \mu_\mathcal{B}}{\partial x_i} \\
+&= \frac{\partial \mathcal{L}}{\partial \hat{x}_i} \frac{1}{\sqrt{\sigma^2_\mathcal{B} + \epsilon}} + \frac{2}{m} \frac{\partial \mathcal{L}}{\partial \sigma^2_\mathcal{B}} (x_i - \mu_\mathcal{B}) + \frac{1}{m} \frac{\partial \mathcal{L}}{\partial \mu_\mathcal{B}}
+\\
+\end{split}
 \end{equation}
 
+For the inference of the network, sometimes we want the output to depend only on the few or one input. At this time, $\mu$ and $\sigma^2$ are computed by each mini-batch $\mu_\mathcal{B}$ and $\sigma^2_\mathcal{B}$ as follows:
+\begin{equation}
+\begin{split}
+test
+\end{split}
+\end{equation}
 
 \section{Why does residual learning work?}
 

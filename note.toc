@@ -18,5 +18,5 @@
 \contentsline {subsection}{\numberline {3.2.1}Dataset shift and covariate shift}{11}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Internal covariate shift}{11}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Batch normalization}{12}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Why does residual learning work?}{12}{section.3.3}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{13}{chapter.4}
+\contentsline {section}{\numberline {3.3}Why does residual learning work?}{14}{section.3.3}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{15}{chapter.4}
