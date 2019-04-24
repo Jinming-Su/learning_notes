@@ -253,6 +253,20 @@ The expected value and invariance of a Exponential variable $X$ are
 \note[inline]{The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}
 \improvement[inline]{Todo: Beta distribution.}
 
+\subsection{Sample mean and sample variance}
+\textbf{Sample mean} is defined as
+\begin{equation}
+\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i.
+\end{equation}
+
+\textbf{Sample Variance} is defined as 
+\begin{equation}
+S^2 = \frac{1}{n - 1} \sum_{i=1}^n(X_i - \bar{X})^2.
+\end{equation}
+
+The above definitions follow the theorem: \uline{sample mean is unbiased estimation of population mean and sample variance is unbiased estimation of population variance.}
+\improvement[inline]{Todo: it is easy to prove above equations.}
+
 \section{Prior and posterior}
 The prior probability is the probability of \uline{a cause inferred from experience}, denoted as $P(\theta)$. The posterior probability is the probability of \uline{the cause estimated from the result}, denoted as $P(\theta|x)$. The posterior probability is defined as 
 \begin{equation}\label{eq:posterior}
