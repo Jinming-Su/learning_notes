@@ -296,7 +296,8 @@ where $P(x|\theta)$ represents likelihood of $x$. \uline{In fact, likelihood is 
 \chapter{Machine Learning}
 
 \section{Why can't perceptron solve XOR problem?}
-\begin{figure}[h]
+\label{sect:perceptron}
+\begin{figure}
 \centering
 \includegraphics[width=0.4\textwidth]{figures/XOR_problem.png}
 \caption{XOR problem.}
@@ -451,9 +452,9 @@ a^l_j & = \sigma(\sum_k w^l_{jk} a^{l - 1} _ k + b^l_j) \\
 where $\sigma$ is the activation function, such as Sigmoid function. Then, Eq.~\ref{eq:neural_network} can be expresented in a vector form. In detail, we use $\vec{a^l}$ for the activation vector in $l$th layer. $\vec{z^l}$ is the same. Moreover, we use $\bm{w^l}$ for the \uline{weight matrix} and $\vec{b^l}$ for the bias vector in $l$th layer. Then, 
 \begin{equation}
 \begin{split}
-\vec{z^l} & = \bm{w^l}a^{l - 1} + b^l, \\
-\vec{a^l} & = \sigma(\bm{w^l}a^{l - 1} + b^l) \\
-		  & = \sigma(\vec{z^l}).
+\overrightarrow{z^l} & = \bm{w^l}\overrightarrow{a^{l - 1}} + \overrightarrow{b^l}, \\
+\overrightarrow{a^l} & = \sigma(\bm{w^l}\overrightarrow{a^{l - 1}} + \overrightarrow{b^l}) \\
+		  & = \sigma(\overrightarrow{z^l}).
 \end{split}
 \end{equation}
 
@@ -474,7 +475,7 @@ Then, we can get \uline{the error of the output layer} $\delta^L$, and the compo
 \end{equation}
 Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_1} by
 \begin{equation}
-\overrightarrow{\delta^L} = \nabla_{\overrightarrow{a^L}} \otimes \sigma'(\overrightarrow{z^L}).
+\overrightarrow{\delta^L} = \nabla_{\overrightarrow{a^L}}\mathcal{L} \otimes \sigma'(\overrightarrow{z^L}).
 \end{equation}
 
 Then, we can obtain \uline{the error $\delta^l$ in terms of the error in the next layer $\delta^{l+1}$}. In particular, 
@@ -525,6 +526,151 @@ Moreover, we can give the matrix-based form of Eq.~\ref{eq:backpropagation_4} by
 \frac{\partial \mathcal{L}}{\partial \overrightarrow{b^l}} = \overrightarrow{\delta^l}.
 \end{equation}
 
+\section{Backpropagation of Convolutional Neural Network}
+\subsection{Backpropagation of Fully Connectional Layer}
+The backprogapation equations of element form are as follows: 
+\begin{equation}
+\left\{
+\begin{split}
+& \delta^L_j = \frac{\partial \mathcal{L}}{\partial a^L_j} \sigma'(z^L_j), \\
+& \delta^l_j = \sum_k \delta^{l+1}_k w^{l+1}_{kj} \sigma'(z^l_j), \\
+& \frac{\partial \mathcal{L}}{\partial w^l_{jk}} = \delta^l_j a^{l - 1}_k, \\
+& \frac{\partial \mathcal{L}}{\partial b^l_{j}} = \delta^l_j. \\
+\end{split}
+\right.
+\tag{FC-BP}
+\end{equation}
+
+The backprogapation equations of matrix-based form are as follows:
+\begin{equation}
+\left\{
+\begin{split}
+& \overrightarrow{\delta^L} = \nabla_{\overrightarrow{a^L}}\mathcal{L} \otimes \sigma'(\overrightarrow{z^L}), 
+\\
+& \overrightarrow{\delta^l} = ((\overrightarrow{w^{l+1}})^\mathrm{T} \overrightarrow{\delta^{l+1}}) \otimes \sigma'(\overrightarrow{z^l}), 
+\\
+& \frac{\partial \mathcal{L}}{\partial \bm{w^l}} = \overrightarrow{\delta^l} (\overrightarrow{a^{l-1}})^\mathrm{T}, 
+\\
+& \frac{\partial \mathcal{L}}{\partial \overrightarrow{b^l}} = \overrightarrow{\delta^l}. \\
+\end{split}
+\right.
+\end{equation}
+
+\subsection{Backpropagation of Convolutional Layer}
+We use $w^l_{pq}$ to denote the weight of the element in the $p$th row and $q$th column of the convolutional kernel in $l$th layer. Moreover, $a^l_{ij}$ and $z^l_{ij}$ as the activation and weighted input in $i$th row and $j$th column in $l$th layer, respectively. Then, 
+\begin{equation}
+\label{eq:convolutional_layer}
+\begin{split}
+& z^l_{ij} = \sum^r_{p=1} \sum^c_{q=1}  a^{l-1}_{i+p-1, j+q-1} w^l_{pq} + b^l, \\
+& a^l_{ij} = \sigma(z^l_{ij}),
+\end{split}
+\end{equation}
+where $\sigma$ is the activation function, such as Sigmoid function. The matrix-based form of Eq.~\ref{eq:convolutional_layer} can be given by
+\begin{equation}
+\begin{split}
+& \bm{z^l} = \bm{a^{l-1}} * \bm{w^l} + \bm{b^l}, \\
+& \bm{a^l} = \sigma(\bm{z^l}).
+\end{split}
+\end{equation}
+
+Similar to fully connectional layer, we define $\delta^l_{ij}$ as the error in element at $i$th row and $j$th column in $l$ layer. In detail, 
+\begin{equation}
+\begin{split}
+\delta^l_{ij} = \frac{\partial \mathcal{L}}{\partial z^l_{ij}}.
+\end{split}
+\end{equation}
+In this equation, $\delta^L$ can be obtain by the same manner as Eq.~\ref{eq:backpropagation_1}. Then, we can obtain the error $\delta^l$ in the terms of the error in the next layer $\delta^{l+1}$. In particular, 
+\begin{equation}
+\begin{split}
+\delta^l_{ij} &= \frac{\partial \mathcal{L}}{\partial z^l_{ij}} 
+= \sum_m \sum_n \frac{\partial \mathcal{L}}{\partial z^{l+1}_{mn}} \frac{\partial z^{l+1}_{mn}}{\partial z^l_{ij}} 
+\\
+&= \sum_m \sum_n \delta^{i+1}_{mn} \frac{\partial z^{l+1}_{mn}}{\partial z^l_{ij}} 
+\\
+&= \sum_m \sum_n \delta^{i+1}_{mn} \frac{\partial \sum^r_{p=1} \sum^c_{q=1} \sigma(z^{l}_{m+p-1,n+q-1}) w^{l+1}_{pq} + b^{l+1}}{\partial z^l_{ij}} 
+\\
+&= \sum_m \sum_n \delta^{l+1}_{mn} w^{l+1}_{i+1-m,j+1-n} \sigma'(z^l_{ij}).
+\end{split}
+\label{eq:convolutional_layer_backpropagation_2}
+\tag{CONV-BP2}
+\end{equation}
+In this case, a example can be found:   
+\begin{equation}
+\begin{split}
+\delta^l_{1,1} = & \delta^{l+1}_{-1,-1} w^{l+1}_{3,3} + \delta^{l+1}_{-1,0} w^{l+1}_{3,2} + \delta^{l+1}_{-1,1} w^{l+1}_{3,1} +  \\
+&\delta^{l+1}_{0,-1} w^{l+1}_{2,3} + \delta^{l+1}_{0,0} w^{l+1}_{2,2} + \delta^{l+1}_{0,1} w^{l+1}_{2,1} + \\
+&\delta^{l+1}_{1,-1} w^{l+1}_{1,3} + \delta^{l+1}_{1,0} w^{l+1}_{1,2} + \delta^{l+1}_{1,1} w^{l+1}_{1,1},
+\end{split}
+\end{equation}
+which can be represented as convolutional operations like:
+\begin{equation}
+\left[
+\begin{array}{cccccc}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & \delta^{l+1}_{1,1} & \delta^{l+1}_{1,2} & 0 & 0 \\
+0 & 0 & \delta^{l+1}_{2,1} & \delta^{l+1}_{2,2} & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+\end{array}
+\right]*
+\left[
+\begin{array}{ccc}
+w^{l+1}_{3,3} & w^{l+1}_{3,2} & w^{l+1}_{3,1} \\
+w^{l+1}_{2,3} & w^{l+1}_{2,2} & w^{l+1}_{2,1} \\
+w^{l+1}_{1,3} & w^{l+1}_{1,2} & w^{l+1}_{1,1} \\
+\end{array}
+\right].
+\end{equation}
+Therefore, Eq.~\ref{eq:convolutional_layer_backpropagation_2} can be deduced into matrix-based form, $i.e.$,
+\begin{equation}
+\bm{\delta^l} = \bm{\delta^{l+1}}*\mathrm{rot180}(\bm{w}) \otimes \sigma'(\bm{z^l}).
+\end{equation}
+
+Next, we can calculate the change rate of the cost with respect to any weight in the network. In particular, 
+\begin{equation}
+\begin{split}
+\frac{\partial \mathcal{L}}{\partial w^l_{pq}} &= \sum_i \sum_j \frac{\partial \mathcal{L}}{\partial z^l_{ij}} \frac{\partial z^l_{ij}}{\partial w^l_{pq}} 
+\\
+&= \sum_i \sum_j \frac{\partial \mathcal{L}}{\partial z^l_{ij}} \frac{\partial \sum^r_{p=1} \sum^c_{q=1}  a^{l-1}_{i+p-1, j+q-1} w^l_{pq} + b^l}{\partial w^l_{pq}} 
+\\
+&= \sum_i \sum_j \delta^l_{ij} a^{l-1}_{i+p-1,j+q-1}. \\
+\end{split} 
+\tag{CONV-BP3}
+\end{equation}
+As for bias, we have 
+\begin{equation}
+\begin{split}
+\frac{\partial \mathcal{L}}{\partial b^l} &= \sum_i \sum_j \frac{\partial \mathcal{L}}{\partial z^l_{ij}} \frac{\partial z^l_{ij}}{\partial b^l} 
+\\
+&= \sum_i \sum_j \frac{\partial \mathcal{L}}{\partial z^l_{ij}} \frac{\partial \sum^r_{p=1} \sum^c_{q=1}  a^{l-1}_{i+p-1, j+q-1} w^l_{pq} + b^l}{\partial b^l} 
+\\
+&= \sum_i \sum_j \delta^l_{ij}. \\
+\end{split} 
+\tag{CONV-BP4}
+\end{equation}
+In summary, the backpropagation equations of element form for convolutional layer as follows:
+\begin{equation}
+\left\{
+\begin{split}
+& \delta^l_{ij} = \sum_m \sum_n \delta^{l+1}_{mn} w^{l+1}_{i+1-m,j+1-n} \sigma'(z^l_{ij}), \\
+& \frac{\partial \mathcal{L}}{\partial w^l_{pq}} = \sum_i \sum_j \delta^l_{ij} a^{l-1}_{i+p-1,j+q-1}, \\
+& \frac{\partial \mathcal{L}}{\partial b^l} = \sum_i \sum_j \delta^l_{ij}. \\
+\end{split}
+\right.
+\tag{CONV-BP}
+\end{equation}
+Moreover, the corresponding matrix form is as follows:
+\begin{equation}
+\left\{
+\begin{split}
+& \bm{\delta^l} = \bm{\delta^{l+1}}*\mathrm{rot180}(\bm{w}) \otimes \sigma'(\bm{z^l}), \\
+& \frac{\partial \mathcal{L}}{\partial \bm{w^l}} = \bm{a^{l-1}}*\bm{\delta^l}, \\
+& \frac{\partial \mathcal{L}}{\partial \bm{b^l}} = \sum_{i,j}\bm{b^l}.
+\end{split}
+\right.
+\end{equation}
+
 \section{Why does batch normalization work?}
 \subsection{Dataset shift and covariate shift}
 There exists a inherent hypothesis in supervised learning: \uline{The training data in source domain and testing data in target domain are independent and identically drawn from the same distribution}. 
@@ -563,7 +709,7 @@ From Eq.~\ref{eq:covariate_shift_2}, this scene violates the independence hypoth
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{figures/sigmoid.png}
+\includegraphics[width=0.8\textwidth]{figures/sigmoid.png}
 \caption{Derivative of sigmoid function.}
 \end{figure}
 
@@ -573,6 +719,7 @@ From Eq.~\ref{eq:covariate_shift_2}, this scene violates the independence hypoth
 \improvement[inline]{PCA whitening and ZCA Whitening.}
 
 \subsection{Batch normalization}
+\label{sect:batch-normalization}
 \textbf{Problem: } because whitening is expensive and maybe change the representation ability of a network by discarding the absolute scale of activations, batch nomalization emerges.
 
 There are two treatments for batchnorm to address above two problems. (1) The first is instead of whitening the features in layer inputs and outputs jountly, batchnorm normalizes each scalar feature independently, by making it have the mean of 0 and the variance of 1. For a layer with $d$-dimensional input $x=[x^{(1)}, x^{(2)}, \cdots, x^{(k)}]$,  each dimension is normalized as follows 
@@ -680,8 +827,8 @@ k, the input and output are usually close in the latter layers. In some latter l
 \uline{The real purpose of residual learning is that even if the network deepens, the performance of this network will not degenerate, thus ensuring the leaning of deeper network (even 1000 layers).}
 
 \chapter{Contents specifically referenced}
-\noindent $\bullet$ the chapter of (2)Perceptron in \cite{hangli2012}; \\
-$\bullet$ BatchNorm from~\cite{ioffe2015batch};
+\noindent $\bullet$ Sect.~\ref{sect:perceptron}: the chapter of (2)Perceptron in \cite{hangli2012}; \\
+$\bullet$ Sect.~\ref{sect:batch-normalization}: BatchNorm from~\cite{ioffe2015batch};
 
 {\small
 \bibliographystyle{plain}

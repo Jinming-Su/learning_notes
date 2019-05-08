@@ -15,9 +15,12 @@
 \contentsline {section}{\numberline {2.4}Support vector machine}{7}{section.2.4}
 \contentsline {chapter}{\numberline {3}Deep Network}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}How does backpropagation work?}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}Why does batch normalization work?}{11}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Dataset shift and covariate shift}{11}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Internal covariate shift}{11}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Batch normalization}{12}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Why does residual learning work?}{14}{section.3.3}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{15}{chapter.4}
+\contentsline {section}{\numberline {3.2}Backpropagation of Convolutional Neural Network}{11}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Backpropagation of Fully Connectional Layer}{11}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Backpropagation of Convolutional Layer}{11}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Why does batch normalization work?}{13}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Dataset shift and covariate shift}{13}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Internal covariate shift}{13}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Batch normalization}{14}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Why does residual learning work?}{16}{section.3.4}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{17}{chapter.4}
