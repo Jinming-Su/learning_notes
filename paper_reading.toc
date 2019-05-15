@@ -1,11 +1,12 @@
 \contentsline {chapter}{\numberline {1}Classification}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Res2Net: A New Multi-scale Backbone Architecture, arxiv, 2019.}{1}{section.1.1}
-\contentsline {chapter}{\numberline {2}Salient Object Detection}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{3}{section.2.1}
-\contentsline {chapter}{\numberline {3}Object Detection}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Proposal}{5}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Multiscale Combinatorial Grouping for Image Segmentation and Object Proposal Generation. TPAMI, 2016}{5}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}What Object Should I Use? - Task Driven Object Detection. CVPR, 2019.}{6}{section.3.2}
+\contentsline {chapter}{\numberline {2}Object Detection}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Proposal}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Multiscale Combinatorial Grouping for Image Segmentation and Object Proposal Generation. TPAMI, 2016}{3}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}What Object Should I Use? - Task Driven Object Detection. CVPR, 2019.}{4}{section.2.2}
+\contentsline {chapter}{\numberline {3}Salient Object Detection}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Instance-Level Salient Object Segmentation. CVPR, 2017.}{5}{section.3.2}
 \contentsline {chapter}{\numberline {4}Semantic Segmentation}{7}{chapter.4}
 \contentsline {chapter}{\numberline {5}Others}{9}{chapter.5}
 \contentsline {section}{\numberline {5.1}Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{9}{section.5.1}

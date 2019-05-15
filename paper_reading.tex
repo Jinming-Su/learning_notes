@@ -79,20 +79,6 @@
 \end{figure}
 This paper is mainly a promotion of residual network, which seems to be similar to cardinality, only adding more connections.
 
-\chapter{Salient Object Detection}
-\section{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.4\textwidth]{figures_paper_reading/DNA_Deeply-supervised_Nonlinear_Aggregation_for_Salient_Object_Detection.png}
-\caption{Residual Learning.}
-\label{fig:1-1_residual_learning}
-\end{figure}
-
-This paper has two contributions: 
-(1) \uline{theoretically and experimentally} analyzes the natural limitaion of traditional side-output aggregration which can only make limited use of multi-scale side-ouput informantion; 
-(2) proposes Deeply-supervised nonlinear aggregration (DNA) for side-output features. 
-(3) as experience, in DNA, convolution layers with kernels of $n \times 1$ and $1 \times n$ are used, which is proved to be effective. Moreover, authers claim that large kernel size in DNA can improve performance.
-
 \chapter{Object Detection}
 \section{Proposal}
 \subsection{Multiscale Combinatorial Grouping for Image Segmentation and Object Proposal Generation. TPAMI, 2016}
@@ -122,6 +108,32 @@ I don't read this paper, but the code is tested. Code can be found in \url{https
 This paper has two contributions:
 (1) construct a COCO-Tasks dataset which comprises about 40,000 images where the most suitable objects for 14 \uline{tasks} have been annotated;
 (2) proposes a method buliding on \uline{Gated Graph Neural Network} to detect the most suitable objects for a given task. 
+
+\chapter{Salient Object Detection}
+\section{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{figures_paper_reading/DNA_Deeply-supervised_Nonlinear_Aggregation_for_Salient_Object_Detection.png}
+\caption{Residual Learning.}
+\end{figure}
+
+This paper has two contributions: 
+(1) \uline{theoretically and experimentally} analyzes the natural limitaion of traditional side-output aggregration which can only make limited use of multi-scale side-ouput informantion; 
+(2) proposes Deeply-supervised nonlinear aggregration (DNA) for side-output features. 
+(3) as experience, in DNA, convolution layers with kernels of $n \times 1$ and $1 \times n$ are used, which is proved to be effective. Moreover, authers claim that large kernel size in DNA can improve performance.
+
+\section{Instance-Level Salient Object Segmentation. CVPR, 2017.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{figures_paper_reading/instance-SOD.png}
+\caption{Instance-level salient object detection.}
+\end{figure}
+
+This paper has contributions as follows:
+(1) introduce a new task of instance-level salient object detection, and construct a corresponding dataset with 1000 images;
+(2) propose a method for this task as shown in figure.
+
+Moreover, the code can be found in \url{http://www.sysu-hcp.net/instance-level-salient-object-segmentation/}, while the code is only the part of SOD without contour and instance.
 
 \chapter{Semantic Segmentation}
 \begin{figure}[h]
