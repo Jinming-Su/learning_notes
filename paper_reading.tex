@@ -109,6 +109,28 @@ This paper has two contributions:
 (1) construct a COCO-Tasks dataset which comprises about 40,000 images where the most suitable objects for 14 \uline{tasks} have been annotated;
 (2) proposes a method buliding on \uline{Gated Graph Neural Network} to detect the most suitable objects for a given task. 
 
+\section{Feature Pyramid Networks for Object Detection. CVPR, 2017.}
+This paper propose a new backbone network.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{figures_paper_reading/fpn.png}
+\caption{Structure of FPN.}
+\end{figure}
+
+\section{Focal Loss for Dense Object Detection. ICCV, 2017}
+This paper propose a improved cross entropy loss.
+
+\begin{equation}
+\mathcal{FL}(p, y) =
+\left\{
+\begin{split}
+- \alpha (1-p)^\gamma \log(p), \quad y = 1 \\
+- (1-\alpha) p^\gamma \log(1-p), \quad y = 0
+\end{split}
+\right.
+\end{equation}
+where $\alpha$ is the weighting factor for class imbalance, and $p_t$ is the confidence 
+
 \chapter{Salient Object Detection}
 \section{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}
 \begin{figure}[h]
@@ -130,10 +152,18 @@ This paper has two contributions:
 \end{figure}
 
 This paper has contributions as follows:
-(1) introduce a new task of instance-level salient object detection, and construct a corresponding dataset with 1000 images;
+(1) introduce a new task of instance-level salient object detection, and construct a corresponding dataset with 1000 images that are collected from existing SOD datasets;
 (2) propose a method for this task as shown in figure.
 
 Moreover, the code can be found in \url{http://www.sysu-hcp.net/instance-level-salient-object-segmentation/}, while the code is only the part of SOD without contour and instance.
+
+\section{Semantic Instance Meets Salient Object: Study on Video Semantic Salient Instance Segmentation. WACV, 2019.}
+
+\section{A Simple Pooling-Based Design for Real-Time Salient Object Detection. CVPR, 2019}
+
+\section{S4Net: Single Stage Salient-Instance Segmentation. CVPR, 2019.}
+
+\section{Contrast Prior and Fluid Pyramid Integration for RGBD Salient Object Detection. CVPR, 2019}
 
 \chapter{Semantic Segmentation}
 \begin{figure}[h]

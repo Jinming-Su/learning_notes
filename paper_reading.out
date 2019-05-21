@@ -4,10 +4,16 @@
 \BOOKMARK [1][-]{section.2.1}{Proposal}{chapter.2}% 4
 \BOOKMARK [2][-]{subsection.2.1.1}{Multiscale Combinatorial Grouping for Image Segmentation and Object Proposal Generation. TPAMI, 2016}{section.2.1}% 5
 \BOOKMARK [1][-]{section.2.2}{What Object Should I Use? - Task Driven Object Detection. CVPR, 2019.}{chapter.2}% 6
-\BOOKMARK [0][-]{chapter.3}{Salient Object Detection}{}% 7
-\BOOKMARK [1][-]{section.3.1}{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{chapter.3}% 8
-\BOOKMARK [1][-]{section.3.2}{Instance-Level Salient Object Segmentation. CVPR, 2017.}{chapter.3}% 9
-\BOOKMARK [0][-]{chapter.4}{Semantic Segmentation}{}% 10
-\BOOKMARK [0][-]{chapter.5}{Others}{}% 11
-\BOOKMARK [1][-]{section.5.1}{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{chapter.5}% 12
-\BOOKMARK [1][-]{section.5.2}{Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{chapter.5}% 13
+\BOOKMARK [1][-]{section.2.3}{Feature Pyramid Networks for Object Detection. CVPR, 2017.}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.4}{Focal Loss for Dense Object Detection. ICCV, 2017}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Salient Object Detection}{}% 9
+\BOOKMARK [1][-]{section.3.1}{DNA: Deeply-supervised Nonlinear Aggregation for Salient Object Detection. arxiv, 2019.}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Instance-Level Salient Object Segmentation. CVPR, 2017.}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.3}{Semantic Instance Meets Salient Object: Study on Video Semantic Salient Instance Segmentation. WACV, 2019.}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.4}{A Simple Pooling-Based Design for Real-Time Salient Object Detection. CVPR, 2019}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.5}{S4Net: Single Stage Salient-Instance Segmentation. CVPR, 2019.}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.6}{Contrast Prior and Fluid Pyramid Integration for RGBD Salient Object Detection. CVPR, 2019}{chapter.3}% 15
+\BOOKMARK [0][-]{chapter.4}{Semantic Segmentation}{}% 16
+\BOOKMARK [0][-]{chapter.5}{Others}{}% 17
+\BOOKMARK [1][-]{section.5.1}{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.2}{Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{chapter.5}% 19
