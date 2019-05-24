@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  16 MAY 2019 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  24 MAY 2019 17:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,6 +642,9 @@ LaTeX Warning: Label `fig' multiply defined.
 
 LaTeX Warning: Label `fig' multiply defined.
 
+
+LaTeX Warning: Label `fig' multiply defined.
+
 )
 \openout1 = `paper_reading.aux'.
 
@@ -793,7 +796,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
 
 <figures_paper_reading/Res2Net:_A_New_Multi-scale_Backbone_Architecture.png, id
-=126, 700.6175pt x 504.88625pt>
+=136, 700.6175pt x 504.88625pt>
 File: figures_paper_reading/Res2Net:_A_New_Multi-scale_Backbone_Architecture.pn
 g Graphic file (type png)
 
@@ -821,7 +824,7 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 85.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-<figures_paper_reading/MCG_UCM.png, id=136, 427.5975pt x 192.72pt>
+<figures_paper_reading/MCG_UCM.png, id=146, 427.5975pt x 192.72pt>
 File: figures_paper_reading/MCG_UCM.png Graphic file (type png)
 
 <use figures_paper_reading/MCG_UCM.png>
@@ -829,7 +832,7 @@ Package pdftex.def Info: figures_paper_reading/MCG_UCM.png used on input line 8
 8.
 (pdftex.def)             Requested size: 300.29344pt x 135.34416pt.
 
-<figures_paper_reading/MCG.png, id=138, 536.75531pt x 179.16937pt>
+<figures_paper_reading/MCG.png, id=148, 536.75531pt x 179.16937pt>
 File: figures_paper_reading/MCG.png Graphic file (type png)
 
 <use figures_paper_reading/MCG.png>
@@ -837,7 +840,7 @@ Package pdftex.def Info: figures_paper_reading/MCG.png used on input line 95.
 (pdftex.def)             Requested size: 400.38872pt x 133.64948pt.
 
 <figures_paper_reading/What_Object_Should_I_Use?_-_Task_Driven_Object_Detection
-.png, id=139, 1058.95625pt x 362.35374pt>
+.png, id=149, 1058.95625pt x 362.35374pt>
 File: figures_paper_reading/What_Object_Should_I_Use?_-_Task_Driven_Object_Dete
 ction.png Graphic file (type png)
 
@@ -854,7 +857,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Underfull \vbox (badness 5203) has occurred while \output is active []
 
  [3 <./figures_paper_reading/MCG_UCM.png> <./figures_paper_reading/MCG.png>]
-<figures_paper_reading/fpn.png, id=150, 860.21375pt x 339.2675pt>
+<figures_paper_reading/fpn.png, id=160, 860.21375pt x 339.2675pt>
 File: figures_paper_reading/fpn.png Graphic file (type png)
 
 <use figures_paper_reading/fpn.png>
@@ -870,7 +873,7 @@ ction.png> <./figures_paper_reading/fpn.png>]
 Chapter 3.
 
 <figures_paper_reading/DNA_Deeply-supervised_Nonlinear_Aggregation_for_Salient_
-Object_Detection.png, id=164, 518.93875pt x 617.30624pt>
+Object_Detection.png, id=174, 518.93875pt x 617.30624pt>
 File: figures_paper_reading/DNA_Deeply-supervised_Nonlinear_Aggregation_for_Sal
 ient_Object_Detection.png Graphic file (type png)
 
@@ -880,7 +883,7 @@ Package pdftex.def Info: figures_paper_reading/DNA_Deeply-supervised_Nonlinear_
 Aggregation_for_Salient_Object_Detection.png used on input line 138.
 (pdftex.def)             Requested size: 200.19054pt x 238.13931pt.
 
-<figures_paper_reading/instance-SOD.png, id=165, 1170.3725pt x 260.975pt>
+<figures_paper_reading/instance-SOD.png, id=175, 1170.3725pt x 260.975pt>
 File: figures_paper_reading/instance-SOD.png Graphic file (type png)
 
 <use figures_paper_reading/instance-SOD.png>
@@ -916,9 +919,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6 <./figures_paper_reading/instance-SOD.png>]
 Chapter 4.
+<figures_paper_reading/webseg.png, id=187, 1406.25375pt x 539.01375pt>
+File: figures_paper_reading/webseg.png Graphic file (type png)
+
+<use figures_paper_reading/webseg.png>
+Package pdftex.def Info: figures_paper_reading/webseg.png used on input line 17
+3.
+(pdftex.def)             Requested size: 400.38872pt x 153.46423pt.
 
 <figures_paper_reading/ADVENT_Adversarial_Entropy_Minimization_for_Domain_Adapt
-ation_in_Semantic_Segmentation_CVPR2019.png, id=177, 1291.82625pt x 545.03625pt
+ation_in_Semantic_Segmentation_CVPR2019.png, id=188, 1291.82625pt x 545.03625pt
 >
 File: figures_paper_reading/ADVENT_Adversarial_Entropy_Minimization_for_Domain_
 Adaptation_in_Semantic_Segmentation_CVPR2019.png Graphic file (type png)
@@ -927,62 +937,73 @@ Adaptation_in_Semantic_Segmentation_CVPR2019.png Graphic file (type png)
 daptation_in_Semantic_Segmentation_CVPR2019.png>
 Package pdftex.def Info: figures_paper_reading/ADVENT_Adversarial_Entropy_Minim
 ization_for_Domain_Adaptation_in_Semantic_Segmentation_CVPR2019.png used on inp
-ut line 171.
+ut line 182.
 (pdftex.def)             Requested size: 400.38872pt x 168.92622pt.
- [7
 
- <./figures_paper_reading/ADVENT_Adversarial_Entropy_Minimization_for_Domain_Ad
-aptation_in_Semantic_Segmentation_CVPR2019.png>] [8
 
-]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7
+
+ <./figures_paper_reading/webseg.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 22.41992pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8 <./figures_paper_reading/ADVENT_Adversarial_Entropy_Minimization_for_Domain_
+Adaptation_in_Semantic_Segmentation_CVPR2019.png>]
 Chapter 5.
 
-Overfull \hbox (36.33514pt too wide) in paragraph at lines 183--184
+Overfull \hbox (36.33514pt too wide) in paragraph at lines 196--197
 []\OT1/ptm/m/n/10 The un-of-fi-cial python code can be found in []$\OT1/pcr/m/n
 /10 https : / / github . com / su526664687 / dark-[]channel-[]prior-[]dehazing$
 []\OT1/ptm/m/n/10 . 
  []
 
 
-Overfull \hbox (3.1949pt too wide) in paragraph at lines 185--185
+Overfull \hbox (3.1949pt too wide) in paragraph at lines 198--198
 []\OT1/ptm/b/n/14.4 Single Im-age De-haz-ing Us-ing Rank-ing Con-vo-lu-tional N
 eu-ral Net-work. TMM,
  []
 
 
 <figures_paper_reading/Single_Image_Dehazing_Using_Ranking_Convolutional_Neural
-_Network.png, id=189, 1325.95375pt x 373.395pt>
+_Network.png, id=201, 1325.95375pt x 373.395pt>
 File: figures_paper_reading/Single_Image_Dehazing_Using_Ranking_Convolutional_N
 eural_Network.png Graphic file (type png)
 
 <use figures_paper_reading/Single_Image_Dehazing_Using_Ranking_Convolutional_Ne
 ural_Network.png>
 Package pdftex.def Info: figures_paper_reading/Single_Image_Dehazing_Using_Rank
-ing_Convolutional_Neural_Network.png used on input line 188.
+ing_Convolutional_Neural_Network.png used on input line 201.
 (pdftex.def)             Requested size: 400.38872pt x 112.74864pt.
- (./paper_reading.bbl [9 <./figures_paper_reading/Single_Image_Dehazing_Using_R
-anking_Convolutional_Neural_Network.png>] [10
+ (./paper_reading.bbl [9
+
+ <./figures_paper_reading/Single_Image_Dehazing_Using_Ranking_Convolutional_Neu
+ral_Network.png>] [10
 
 ]) [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
 
 (./paper_reading.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 215.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
 Package rerunfilecheck Info: File `paper_reading.out' has not changed.
-(rerunfilecheck)             Checksum: C48D5A4C390359B80034A015A99889B4;1894.
+(rerunfilecheck)             Checksum: 9FF7079EF00DEFE64CC86B25481E545C;2158.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 215.
  ) 
 Here is how much of TeX's memory you used:
- 17399 strings out of 494910
- 323192 string characters out of 6179835
+ 17409 strings out of 494910
+ 323407 string characters out of 6179835
  383270 words of memory out of 5000000
- 20280 multiletter control sequences out of 15000+600000
+ 20286 multiletter control sequences out of 15000+600000
  28786 words of font info for 67 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,11n,56p,449b,382s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -995,10 +1016,10 @@ ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/cou
 rier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper_reading.pdf (15 pages, 1245497 bytes).
+Output written on paper_reading.pdf (15 pages, 1513915 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 210 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 266 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

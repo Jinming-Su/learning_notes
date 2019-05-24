@@ -14,6 +14,8 @@
 \contentsline {section}{\numberline {3.5}S4Net: Single Stage Salient-Instance Segmentation. CVPR, 2019.}{6}{section.3.5}
 \contentsline {section}{\numberline {3.6}Contrast Prior and Fluid Pyramid Integration for RGBD Salient Object Detection. CVPR, 2019}{6}{section.3.6}
 \contentsline {chapter}{\numberline {4}Semantic Segmentation}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}WebSeg: Learning Semantic Segmentation from Web Searches. arxiv, 2018.}{7}{section.4.1}
+\contentsline {section}{\numberline {4.2}ADVENT: Adversarial Entropy Minimization for Domain Adaptation in Semantic Segmentation. CVPR, 2019.}{7}{section.4.2}
 \contentsline {chapter}{\numberline {5}Others}{9}{chapter.5}
 \contentsline {section}{\numberline {5.1}Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{9}{section.5.1}
 \contentsline {section}{\numberline {5.2}Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{9}{section.5.2}
