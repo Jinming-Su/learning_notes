@@ -16,6 +16,11 @@
 \BOOKMARK [0][-]{chapter.4}{Semantic Segmentation}{}% 16
 \BOOKMARK [1][-]{section.4.1}{WebSeg: Learning Semantic Segmentation from Web Searches. arxiv, 2018.}{chapter.4}% 17
 \BOOKMARK [1][-]{section.4.2}{ADVENT: Adversarial Entropy Minimization for Domain Adaptation in Semantic Segmentation. CVPR, 2019.}{chapter.4}% 18
-\BOOKMARK [0][-]{chapter.5}{Others}{}% 19
-\BOOKMARK [1][-]{section.5.1}{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{chapter.5}% 20
-\BOOKMARK [1][-]{section.5.2}{Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{chapter.5}% 21
+\BOOKMARK [1][-]{section.4.3}{Efficient Ladder-style DenseNets for Semantic Segmentation of Large Images. arxiv, 2019.}{chapter.4}% 19
+\BOOKMARK [0][-]{chapter.5}{Pose Estimation}{}% 20
+\BOOKMARK [1][-]{section.5.1}{DeepPose: Human Pose Estimation via Deep Neural Networks. CVPR, 2014.}{chapter.5}% 21
+\BOOKMARK [1][-]{section.5.2}{Human pose estimation via Convolutional Part Heatmap Regression. ECCV, 2016.}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.3}{Deep High-Resolution Representation Learning for Human Pose Estimation. CVPR, 2019.}{chapter.5}% 23
+\BOOKMARK [0][-]{chapter.6}{Others}{}% 24
+\BOOKMARK [1][-]{section.6.1}{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}{chapter.6}% 25
+\BOOKMARK [1][-]{section.6.2}{Single Image Dehazing Using Ranking Convolutional Neural Network. TMM, 2018.}{chapter.6}% 26

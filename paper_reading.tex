@@ -185,11 +185,46 @@ The method is mainly an online noise filtering module, which is able to filter p
 \end{figure}
 This paper focuses on the problem of domain adapation in semantic segmentation. In detail, the contributions are as follows: (1) propose to minimize the pixel-level entropy of target domain to penalize low-confident predictions on target domain; (2) propose a entropy-based adversarial traing approach to privide the structure adaptation; (3) extra two trick: a) training on specific entropy ranges and b) add class-ratio priors.
 
+\section{Efficient Ladder-style DenseNets for Semantic Segmentation of Large Images. arxiv, 2019.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figures_paper_reading/ladder_style_densenet.png}
+\caption{Ladder-style densenet for semantic segmentation.}
+\label{fig}
+\end{figure}
+This paper propose a ladder-style densenet for semantic segmentation, \uline{while I think this is not new idea, which has been widely used in present work such as FPN.} Moreover, this paper present to reduce the training memory footprint by aggressive re-computation of imtermediate activations during convolutional backprop, which maybe is worth learning. 
 
+\chapter{Pose Estimation}
+\section{DeepPose: Human Pose Estimation via Deep Neural Networks. CVPR, 2014.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{figures_paper_reading/deeppose.png}
+\caption{Deep pose.}
+\label{fig}
+\end{figure}
+This method proposes a method to regress key points. It first predict these approximate locations, and then the box is croped, upsampled and sent to the regressor for the finer prediction.
+
+\section{Human pose estimation via Convolutional Part Heatmap Regression. ECCV, 2016.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figures_paper_reading/2016_ECCV_Human_pose_estimation_via_Convolutional_Part_Heatmap_Regression.png}
+\caption{Convolutional part heatmap regression.}
+\label{fig}
+\end{figure}
+This paper proposed the modern mainstream architecture by part heatmaps to solve the human pose estimation.
+
+\section{Deep High-Resolution Representation Learning for Human Pose Estimation. CVPR, 2019.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figures_paper_reading/HRNet.png}
+\caption{HRNet.}
+\label{fig}
+\end{figure}
+This paper propose a new backbone network for maintaining high-resolution.
 
 \chapter{Others}
 \section{Single Image Haze Removal Using Dark Channel Prior. CVPR, 2009. Best paper.}
-This paper introduces dark channel prior that is an observation -most local patches in haze-free outdoor images contain some pixels which have very low intensities in at least one color channel. \uline{This is the one of most famous papers in the domain of dehazing.} 
+This paper introduces dark channel prior that is an observation -most local patches in haze-free outdoor images contain some pixels which have very low intensities in at least one color channel. \uline{This is the one of most famous papers in the domain of dehazing.}
 
 Some formulas in this paper are easy to understand. One can refer to \url{https://www.cnblogs.com/Imageshop/p/3281703.html} for more understanding. 
 
