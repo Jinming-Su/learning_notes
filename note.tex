@@ -141,7 +141,7 @@ The expected value and invarance  of a Bernoulli variable $X$ are
 \begin{equation}
 f(k; n, p) = P(k; n, p) = P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}.
 \end{equation}
-The expected value and invariance of a Binomial variable $X$ are
+The expected value and invariance of a Binomial variable $X$ (converted into bernouli distribution for derivation, where $X_{i}$ is independent of each other) are
 \begin{equation}\label{eq:binomial_distribution_e_var}
 \left\{
 	\begin{array}{lr}
@@ -152,7 +152,7 @@ The expected value and invariance of a Binomial variable $X$ are
 		  & = np, \\
 	\end{split} \\
 	\begin{split}
-	Var(X) & = Var(X_{1}) + Var(X_{1}) + \cdot \cdot \cdot + Var(X_{1}) \\
+	Var(X) & = Var(X_{1}) + Var(X_{2}) + \cdot \cdot \cdot + Var(X_{n}) \\
 		   & = nVar(X_{1}) \\
 		   & = np(1-p). \\
 	\end{split} 
@@ -187,7 +187,7 @@ The expected value and invariance of a Poission variable $X$ are
 	\end{array}
 \right.
 \end{equation}
-\note[inline]{Note there exists Taylor Expansion $e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \sum_{i=0}^{\infty} \frac{x^i}{i!}$.} 
+\note[inline]{Note there exists Taylor Expansion (at $x = 0$) $e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \sum_{i=0}^{\infty} \frac{x^i}{i!}$.} 
 \improvement[inline]{Todo: Taylor's formula.}
 
 \subsection{Continuous probability distribution}
@@ -284,20 +284,85 @@ E[S^2] &= E[\frac{1}{n - 1} \sum_{i=1}^n(X_i - \bar{X})^2] \\
 \end{split}
 \end{equation}
 
-\section{Prior and posterior}
+\chapter{Machine Learning}
+\section{Naive Bayes}
+\subsection{Prior and posterior}
 The prior probability is the probability of \uline{a cause inferred from experience}, denoted as $P(\theta)$. The posterior probability is the probability of \uline{the cause estimated from the result}, denoted as $P(\theta|x)$. The posterior probability is defined as 
 \begin{equation}\label{eq:posterior}
 \begin{split}
 P(\theta|x) = \frac{P(x|\theta) P(\theta)}{P(x)}
 \end{split}
 \end{equation}
-where $P(x|\theta)$ represents likelihood of $x$. \uline{In fact, likelihood is the function of parameters. Likelihood is equal to the probability of the result occurring caused by a cause (paramters) based on the cause. Likelihood is the viewpoint of the frequency. In the frequency, the parameter is a true value, not a random variable, so the parameter has no distribution and no probability.}
+where $P(x|\theta)$ represents likelihood of $x$. \uline{In fact, likelihood is the function of parameters. Likelihood is equal to the probability of the result occurring caused by a cause (paramters) based on the cause.} 
 
-\chapter{Machine Learning}
+\uline{Likelihood is from the viewpoint of the frequency. In the frequency, the parameter is a true value, not a random variable, so the parameter has no distribution and no probability.}
 
-\section{Why can't perceptron solve XOR problem?}
+\subsection{Naive Bayesian Classifier (NBC)}
+the naive bayesian classifier can be expressed as
+\begin{equation}\label{eq:naive_bayesian_classifier}
+\begin{split}
+y = f(x) & = \text{arg}\max_{c_k} P(Y = c_k | X = x) \\
+		& = \text{arg}\max_{c_k} \frac{P(Y = c_k) \prod_j P(X^{(j)} = x^{(j)} | Y = c_k)}{\sum_k P(Y = c_k) \prod_j P(X^{(j)} = x^{(j)} | Y = c_k)},
+\end{split}
+\end{equation}
+where $x^{(j)}$ means the $j$th features in the feature vector $x$. 
+
+Since the denominator is the same any $c_k$, the above equation \ref{eq:naive_bayesian_classifier} can be simplified as 
+\begin{equation}
+\begin{split}
+y = \text{arg}\max_{c_k} P(Y = c_k) \prod_j P(X^{(j)} = x^{(j)} | Y = c_k).
+\end{split}
+\end{equation}
+
+\subsection{Parameter estimation of NBC by maximum likelihood estimation (MLE)}
+The parameter in NBC that needed to estimate is the prior $P(Y = c_k)$ and likelihood $P(X^{(j)} = x^{(j)} | Y = c_k)$.  
+MLEs of prior and likelihood are
+\begin{equation}
+\begin{split}
+P(Y = c_k) & = \frac{\sum_{i = 1}^N I(y_i = c_k)}{N} \\
+P(X^{(j)} = a^{(j)} | Y = c_k) & = \frac{\sum_{i=1}^N I (x^{(j)}_i = a_{jl}, y_i = c_k)}{\sum_{i = 1}^N I(y_i = c_k)},
+\end{split}
+\end{equation}
+where $x^{(j)}_i$ is the $j$th feature in $i$th sample vector, and $a_{jl}$ means the $l$th value in the set of values of $j$th feature.
+
+The proof is as follows.
+Define $\theta_k = P(Y = c_k)$, then we can get the joint probability distribution.
+\begin{equation}
+\begin{split}
+P(y_1, y_2, \cdots, y_n; \theta_k) = \prod_{i=1}^N P(y_i) = \prod_{i=1}^N \theta_k^{N_k},
+\end{split}
+\end{equation}
+then the likelihood function is 
+\begin{equation}
+\begin{split}
+L(\theta^k; y_1, y_2, \cdots, y_n) = P(y_1, y_2, \cdots, y_n; \theta_k).
+\end{split}
+\end{equation}
+Next, the logarithmic operation is applied.
+\begin{equation}
+\begin{split}
+\ln(L(\theta_k)) = \sum_{i = 1}^N N_k \ln \theta_k, \\
+s.t., \sum_{k = 1}^K \theta_k = 1
+\end{split}
+\end{equation}
+Using Lagrange Multiplier Method, we get
+\begin{equation}
+\begin{split}
+\ln(L(\theta_k, \lambda)) = \sum_{i = 1}^N N_k \ln \theta_k + \lambda(\sum_{k = 1}^K \theta_k - 1).
+\end{split}
+\end{equation}
+Let the derivative of the above equation be zero, and combine all the equations with $\theta$. We get 
+\begin{equation}
+\begin{split}
+P(Y=c_k) = \frac{N_k}{N} = \frac{\sum_{i = 1}^N I(y_i = c_k)}{N}.
+\end{split}
+\end{equation}
+Moreover, the derivation of likelihood is similar.
+
+\section{Perceptron}
+\subsection{Why can't perceptron solve XOR problem?}
 \label{sect:perceptron}
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/XOR_problem.png}
 \caption{XOR problem.}
@@ -426,7 +491,9 @@ which ensure that $\Delta \mathcal{L} \approx \nabla \mathcal{L}_{\vec{w}}^\math
 \uline{In other word, in gradient descent algorithm, the direction of parameter update is opposite to its gradient direction.}
 
 \section{Generative model and discriminative model}
-(1) Generative model: perceptron
+(1) Generative model:
+
+(2) Discriminative model: perceptron
 
 \section{Support vector machine}
 \improvement[inline]{Todo: SVM}
