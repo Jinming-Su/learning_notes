@@ -251,7 +251,7 @@ The expected value and invariance of a Exponential variable $X$ are
 \right.
 \end{equation}
 \note[inline]{The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}
-\improvement[inline]{Todo: Beta distribution.}
+\improvement[inline]{Todo: conjugate distribution and Beta distribution.}
 
 \subsection{Sample mean and sample variance}
 \textbf{Sample mean} is defined as
@@ -285,6 +285,66 @@ E[S^2] &= E[\frac{1}{n - 1} \sum_{i=1}^n(X_i - \bar{X})^2] \\
 \end{equation}
 
 \chapter{Machine Learning}
+\section{Logistic regression (LR)}
+\subsection{Form}
+\begin{equation}
+h_\theta(x) = g(\theta^T x)= \frac{1}{1 + e^{-\theta^T x}}.
+\end{equation}
+The form of sigmoid function is 
+\begin{equation}
+g(z) = \frac{1}{1 + e^{-z}}.
+\end{equation}
+The derivation of sigmoid function is 
+\begin{equation}
+g'(z) = g(z)(1-g(z)).
+\end{equation}
+
+Let us assume that 
+\begin{equation}
+\begin{split}
+& P(y = 1 | x;\theta) = h_\theta(x), \\
+& P(y = 0 | x; \theta) = 1 - h_\theta(x).
+\end{split}
+\end{equation}
+Above equation can be written more compactly as
+\begin{equation}
+\begin{split}
+p(y|x;\theta) = (h_\theta(x)) ^y (1- h_\theta(x))^{1 - y}.
+\end{split}
+\end{equation}
+
+Assuming that the $m$ training examples are generated independently, we can then obtain the likelihood of the parameters $\theta$ as
+\begin{equation}
+\begin{split}
+L(\theta) &= p(\vec{y} | X; \theta) \\
+			&= \prod_{i=1}^m p(y^{(i)} | x^{(i)}; \theta)\\
+			&= \prod_{i=1}^m (h_\theta(x)) ^{y^{(i)}} (1- h_\theta(x))^{1 - y^{(i)}}.
+\end{split}
+\end{equation}
+
+Usually, it will be easier to maximize the log likelihood:
+\begin{equation}
+\begin{split}
+l(\theta) &= \log L(\theta) \\ 
+		&= \sum_{i=1}^m y^{(i)} \log h(x^{(i)}) + (1 - y^{(i)}) \log (1 - h(x^{(i)})).
+\end{split}
+\end{equation}
+
+\note[inline]{The is the opposite number of binary cross entropy loss function.}
+
+Lets start by working with just one training example $(x, y)$, and take derivatives to derive the stochastic gradient ascent rule:
+\begin{equation}
+\begin{split}
+\frac{\partial l(\theta)}{\partial \theta_j} = (y - h_\theta(x)) x_j.
+\end{split}
+\end{equation}
+Above, we get the stochastic gradient ascent rule:
+\begin{equation}
+\begin{split}
+\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(\overrightarrow{{x^{(i)}}}))x_j
+\end{split}
+\end{equation}
+
 \section{Naive Bayes}
 \subsection{Prior and posterior}
 The prior probability is the probability of \uline{a cause inferred from experience}, denoted as $P(\theta)$. The posterior probability is the probability of \uline{the cause estimated from the result}, denoted as $P(\theta|x)$. The posterior probability is defined as 
@@ -358,6 +418,50 @@ P(Y=c_k) = \frac{N_k}{N} = \frac{\sum_{i = 1}^N I(y_i = c_k)}{N}.
 \end{split}
 \end{equation}
 Moreover, the derivation of likelihood is similar.
+
+\section{Regularization}
+
+The key purpose of machine learning is to minimize errors of problems while regularizing parameters. \uline{Minimizing errors is to let the model fit the training data, while regularizing parameters is to prevent the model from fitting the training data too much.} 
+
+\uline{Regularization is equivalent to introducing a prior (Laplace or Gaussian).}
+In general, supervised learning tasks can be regarded as:
+\begin{equation}
+w* = \arg\min_w \sum_i L(y_i, f(x_i; w)) + \lambda \Omega(w)
+\end{equation}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/l1_l2.png}
+\caption{$L_1$ norm and $L_2$ norm.}
+\end{figure}
+
+
+\subsection{L0}
+\begin{equation}
+L_0 = \sum_i \text{I}(w_i \neq 0).
+\end{equation}
+
+$L_0$ norm will make the weights sparse.
+
+\subsection{L1 (lasso regularization)}
+\begin{equation}
+L_1 = \sum_i |w_i|.
+\end{equation}
+
+$L_1$ norm will make the weights sparse. The main function of $L_1$ is feature selection and interpretability.
+
+\subsubsection{Why does we usually use L1 to make the weights sparse instead of L0?}
+
+A theoretical explanation is that $L_1$ is the optical convex approximation of $L_0$ while $L_0$ is difficult to solve (NP hard problem). 
+
+
+
+\subsection{L2 (ridge regression or weight decay)}
+\begin{equation}
+L_2 = \sum_i w_i^2
+\end{equation}
+
+$L_2$ norm can prevent the model from over-fitting. The main reason is the $L_2$ constrain the model space.
 
 \section{Perceptron}
 \subsection{Why can't perceptron solve XOR problem?}
@@ -468,6 +572,134 @@ as $\eta (0 < \eta \le 1)$. \\
 \end{equation} \\
 \indent \indent (d)go to (b) until there are no misclassified points in training set.
 
+\section{Support vector machine (SVM)}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{figures/svm.png}
+\caption{Classification hyperplane.}
+\end{figure}
+\subsection{Form}
+For the classification problem, the mathemathcal form of hyperplane is defined as 
+\begin{equation}
+\begin{split}
+\vec{w}^\top \vec{x} + b = 0.
+\end{split}
+\end{equation}
+The distance from any point in the space to the hyperplane is
+\begin{equation}
+\begin{split}
+\gamma = \frac{|\vec{w}^\top \vec{x} + b|}{|\vec{w}|}.
+\end{split}
+\end{equation}
+We know that the class of each points is $y^{(i)}$, where $y^{(i)} = \pm 1$ means different classes. Then, the distance can be in another way by 
+\begin{equation}
+\begin{split}
+\gamma^{(i)} = \frac{y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b)}{|\vec{w}|},
+\end{split}
+\end{equation}
+which is named \uline{geometric margin}. Next, we have 
+\begin{equation}
+\begin{split}
+\gamma = \min_{i=1,\cdots, m} \gamma^{(i)}.
+\end{split}
+\end{equation}
+
+Then, we give the form of SVM as
+\begin{equation}\label{eq:svm1}
+\begin{split}
+& \max_{\gamma, \vec{w}, b} \gamma, \\
+& \text{s.t. } \frac{y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b)}{|\vec{w}|} \geq \gamma
+\end{split}
+\end{equation}
+
+Define functional margin as follows.
+\begin{equation}
+\begin{split}
+& \hat{\gamma}^{(i)} = y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b), \\
+& \hat{\gamma} = \min_{i = 1, \cdots, m} \hat{\gamma}.
+\end{split}
+\end{equation}
+
+Then, the form of SVM \ref{eq:svm1} can be transformed.
+\begin{equation}
+\begin{split}
+& \max_{\gamma, \vec{w}, b} \frac{\hat{\gamma}}{|\vec{w}|}, \\
+& \text{s.t. } y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b) \geq \hat{\gamma}.
+\end{split}
+\end{equation}
+We set the minmum functional margin is $\hat{\gamma} = 1$, then 
+\begin{equation}\label{eq:svm2}
+\begin{split}
+& \max_{\gamma, \vec{w}, b} \frac{1}{|\vec{w}|}, \\
+& \text{s.t. } y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b) \geq 1.
+\end{split}
+\end{equation}
+Moreovere, the form of SVM \ref{eq:svm2} can be transformed.
+\begin{equation}\label{eq:svm3}
+\begin{split}
+& \min_{\gamma, \vec{w}, b} \frac{1}{2}|\vec{w}|^2, \\
+& \text{s.t. } y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b) \geq 1.
+\end{split}
+\end{equation}
+
+\subsection{Lagrange duality}
+Consider a constrained optimization problems:
+\begin{equation}
+\begin{split}
+\min_w & f(\vec{w}), \\
+\text{s.t. } & g_i(\vec{w}) \leq 0, i =1,\cdots, k, \\
+			 & h_i(\vec{w}) = 0, i =1, \cdots, l.
+\end{split}
+\end{equation}
+We can define \uline{generalized lagrangian}
+\begin{equation}
+\mathcal{L}(\vec{w}, \vec{\alpha}, \vec{\beta}) = f(\vec{w}) + \sum_{i = 1}^k \alpha_i g_i(\vec{w}) + \sum_{i = 1}^l \beta_i h_i(\vec{w}).
+\end{equation}
+If the primal constraints are indeed satisfied for $\vec{w}$, then \uline{$\max_{\vec{\alpha}, \vec{\beta}: \alpha_i \geq 0} \mathcal{L}(\vec{w}, \vec{\alpha}, \vec{\beta}) = f(\vec{w})$ }.
+
+For primal ($p$) and dual ($d$) optimization problem, we have 
+\begin{equation}
+d^* = \max_{\vec{\alpha}, \vec{\beta}: \alpha_i \geq 0} \min_{\vec{w}} \mathcal{L} (\vec{w}, \vec{\alpha}, \vec{\beta}) \leq \min_{\vec{w}} \max_{\vec{\alpha}, \vec{\beta}: \alpha_i \geq 0} \mathcal{L} (\vec{w}, \vec{\alpha}, \vec{\beta}) = p^*.
+\end{equation}
+Therefore, the soluation of primal problem can be transfored to solve the dual problem.
+
+\subsection{Solution of SVM}
+As shown in \ref{eq:svm3}, the form of SVM is
+\begin{equation}\label{eq:svm3}
+\begin{split}
+\min_{\gamma, \vec{w}, b} & \quad  \frac{1}{2}|\vec{w}|^2, \\
+\text{s.t. } &  \quad y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b) \geq 1.
+\end{split}
+\end{equation}
+When we construct the Lagrangian for our optimization problem we have:
+\begin{equation}\label{eq:svm_lagrangian}
+\mathcal{L}(\vec{w}, b, \vec{\alpha}) = \frac{1}{2}|\vec{w}|^2 + \sum_{i = 1}^m \alpha_i [1 - y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b)].
+\end{equation}
+
+\todo[inline]{Why?}
+Lets find the dual form of the problem. To do so, we need to first minimize $\mathcal{L}(\vec{w}, b, \vec{\alpha})$ with respect to $\vec{w}$ and $b$ (for fixed $\alpha$) by setting the derivatives of $\mathcal{L}$ with respect to $\vec{w}$ and $b$ to zero. We have:
+\begin{equation} \label{eq:svm_dual}
+\begin{split}
+\frac{\partial \mathcal{L}(\vec{w}, b, \vec{\alpha})}{\vec{w}} &= \vec{w} - \sum_{i=1}^m \alpha_i y^{(i)}\overrightarrow{x^{(i)}} = 0,  \vec{w} = \sum_{i=1}^m \alpha_i y^{(i)}\overrightarrow{x^{(i)}} \\
+\frac{\partial \mathcal{L}(\vec{w}, b, \vec{\alpha})}{b} &= - \sum_{i=1}^m \alpha_i y^{(i)} = 0.
+\end{split}
+\end{equation}
+
+Plug the $\vec{w}$ and $b$ back into the Lagrangian Eq.~\ref{eq:svm_lagrangian}, and simplify, we get
+\begin{equation}
+\mathcal{L}(\vec{w}, b, \vec{\alpha}) = \sum_{i = 1}^m \alpha_i - \frac{1}{2} \sum_{i,j=1}^m y^{(i)} y^{(j)} \alpha_i \alpha_j(\overrightarrow{x^{(i)}})^\top x^{(j)}.
+\end{equation}
+Then, we obtain the following \uline{dual optimization problem}:
+\begin{equation}
+\begin{split}
+\max_\alpha & \quad \mathcal{L}(\vec{w}, b, \vec{\alpha}) = \sum_{i = 1}^m \alpha_i - \frac{1}{2} \sum_{i,j=1}^m y^{(i)} y^{(j)} \alpha_i \alpha_j(\overrightarrow{x^{(i)}})^\top x^{(j)} \\
+\text{s.t.} & \quad \alpha_i \geq 0, i=1,\cdots, m, \\
+& \quad \sum_{i=1}^m \alpha_i y^{(i)} = 0
+\end{split}
+\end{equation}
+
+\note[inline]{Sequential minimal optimization algorithm is used to efficiently solve the convex quadratic programming problem (as \ref{eq:svm_dual}).}
+
 \section{How to get the update rule of parameters of backpropagation in gradient descent algorithm?}
 An intuitive and imprecise proof is as follows. Assuming that there is a differentiable loss function $\mathcal{L}$ on training set with respect to parameter $\vec{w} = (w_1, w_2, \cdots, w_n)$ of the training model. Then, the total increment of $\mathcal{L}$ is
 \begin{equation}
@@ -494,9 +726,6 @@ which ensure that $\Delta \mathcal{L} \approx \nabla \mathcal{L}_{\vec{w}}^\math
 (1) Generative model:
 
 (2) Discriminative model: perceptron
-
-\section{Support vector machine}
-\improvement[inline]{Todo: SVM}
 
 \improvement[inline]{Todo: Random forest}
 

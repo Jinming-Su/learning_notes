@@ -5,26 +5,36 @@
 \contentsline {subsection}{\numberline {1.1.3}Continuous probability distribution}{2}{subsection.1.1.3}
 \contentsline {subsection}{\numberline {1.1.4}Sample mean and sample variance}{3}{subsection.1.1.4}
 \contentsline {chapter}{\numberline {2}Machine Learning}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Naive Bayes}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Prior and posterior}{5}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Naive Bayesian Classifier (NBC)}{5}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Parameter estimation of NBC by maximum likelihood estimation (MLE)}{5}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Perceptron}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Why can't perceptron solve XOR problem?}{6}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Definition of perceptron}{6}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Learning Algorithm}{7}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Dual form of perceptron learning algorithm}{8}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{8}{section.2.3}
-\contentsline {section}{\numberline {2.4}Generative model and discriminative model}{8}{section.2.4}
-\contentsline {section}{\numberline {2.5}Support vector machine}{8}{section.2.5}
-\contentsline {chapter}{\numberline {3}Deep Network}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}How does backpropagation work?}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}Backpropagation of Convolutional Neural Network}{11}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Backpropagation of Fully Connectional Layer}{11}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Backpropagation of Convolutional Layer}{11}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Why does batch normalization work?}{13}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Dataset shift and covariate shift}{13}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Internal covariate shift}{13}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Batch normalization}{14}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Why does residual learning work?}{16}{section.3.4}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{17}{chapter.4}
+\contentsline {section}{\numberline {2.1}Logistic regression (LR)}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Form}{5}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Naive Bayes}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Prior and posterior}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Naive Bayesian Classifier (NBC)}{6}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Parameter estimation of NBC by maximum likelihood estimation (MLE)}{6}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Regularization}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}L0}{7}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}L1 (lasso regularization)}{7}{subsection.2.3.2}
+\contentsline {subsubsection}{Why does we usually use L1 to make the weights sparse instead of L0?}{7}{section*.11}
+\contentsline {subsection}{\numberline {2.3.3}L2 (ridge regression or weight decay)}{8}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Perceptron}{8}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Why can't perceptron solve XOR problem?}{8}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Definition of perceptron}{8}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Learning Algorithm}{8}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Dual form of perceptron learning algorithm}{9}{subsection.2.4.4}
+\contentsline {section}{\numberline {2.5}Support vector machine (SVM)}{10}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Form}{10}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Lagrange duality}{11}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Solution of SVM}{11}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{12}{section.2.6}
+\contentsline {section}{\numberline {2.7}Generative model and discriminative model}{12}{section.2.7}
+\contentsline {chapter}{\numberline {3}Deep Network}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}How does backpropagation work?}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Backpropagation of Convolutional Neural Network}{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Backpropagation of Fully Connectional Layer}{15}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Backpropagation of Convolutional Layer}{15}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Why does batch normalization work?}{17}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Dataset shift and covariate shift}{17}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Internal covariate shift}{17}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Batch normalization}{18}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Why does residual learning work?}{20}{section.3.4}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{21}{chapter.4}
