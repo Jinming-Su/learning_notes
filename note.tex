@@ -335,13 +335,13 @@ l(\theta) &= \log L(\theta) \\
 Lets start by working with just one training example $(x, y)$, and take derivatives to derive the stochastic gradient ascent rule:
 \begin{equation}
 \begin{split}
-\frac{\partial l(\theta)}{\partial \theta_j} = (y - h_\theta(x)) x_j.
+\frac{\partial l(\theta)}{\partial \theta_j} = (y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j.
 \end{split}
 \end{equation}
 Above, we get the stochastic gradient ascent rule:
 \begin{equation}
 \begin{split}
-\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(\overrightarrow{{x^{(i)}}}))x_j
+\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(\overrightarrow{{x^{(i)}}}))x^{(i)}_j
 \end{split}
 \end{equation}
 
