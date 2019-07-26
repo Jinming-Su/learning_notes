@@ -83,6 +83,21 @@
 \mainmatter
 
 \chapter{Mathematical Foundation}
+\section{Advanced math}
+\subsection{Taylor formula}
+General term formula:
+\begin{equation}
+f(x) = \frac{f(x_0)}{0!} + \frac{f'(x_0)}{1!}(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + \cdots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + R_n(x),
+\end{equation}
+which is the Taylor expansion of $f(x)$ at $x_0$ and $R_n(x)$ means the remainder of Taylor formula.
+
+There are some common Taylor formulas:
+\begin{equation}
+\begin{split}
+e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot + \frac{x^n}{n!} + R_n = \sum_{i=0}^{\infty} \frac{x^i}{i!}.
+\end{split}
+\end{equation}
+
 \section{Probability theory and mathematical statistics}
 \textbf{Probability theory} mainly focuses on the probability of occurrence of a single event, while \textbf{mathematical statistics} is more inclined to statistics. It focuses on the sampling probability of a group and the possible interval of occurrence of this probability.
 
@@ -188,7 +203,6 @@ The expected value and invariance of a Poission variable $X$ are
 \right.
 \end{equation}
 \note[inline]{Note there exists Taylor Expansion (at $x = 0$) $e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \sum_{i=0}^{\infty} \frac{x^i}{i!}$.} 
-\improvement[inline]{Todo: Taylor's formula.}
 
 \subsection{Continuous probability distribution}
 For \textbf{continuous uniform distribution}, \uline{all intervals of the same length on the distribution's support are equally probable}. The support is defined by the two parameters, $a$ and $b$, which are its minimum and maximum values. The distribution is often abbreviated $U(a, b)$. The probability density function of the continuous uniform distribution is 
@@ -700,6 +714,23 @@ Then, we obtain the following \uline{dual optimization problem}:
 
 \note[inline]{Sequential minimal optimization algorithm is used to efficiently solve the convex quadratic programming problem (as \ref{eq:svm_dual}).}
 
+\subsection{Kernel}
+Gaussian kernel:
+\begin{equation}
+\mathcal{K}(x_1, x_2) = e^{-\frac{(x_1 - x_2)^2}{2 \sigma^2}}.
+\end{equation}
+\subsubsection{Why can gaussian kernel map to infinite dimension in SVM?}
+\begin{equation}
+\begin{split}
+\mathcal{K}(x_1, x_2) &= e^{-\frac{(x_1 - x_2)^2}{2 \sigma^2}} = e^{-\frac{x_1^2 + x_2^2 2 x_1 x_2}{2 \sigma^2}} = e^{-\frac{x_1^2 + x_2^2}{2 \sigma^2}} \cdot e^{\frac{x_1 x_2}{\sigma^2}} \\
+&= e^{-\frac{x_1^2 + x_2^2}{2 \sigma^2}} \cdot \left(1 + (\frac{x_1 x_2}{\sigma^2}) \cdot \frac{1}{1!} + (\frac{x_1 x_2}{\sigma^2})^2 \cdot \frac{1}{2!}+ (\frac{x_1 x_2}{\sigma^2})^3 \cdot \frac{1}{3!} + \cdots + (\frac{x_1 x_2}{\sigma^2})^n \cdot \frac{1}{n!}\right) \\
+&= e^{-\frac{x_1^2 + x_2^2}{2 \sigma^2}} \cdot \left(1 + (\frac{x_1}{\sigma} \cdot \sqrt{\frac{1}{1!}})(\frac{x_2}{\sigma} \cdot \sqrt{\frac{1}{1!}})  + (\frac{x_1^2}{\sigma^2} \cdot \sqrt{\frac{1}{2!}})(\frac{x_2^2}{\sigma^2} \cdot \sqrt{\frac{1}{2!}})) \cdots (\frac{x_1^n}{\sigma^n} \cdot \sqrt{\frac{1}{n!}})(\frac{x_2^n}{\sigma^n} \cdot \sqrt{\frac{1}{n!}})\right)\\
+&= \phi(x_1)^\top \phi(x_2).\\ \\
+\phi(x) &= e^{-\frac{x^2}{2 \sigma^2}} \left( 1, \frac{x}{\sigma} \cdot \sqrt{\frac{1}{1!}}, \frac{x^2}{\sigma^2} \cdot \sqrt{\frac{1}{2!}}, \cdots, \frac{x^n}{\sigma^n} \cdot \sqrt{\frac{1}{n!}}, \cdots \right).
+\end{split}
+\end{equation}
+
+
 \section{How to get the update rule of parameters of backpropagation in gradient descent algorithm?}
 An intuitive and imprecise proof is as follows. Assuming that there is a differentiable loss function $\mathcal{L}$ on training set with respect to parameter $\vec{w} = (w_1, w_2, \cdots, w_n)$ of the training model. Then, the total increment of $\mathcal{L}$ is
 \begin{equation}
@@ -722,10 +753,145 @@ which ensure that $\Delta \mathcal{L} \approx \nabla \mathcal{L}_{\vec{w}}^\math
 \end{equation}
 \uline{In other word, in gradient descent algorithm, the direction of parameter update is opposite to its gradient direction.}
 
-\section{Generative model and discriminative model}
-(1) Generative model:
+\section{Gaussian mixture model (GMM)}
+\subsection{Maximum likelihood estimation}
+Let's start this problem with an example. Suppose that we want to make height statistics for 100 boys and 100 girls. 
+(a) If boys and girls are investigated seperately and their height follows normal distribution with parameter $\mu, \sigma$.
 
-(2) Discriminative model: perceptron
+\textbf{Problem:} taking boyes for exmaple, the examples can be expressed as $X = \{x^{(1)}, x^{(2)}, \cdots, x^{(n)}\}$, where $x^{(i)}$ represents the height of $i$th boys and $n = 100$. In this problem, $p(x;\mu, \sigma)$ is the probability density funtion to be solved. We can suppose that $x^{(i)}$ is independent and identically distributed. 
+
+\textbf{Solution: } we can use maximum likelihood estimation.
+\begin{equation}\label{eq:gmm_mle}
+\begin{split}
+L(\mu, \sigma; x) &= p(x^{(1)}, x^{(2)}, \cdots, x^{(n)};\mu, \sigma) = \prod_{i=1}^n p(x^{(i)};\mu, \sigma). \\
+\ln L(\mu, \sigma; x) &= \ln \prod_{i=1}^n p(x^{(i)};\mu, \sigma) \\
+					&= \ln (\frac{1}{\sqrt{2\pi}})^n (\frac{1}{\sqrt{\sigma^2}})^n \exp \left[\sum_{i=1}^n -\frac{(x^{(i)}-\mu)^2}{2\sigma^2}\right] \\
+					&= -\frac{n}{2}\ln 2\pi - \frac{n}{2}\ln \sigma^2 - \frac{1}{2\sigma^2}\sum_{i=1}^n (x^{(i)} - \mu)^2.
+\end{split} 
+\end{equation}
+By $x^{(i)} \sim N(\mu, \sigma)$ to solve the maximum likelihood estimation easily, we have 
+\begin{equation}
+\begin{split}
+\hat{\mu}, \hat{\sigma} = \arg \max_{\mu, \sigma} L(\mu, \sigma; x). \\
+\end{split}
+\end{equation} 
+Let the partial derivative of $\mu$ and $\sigma$ be zero, we have
+\begin{equation}
+\begin{split}
+\hat{\mu} &= \frac{1}{n}\sum_{i=1}^n x^{(i)}, \\
+\hat{\sigma^2} &= \frac{1}{n} \sum_{i=1}^n (x^{(i)} - \hat{\mu})^2.
+\end{split}
+\end{equation} 
+
+\textbf{Extension: } If we use $z^{(i)}$ express the sex that is choosed from $\{1, \cdots, k\}$, and $\phi$ as the parameter of the distribution of $z$, we can combine boys and girls to write 
+\begin{equation}
+\begin{split}
+\ln L(\mu, \sigma; x) &= \ln \prod_{i=1}^n p(x^{(i)};\mu, \sigma) \\
+	&= \sum_{i=1}^n \ln p(x^{(i)};\mu, \sigma)  \\
+	&= \sum_{i=1}^n \ln \sum_{z^{(i)}=1}^k p(x^{(i)}, z^{(i)};\mu, \sigma)  \\
+	&= \sum_{i=1}^n \ln \sum_{z^{(i)}=1}^k p(x^{(i)}| z^{(i)};\mu, \sigma) p(z^{(i)}; \phi),   \\
+\end{split}
+\end{equation}
+If we know that what the $z^{(i)}$ is, we have 
+\begin{equation}
+\ln L(\mu, \sigma; x) = \sum_{i=1}^n \ln p(x^{(i)} | z^{(i)}; \mu, \sigma) + \ln p(z^{(i)}; \phi).
+\end{equation}
+Next, maximizing this weith respect to $\phi$, $\mu$ and $\sigma$ gives the parameters:
+\begin{equation}
+\begin{split}
+\phi_j &= \frac{1}{n} \sum_{i=1}^n 1(z^{(i)} = j), \\
+\mu_j &= \frac{\sum_{i=1}^n 1(z^{(i)} = j) x^{(i)}}{\sum_{i=1}^n 1({z^{(i)}=j})}), \\
+\sigma_j &= \frac{\sum_{i=1}^n 1(z^{(i)} = j) (x^{(i)}-\mu_j)^\top (x^{(i)}-\mu_j)}{\sum_{i=1}^n 1({z^{(i)}=j})}.
+\end{split}
+\end{equation}
+
+\subsection{GMM and EM}
+In GMM, $z^{(i)}$ is not known. The EM algorigthm can be expressed as:
+
+\begin{algorithm}[h] 
+\caption{EM algorithm.} 
+\label{alg:Framwork} 
+\begin{algorithmic}[1] %这个1 表示每一行都显示数字
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\REQUIRE 
+Dataset $X=\{x^{(1)}, x^{(2)}, \cdots, x^{(n)}\}$ and the number $k$ of gaussian components.
+\ENSURE 
+model parameter $\{(\phi_j, \mu_j, \sigma_j)| 1 \leq j \leq k\}$.
+\STATE Given initial values $\{(\phi_j, \mu_j, \sigma_j)| 1 \leq j \leq k\}$;
+\STATE \quad repeat until convergence: \{ \\
+\STATE \quad \quad (E-step) For each $i$, $j$, set
+\begin{equation}
+\begin{split}
+w_j^{(i)} &= p(z^{(i)} = j | x^{(i)}; \phi, \mu, \sigma) \\
+		&= \frac{p(x^{(i)}|z^{(i)} = j; \mu, \sigma) p(z^{(i)} = j; \phi)}{\sum_{l=1}^k p(x^{(i)}|z^{(i)} = l; \mu, \sigma) p(z^{(i)} = l ; \phi)}
+\end{split}
+\notag
+\end{equation}
+\STATE \quad \quad (M-step) Update the parameters (by MLE):
+\begin{equation}
+\begin{split}
+\phi_j &= \frac{1}{n} \sum_{i=1}^n w_j^{(i)}, \\
+\mu_j &= \frac{\sum_{i=1}^n w_j^{(i)} x^{(i)}}{\sum_{i=1}^n w_j^{(i)}}), \\
+\sigma_j &= \frac{\sum_{i=1}^n w_j^{(i)} (x^{(i)}-\mu_j)^\top (x^{(i)}-\mu_j)}{\sum_{i=1}^n w_j^{(i)}}.
+\end{split}
+\end{equation}
+\RETURN $\{(\phi_j, \mu_j, \sigma_j)| 1 \leq j \leq k\}$;
+\end{algorithmic}
+\end{algorithm}
+\todo[inline]{The derivation of EM algorigthm}.
+
+\section{Principal components analysis (PCA)}
+\subsection{Maximum variance theory}
+In signal processing, it is considered that the signal has a larger variance and the noise has a smaller variance. Signal-to-noise ratio is the variance ratio of the signal to noise, and the larger the better. Therefore, in PCA, we believe that the best $k$-dimensional feature is that after $n$-dimensional sample points are converted into $k$-dimensionas and the sample variance in each dimension is large.
+
+\subsection{PCA}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/pca_variance.png}
+\caption{Examples.}
+\end{figure}
+
+1. Given a set of datasets $X = \{\overrightarrow{x^{(1)}}, \overrightarrow{x^{(2)}}, \cdots, \overrightarrow{x^{(n)}} \}$, we centralize these data and we have
+\begin{equation}
+\begin{split}
+\overrightarrow{\mu} &= \frac{1}{n} \sum_{i=1}^n \overrightarrow{x^{(i)}}, \\
+\{\overrightarrow{x^{(1)}}, \overrightarrow{x^{(2)}}, \cdots, \overrightarrow{x^{(n)}} \} &= \{\overrightarrow{x^{(1)}} - \overrightarrow{\mu}, \overrightarrow{x^{(2)}} - \overrightarrow{\mu}, \cdots, \overrightarrow{x^{(n)}}-\overrightarrow{\mu} \}
+\end{split}
+\end{equation}
+
+2. Find a vector $\vec{u}$ and the projection variance of the data in this direction is the largest. Then, the optimization objective is
+\begin{equation}
+\begin{split}
+\arg \max_{\vec{u}} \frac{1}{n}\sum_{i=1}^m (\overrightarrow{x^{(i)}}^\top \vec{u})^2 &= \frac{1}{n} \sum_{i=1}^n \vec{u}^\top \overrightarrow{x^{(i)}} \overrightarrow{x^{(i)}}^\top \vec{u} \\
+&= \vec{u}^\top \left(\frac{1}{n}\sum_{i=1}^m \overrightarrow{x^{(i)}} \overrightarrow{x^{(i)}}^\top \right) \vec{u} \\
+&= \vec{u}^\top \left(\frac{1}{n} XX^\top \right) \vec{u} \\
+&= \vec{u}^\top \left(\frac{1}{\sqrt{n}} X \frac{1}{\sqrt{n}}X^\top \right)\vec{u} \\
+&= \vec{u}^\top \left(Y Y^\top \right)\vec{u}.
+\end{split}
+\end{equation}
+
+We can know that $Y Y^\top$ in above equation is a positive semi-definite symmetric matrix. Because (1) $Y Y^\top$ is symmetric according to $(YY^\top)^\top = YY^\top$; (2) $Y Y^\top$ ispositive semi-definite according to $\xi^\top Y Y^\top \xi = (Y Y^\top \xi)^\top(Y Y^\top \xi) = ||Y Y^\top \xi||_2^2 \geq 0.$ Therefore, $\vec{u}^\top Y Y^\top \vec{u}$ is a positive semi-definite quadratic form, which has the maximum value.
+
+Because there are another constraint $||\vec{u}|| = \vec{u}^\top \vec{u} = 1$, we usually can solve above problem by Lagrange multiplier method.
+\begin{equation}
+\begin{split}
+f(\vec{u}) &= \vec{u}^\top Y Y^\top \vec{u} + \lambda (1 - \vec{u}^\top \vec{u}), \\
+\frac{\partial f(\vec{u})}{\partial \vec{u}} &= 2 (Y Y^\top \vec{u}) - 2 \lambda \vec{u} = 0 \Rightarrow Y Y^\top \vec{u} = \lambda \vec{u}.
+\end{split}
+\end{equation}
+Obviously, $\vec{u}$ is the eigenvector corresponding to the eigenvalue $\lambda$ of $Y Y^\top$. And all the eigenvalues (eigenvectors) of $Y Y^\top$ satisfy the above formula. Then, we have
+\begin{equation}
+\begin{split}
+\vec{u}^\top \left(Y Y^\top \right)\vec{u} = \lambda \vec{u}^\top \vec{u} = \lambda.
+\end{split}
+\end{equation}
+So, we can see that the eigenvalue $\lambda$ is the value of objective funtion. If the maximum eigenvalue is taken, then the value of objective function is taken to the maximum. Therefore, we can decompose the eigenvalues of $Y Y^\top$ to obtain the largest $k$ eigenvalues, and then obtain new samples of $k$-dimensional features by $\overrightarrow{x^{(i)}}^\top \vec{u}$.
+
+\section{Generative model and discriminative model}
+(1) Generative model: naive bayes;
+
+(2) Discriminative model: perceptron;
 
 \improvement[inline]{Todo: Random forest}
 

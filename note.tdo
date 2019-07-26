@@ -1,16 +1,16 @@
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Note in Eq.\nobreakspace {}\ref {eq:bernoulli_distribution_e_var}, maybe $P(X = 1)$ is equivalent $P(X^2 = 1^2)$, which ensures the establishment of this equation.}{2}{section*.3}
 \contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ There exists another solution directly through derivation of the probability mass function of Binomial distribution.}{2}{section*.4}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Note there exists Taylor Expansion (at $x = 0$) $e^x = 1 + \frac {x}{1!} + \frac {x^2}{2!} + \frac {x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \DOTSB \sum@ \slimits@ _{i=0}^{\infty } \frac {x^i}{i!}$.}{2}{section*.5}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Taylor's formula.}{2}{section*.6}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of normal distribution requires multiple integration operations.}{3}{section*.7}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}{3}{section*.8}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: conjugate distribution and Beta distribution.}{3}{section*.9}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The is the opposite number of binary cross entropy loss function.}{5}{section*.10}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}{9}{section*.12}
-\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Why?}{11}{section*.13}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Sequential minimal optimization algorithm is used to efficiently solve the convex quadratic programming problem (as \ref {eq:svm_dual}).}{12}{section*.14}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Random forest}{12}{section*.15}
-\contentsline {todo}{\color@fb@x {}{red}{}{red!25}{\leavevmode {\color {red!25}o}}\ A more precise definition of \textbf {covariate} can't be found.}{17}{section*.25}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ PCA whitening and ZCA Whitening.}{17}{section*.26}
-\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Why is multi-layr linear network equivalent to the represetation ability of a single layer linear network.}{18}{section*.27}
-\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ There exists $\DOTSB \sum@ \slimits@ _i$ for $y_i$ because gradient from each $y_i$ will backpropagate for $\gamma $ and the effect of summation is achieved.}{19}{section*.28}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Note there exists Taylor Expansion (at $x = 0$) $e^x = 1 + \frac {x}{1!} + \frac {x^2}{2!} + \frac {x^3}{3!} + \cdot \cdot \cdot + \cdot \cdot \cdot = \DOTSB \sum@ \slimits@ _{i=0}^{\infty } \frac {x^i}{i!}$.}{3}{section*.5}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of normal distribution requires multiple integration operations.}{3}{section*.6}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The derivation of the expectation and invariance of exponential distribution requires multiple integration operations.}{4}{section*.7}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: conjugate distribution and Beta distribution.}{4}{section*.8}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The is the opposite number of binary cross entropy loss function.}{5}{section*.9}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ The convergence of this algorithm about perceptron leraning can be proved, but it is not within the scope of this note at present.}{9}{section*.11}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Why?}{11}{section*.12}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ Sequential minimal optimization algorithm is used to efficiently solve the convex quadratic programming problem (as \ref {eq:svm_dual}).}{12}{section*.13}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ The derivation of EM algorigthm}{14}{section*.15}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Todo: Random forest}{16}{section*.16}
+\contentsline {todo}{\color@fb@x {}{red}{}{red!25}{\leavevmode {\color {red!25}o}}\ A more precise definition of \textbf {covariate} can't be found.}{21}{section*.26}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ PCA whitening and ZCA Whitening.}{21}{section*.27}
+\contentsline {todo}{\color@fb@x {}{Plum}{}{Plum!25}{\leavevmode {\color {Plum!25}o}}\ Why is multi-layr linear network equivalent to the represetation ability of a single layer linear network.}{22}{section*.28}
+\contentsline {todo}{\color@fb@x {}{yellow}{}{yellow!25}{\leavevmode {\color {yellow!25}o}}\ There exists $\DOTSB \sum@ \slimits@ _i$ for $y_i$ because gradient from each $y_i$ will backpropagate for $\gamma $ and the effect of summation is achieved.}{23}{section*.29}
