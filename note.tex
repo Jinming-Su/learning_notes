@@ -888,10 +888,83 @@ Obviously, $\vec{u}$ is the eigenvector corresponding to the eigenvalue $\lambda
 \end{equation}
 So, we can see that the eigenvalue $\lambda$ is the value of objective funtion. If the maximum eigenvalue is taken, then the value of objective function is taken to the maximum. Therefore, we can decompose the eigenvalues of $Y Y^\top$ to obtain the largest $k$ eigenvalues, and then obtain new samples of $k$-dimensional features by $\overrightarrow{x^{(i)}}^\top \vec{u}$.
 
-\section{Generative model and discriminative model}
-(1) Generative model: naive bayes;
+\section{Hidden Markov model (HMM)}
+\begin{figure}[h]
+\label{fig:hmm}
+\centering
+\includegraphics[width=0.4\textwidth]{figures/hmm.png}
+\caption{HMM}
+\end{figure}
 
-(2) Discriminative model: perceptron;
+\subsection{Definition}
+As shown in Fig.~\ref{fig:hmm}, $y_i$ is the \uline{state sequence} that is produced by the hidden Markov chain, while $x_i$ is the \uline{observation sequence}, which is prodeced by each state $y_i$.
+
+Suppose that the set of state is $Q$ and the set of observation is $V$. Moreover, we give the state sequence $I$ with length $T$ and the observation sequence $O$ with length $T$.
+\begin{equation}
+\begin{split}
+& Q = \{q_1, q_2, \cdots, q_N\}, V = \{v_1, v_2, \cdots, v_M\}, \\
+& I = \{i_1, i_2, \cdots, i_T\}, O = \{o_1, o_2, \cdots, o_T\}.
+\end{split}
+\end{equation}
+
+Next, we define the state transition probability matrix as $A$:
+\begin{equation}
+A = \left[ a_{ij} \right]_{N \times N}, a_{ij} = P(i_{t+1} = q_j|i_t = q_i).
+\end{equation}
+Also, we define the observation probability matrix as $B$:
+\begin{equation}
+B = \left[ b_{ij} \right]_{N \times M}, b_{ij} = P(o_{t} = q_j|i_t = q_i).
+\end{equation}
+In addition, we define the intial state probability vector $\vec{\pi}$:
+\begin{equation}
+\vec{\pi} = (\pi_i), \pi_i = P(i_1 = q_i).
+\end{equation}
+
+\uline{The two main hypotheses of Hidden Markov model includes: (1) homogeneous Markov hypothesis, (2) observation independence hypothesis}.
+
+\subsection{Three basic problems}
+1. Probability calculation problem: given the model $\lambda = \{A, B, \vec{\pi}\}$ and observation sequence $O = \{o_1, o_2, \cdots, o_T\}$, calculate the probability of $P(O|\lambda)$; 
+\note[inline]{forward-backward algorithm}
+
+2. Learning problem: given the observation sequence $O = \{o_1, o_2, \cdots, o_T\}$, estimate the model parameters $\lambda = \{A, B, \vec{\pi}\}$;
+\note[inline]{Baum-Welch algorithm}
+
+3. Predicting problem (decoding problem): given the model $\lambda = \{A, B, \vec{\pi}\}$ and observation sequence $O = \{o_1, o_2, \cdots, o_T\}$ \, estimate the state sequence. 
+\note[inline]{Viterbi algorithm}
+
+\section{Conditional random field (CRF)}
+\subsection{Probabilistic undirected graphical model, or Markov random field}
+\subsection{Conditional random field}
+Let $X$ and $Y$ be random variables, and $P(Y|X)$ be the conditional probability distribution of $Y$ given $X$. If the random variable $Y$ forms a Markov random field represented by and undirected graph $G=(V, E)$, \ie
+\begin{equation}
+P(Y_v | X, Y_w, w \neq v) = P(Y_v | X, Y_w, w \sim v),
+\end{equation}
+where $w \neq v$ and $w \sim v$ represents no connection and connection respectively, the conditional probability distribution $P(Y|X)$ is called a conditional random field.
+
+Let $P(Y|X)$ be a linear chain chonditional random field, the conditional probability of random variable $Y = y$ given randome variable $X = x$:
+\begin{equation}
+\begin{split}
+& P(y|x) = \frac{1}{Z(x)} \exp \left( \sum_k \lambda_k \sum_i t_k(y_{i-1}, y_i, x, i) + \sum_l \mu_l \sum_i s_l(y_i, x, i) \right), \\
+& Z(x) = \sum_y \exp\left( \sum_k \lambda_k \sum_i t_k(y_{i-1}, y_i, x, i) + \sum_l \mu_l \sum_i s_l(y_i, x, i) \right).
+\end{split}
+\end{equation}
+where $t_k$ and $s_l$ are feature function, and the former is transition feature and latter is state feature. $\lambda_k$ and $u_l$ are weights.
+
+Above formula has a simpler form:
+\begin{equation}
+\begin{split}
+& P(y|x) = \frac{1}{Z(x)} \exp \sum_{k} w_k f_k(y, x), \\
+& Z(x) = \sum_y \exp \sum_{k} w_k f_k(y, x).
+\end{split}
+\end{equation}
+
+\todo[inline]{CRF algorithm}
+
+\section{Generative model and discriminative model}
+
+1. Generative model: naive bayes; hidden Markov model (HMM);
+
+2. Discriminative model: perceptron; Conditional random field (CRF)
 
 \improvement[inline]{Todo: Random forest}
 

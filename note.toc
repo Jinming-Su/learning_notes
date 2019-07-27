@@ -36,15 +36,21 @@
 \contentsline {section}{\numberline {2.8}Principal components analysis (PCA)}{14}{section.2.8}
 \contentsline {subsection}{\numberline {2.8.1}Maximum variance theory}{14}{subsection.2.8.1}
 \contentsline {subsection}{\numberline {2.8.2}PCA}{15}{subsection.2.8.2}
-\contentsline {section}{\numberline {2.9}Generative model and discriminative model}{16}{section.2.9}
-\contentsline {chapter}{\numberline {3}Deep Network}{17}{chapter.3}
-\contentsline {section}{\numberline {3.1}How does backpropagation work?}{17}{section.3.1}
-\contentsline {section}{\numberline {3.2}Backpropagation of Convolutional Neural Network}{19}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Backpropagation of Fully Connectional Layer}{19}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Backpropagation of Convolutional Layer}{19}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Why does batch normalization work?}{21}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Dataset shift and covariate shift}{21}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Internal covariate shift}{21}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Batch normalization}{22}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Why does residual learning work?}{24}{section.3.4}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{25}{chapter.4}
+\contentsline {section}{\numberline {2.9}Hidden Markov model (HMM)}{16}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Definition}{16}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2}Three basic problems}{16}{subsection.2.9.2}
+\contentsline {section}{\numberline {2.10}Conditional random field (CRF)}{16}{section.2.10}
+\contentsline {subsection}{\numberline {2.10.1}Probabilistic undirected graphical model, or Markov random field}{16}{subsection.2.10.1}
+\contentsline {subsection}{\numberline {2.10.2}Conditional random field}{16}{subsection.2.10.2}
+\contentsline {section}{\numberline {2.11}Generative model and discriminative model}{17}{section.2.11}
+\contentsline {chapter}{\numberline {3}Deep Network}{19}{chapter.3}
+\contentsline {section}{\numberline {3.1}How does backpropagation work?}{19}{section.3.1}
+\contentsline {section}{\numberline {3.2}Backpropagation of Convolutional Neural Network}{21}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Backpropagation of Fully Connectional Layer}{21}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Backpropagation of Convolutional Layer}{21}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Why does batch normalization work?}{23}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Dataset shift and covariate shift}{23}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Internal covariate shift}{23}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Batch normalization}{24}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Why does residual learning work?}{26}{section.3.4}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{27}{chapter.4}
