@@ -30,9 +30,15 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+% code
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
 \usepackage{boxedminipage}
 \usepackage{algorithm, algorithmic}
 
+\setcounter{MaxMatrixCols}{20}
 
 \def\ie{\emph{i.e.}}
 \def\eg{\emph{e.g.}}
@@ -299,6 +305,82 @@ E[S^2] &= E[\frac{1}{n - 1} \sum_{i=1}^n(X_i - \bar{X})^2] \\
 \end{equation}
 
 \chapter{Machine Learning}
+\section{Linear regression}
+\subsection{Unitary linear regression}
+The problem can be denoted as:
+\begin{equation}
+\begin{split}
+f_w(x) &= wx + b, \\
+L(w) &= \sum_{i = 1}^n (f_w(x^{(i)}) - y^{(i)})^2 = \sum_{i = 1}^n (wx^{(i)} + b - y^{(i)})^2 \\
+\frac{\partial L(w)}{\partial w} &= 2\sum_{i=1}^n (wx^{(i)} + b - y^{(i)}) x^{(i)} , \\
+\frac{\partial L(w)}{\partial b} &= 2 \sum_{i = 1}^n (wx^{(i)} + b - y^{(i)}).
+\end{split}
+\end{equation}
+
+The Unitary linear regression has closed-form resolution. Let the partial derivative be 0, we have  
+\begin{equation}
+\begin{split}
+w &= \frac{\sum_{i=1}^n (y^{(i)} - \bar{y}) x^{(i)}}{\sum_{i=1}^n (x^{(i)} - \bar{x}) x^{(i)}}, \\
+b &= \bar{y} - w \bar{x}.
+\end{split}
+\end{equation}
+
+\section{Linear Gression Least mean square (LMS)} 
+We define the prediction of formula about $x$:
+\begin{equation}
+f_{\vec{w}}(\vec{x}) = \vec{w}^\top \vec{x} = \sum_{i = 1}^k w_i x_i.
+\end{equation}
+We define the loss function:
+\begin{equation}
+L(\vec{w}) = \frac{1}{2} \sum_{i=1}^n (f_{\vec{w}}(\vec{x}^{(i)}) - y^{(i)})^2.
+\end{equation}
+
+We can solve above problem by gradient descent algorithm (GD). \uline{For gradient descent, we usually use one example for one updation.} We use only one training example $(\vec{x}^{(i)}, y^{(i)})$ for simplicity.
+\begin{equation}
+\begin{split}
+\frac{\partial L(\vec{w})}{\partial w_j} & = \frac{1}{2} \cdot 2 (f_{\vec{w}}(\vec{x}^{(i)}) - y^{(i)}) \cdot \frac{\partial \sum_{i = 1}^k w_i x_i}{\partial w_j} \\
+	&= (f_{\vec{w}}(\vec{x}^{(i)}) - y^{(i)}) * x^{(i)}_j, \\
+w_j &= w_j + \alpha (f_{\vec{w}}(\vec{x}^{(i)}) - y^{(i)}) * x^{(i)}_j.
+\end{split}
+\end{equation}
+
+Next, we can also solve the problem by the matrix form.
+\begin{equation}
+\begin{split}
+X  & = \left[
+ \begin{matrix}
+   x^{(1)}_1 & x^{(1)}_2 & \cdots & x^{(1)}_k \\
+   x^{(2)}_1 & x^{(2)}_2 & \cdots & x^{(2)}_k \\
+   \vdots & \vdots & \ddots & \vdots \\
+   x^{(n)}_1 & x^{(n)}_2 & \cdots & x^{(n)}_k \\
+  \end{matrix}
+  \right],
+Y = \left[
+	\begin{matrix}
+	y^{(1)} \\
+	y^{(2)} \\
+	\vdots \\
+	y^{(n)} \\
+	\end{matrix}
+	\right] \\
+L_{\vec{w}}(\vec{w}) & = \frac{1}{2}(X\vec{w} - \vec{Y})^\top (X\vec{w} - \vec{Y}) \\
+			& = X^\top X \vec{w} - X^\top \vec{Y}, 
+\end{split}
+\end{equation}
+
+For above derivation, we need to know
+\begin{equation}
+\begin{split}
+& \nabla_{A} \text{tr}AB = B^\top, \\
+& \nabla_{A} \text{tr}AB A^\top C = CAB + C^\top A B^\top.
+\end{split}
+\end{equation}
+
+Next, we have 
+\begin{equation}
+\vec{w} = (X^\top X)^{-1} X^\top \vec{Y}
+\end{equation}
+
 \section{Logistic regression (LR)}
 \subsection{Form}
 \begin{equation}
@@ -701,7 +783,11 @@ Lets find the dual form of the problem. To do so, we need to first minimize $\ma
 
 Plug the $\vec{w}$ and $b$ back into the Lagrangian Eq.~\ref{eq:svm_lagrangian}, and simplify, we get
 \begin{equation}
-\mathcal{L}(\vec{w}, b, \vec{\alpha}) = \sum_{i = 1}^m \alpha_i - \frac{1}{2} \sum_{i,j=1}^m y^{(i)} y^{(j)} \alpha_i \alpha_j(\overrightarrow{x^{(i)}})^\top x^{(j)}.
+\begin{split}
+\mathcal{L}(\vec{w}, b, \vec{\alpha}) &= \frac{1}{2} \vec{w}^\top \vec{w} +  \sum_{i = 1}^m \alpha_i [1 - y^{(i)}(\vec{w}^\top \overrightarrow{x^{(i)}} + b)] \\
+&= \frac{1}{2} \sum_{i=1}^m \alpha_i y^{(i)} (\overrightarrow{x^{(i)}})^\top \sum_{i=j}^m \alpha_i y^{(j)}\overrightarrow{x^{(j)}} + \sum_{i=1}^m \alpha_i - \sum_{i = 1}^m \alpha_i y^{(i)} \vec{w}^\top \overrightarrow{x^{(i)}} - b\sum_{i= 1}^m\alpha_i y^{(i)}\\
+&= \sum_{i = 1}^m \alpha_i - \frac{1}{2} \sum_{i,j=1}^m y^{(i)} y^{(j)} \alpha_i \alpha_j(\overrightarrow{x^{(i)}})^\top x^{(j)}.
+\end{split}
 \end{equation}
 Then, we obtain the following \uline{dual optimization problem}:
 \begin{equation}
@@ -1360,6 +1446,223 @@ In the process of optimization in deep networ
 k, the input and output are usually close in the latter layers. In some latter layers, we define the input is $\rm{x}$ and the output is $\mathcal{H(\rm{x})}$. From above experience, we assume $\rm{x}$ and $\mathcal{H(\rm{x})}$ are close. Thus, the function of these layers is mapping from $\rm{x}$ to $\mathcal{H(\rm{x})}$. But usually this process is difficult becuase the relative gap between $\rm{x}$ and $\mathcal{H(\rm{x})}$ is small. Toward this end, we construct the residual as \uline{$\mathcal{F(\rm{x})} = \mathcal{H(\rm{x})} - \rm{x}$} to learning the gap. We can hypothesize that it is easier to optimize the residual mapping than to optimize the original mapping. To the extreme, if the mapping from input to output is indentity, it would be easier to push the residual to zero than to directly fit an identity mapping.
 
 \uline{The real purpose of residual learning is that even if the network deepens, the performance of this network will not degenerate, thus ensuring the leaning of deeper network (even 1000 layers).}
+
+\section{Understanding Deconvolution \& bilinear interpolation}
+For the convolutional operation, if we have the input map $I$ and the kernel $K$, we can get the output $O$,
+\begin{equation}
+\begin{split}
+I = \left[
+	\begin{matrix}
+	4 & 5 & 8 & 7 \\
+	1 & 8 & 8 & 8 \\
+	3 & 6 & 6 & 4 \\
+	6 & 5 & 7 & 8 \\
+	\end{matrix} 
+	\right],
+K = \left[
+	\begin{matrix}
+	1 & 4 & 1 \\
+	1 & 4 & 3 \\
+	3 & 3 & 1 \\
+	\end{matrix}
+	\right].
+\end{split}
+\end{equation}
+When computing convolutional operation by computer, convolutional operation is usually written as matrix multiplication. The form is 
+\begin{equation}
+M(O) = M(W) M(I),
+\end{equation}
+where $M(O), M(W)$ and $M(I)$ are matrices of output, weight and input. 
+Then, we have the next form,
+\begin{equation}\label{eq:matrix_form_of_convolution}
+\begin{split}
+M(W) = \left[
+	\begin{matrix}
+	1 & 4 & 1 & 0 & 1 & 4 & 3 & 0 & 3 & 3 & 1 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 1 & 4 & 1 & 0 & 1 & 4 & 3 & 0 & 3 & 3 & 1 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 4 & 1 & 0 & 1 & 4 & 3 & 0 & 3 & 3 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 1 & 4 & 1 & 0 & 1 & 4 & 3 & 0 & 3 & 3 & 1 \\
+	\end{matrix}
+	\right],
+M(I) = \left[
+	\begin{matrix}
+	4 \\
+	5\\
+	8\\
+	7\\
+	1\\
+	8\\
+	8\\
+	8\\
+	3\\
+	6\\
+	6\\
+	4\\
+	6\\
+	5\\
+	7\\
+	8\\
+	\end{matrix}
+	\right], 
+M(O) = M(W) M(I) = \left[
+		\begin{matrix}
+		122 \\
+		148 \\
+		126 \\
+		134 \\
+		\end{matrix}
+		\right]
+\end{split}
+\end{equation}
+
+\subsection{Why is it called Transposed Convolution?}
+We can observe that the size of input matrix is $4 \times 4$ and the one of weight is $3 \times 3$, so that the size of output matrix is $2 \times 2$. If we want the get the input by the output $M(O)$ with the convolutional kernel $M(W)$, we can get the input, 
+\begin{equation}
+M(I) = M(W)^\top M(O).
+\end{equation}
+which is not the reverse operation of Eq.~\ref{eq:matrix_form_of_convolution} and only represnets the shape restoration.
+
+In the implement of Transposed Convolution, the matrix of weights is transposed, so that the opearation is called \uline{tranposed convolution}.
+
+There are three implementations of transposed convolution. Suppose that $I = [5 \ 8 \ 11], W = [1 \ 2]$.
+
+(1) above matrix form 
+\begin{equation}
+\begin{split}
+M(W)^\top = \left[
+	\begin{matrix}
+	1 & 0 & 0 \\
+	2 & 1 & 0 \\
+	0 & 2 & 1 \\
+	0 & 0 & 2 \\
+	\end{matrix}
+\right],
+M(I) = \left[
+	\begin{matrix}
+	5 \\
+	8 \\
+	11 \\
+	\end{matrix}
+\right],
+M(O) = M(W)^\top M(I) = \left[
+	\begin{matrix}
+	5 \\
+	18 \\
+	27 \\
+	22 \\
+	\end{matrix}
+\right].
+\end{split}
+\end{equation}
+
+(2) pad input and convolve it with rot180$(W)$. For example, input $I$, weight $O$
+\begin{equation}
+\begin{split}
+O & = I * \text{rot180}(W) \\
+	&= [0 \ 5 \ 0 \ 8 \ 0 \ 11] * [2 \ 1] \\
+	& = [5 \ 18 \ 27 \ 22] 
+\end{split}.
+\end{equation}
+
+(3) For example,
+\begin{equation}
+\begin{split}
+	\left[
+	\begin{matrix}
+	5 & 8 & 11
+	\end{matrix}
+\right] \O  \left[
+	\begin{matrix}
+	1 & 2
+	\end{matrix}
+\right] = \left[
+	\begin{matrix}
+	5*1 & 5*2 + 8*1 & 8*2 + 11*1 & 11 *2
+	\end{matrix}
+\right] = \left[
+	\begin{matrix}
+	5 & 18 & 27 & 22
+	\end{matrix}.
+\right] 
+\end{split}
+\end{equation}
+\todo[inline]{checkerboard artifacts, gridding issues}
+\subsection{Bilinear Interpolation}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/bilinear.png}
+\caption{Bilinear interpolation}
+\end{figure}
+As shown in Figure, suppose that $Q_{11} = (x_1, y_1), Q_{12} = (x_1, y_2), Q_{21} = (x_2, y_1), Q_{22} = (x_2, y_2)$.
+For the point $P = (x, y)$, we can compute the value of $R_{1}$ and $R_2$ firstly.
+\begin{equation}
+\begin{split}
+f(R_1) &= \frac{x_2 - x}{x_2 - x_1} f(Q_{11}) + \frac{x - x_1}{x_2 - x_1} f(Q_{21}), \\
+f(R_2) &= \frac{x_2 - x}{x_2 - x_1} f(Q_{12}) + \frac{x - x_1}{x_2 - x_1} f(Q_{22}), \\
+f(P) &= \frac{y_2 - y}{y_2 - y_1} f(R_1) + \frac{y - y_2}{y_2 - y_1}f(R_2) \\
+	 &= \frac{(x_2 - x)(y_2 - y)}{(x_2 - x_1)(y_2 - y_1)} f(Q_{11}) + \frac{(x - x_1)(y_2 - y)}{(x_2 - x_1)(y_2 - y_1)} f(Q_{21}) \\
+	 & + \frac{(x_2 - x)(y - y_2)}{(x_2 - x_1)(y_2 - y_1)} f(Q_{12}) + \frac{(x - x_1)(y - y_2)}{(x_2 - x_1)(y_2 - y_1)} f(Q_{22}) \\   
+\end{split}
+\end{equation}
+
+In a deep neural network, we usually use bilinear interpolation to upsample a feature map, which is usually implemented by a transposed convolution initialing by bilinear kernel. And the transposed convolution is usually needed to learn. For example, there is a bilinear kernel of size $4 \times 4$.
+
+\begin{equation}
+\begin{split}
+\left[
+\begin{matrix}
+	& 0.0625 & 0.1875 & 0.1875 & 0.0625 \\
+    & 0.1875 & 0.5625 & 0.5625 & 0.1875 \\
+    & 0.1875 & 0.5625 & 0.5625 & 0.1875 \\
+    & 0.0625 & 0.1875 & 0.1875 & 0.0625 \\
+\end{matrix}
+\right].
+\end{split}
+\end{equation}
+
+There is the code to get the bilinear kernel of size $size$.
+
+\begin{tcolorbox}  
+\begin{lstlisting}[language={Python},numbers=left,numberstyle=\tiny,%frame=shadowbox,  
+   rulesepcolor=\color{red!20!green!20!blue!20},  
+   keywordstyle=\color{blue!70!black},  
+   commentstyle=\color{blue!90!},  
+   basicstyle=\ttfamily]  
+import numpy as np
+def upsample_filt(size):  # size = 4 
+    """
+    Make a 2D bilinear kernel suitable for upsampling of the given (h, w) size.
+    """
+    factor = (size + 1) // 2  # factor = 2
+    if size % 2 == 1:
+        center = factor - 1  
+    else:
+        center = factor - 0.5 # size = 1.5
+    og = np.ogrid[:size, :size] 
+    return (1 - abs(og[0] - center) / factor) * \
+           (1 - abs(og[1] - center) / factor)
+upsample_filt(4)
+# output
+# array([[0.0625, 0.1875, 0.1875, 0.0625],
+#       [0.1875, 0.5625, 0.5625, 0.1875],
+#       [0.1875, 0.5625, 0.5625, 0.1875],
+#       [0.0625, 0.1875, 0.1875, 0.0625]])
+upsample_filt(6)
+# array([[0.02777778, 0.08333333, 0.13888889, 0.13888889, 0.08333333,
+#        0.02777778],
+#       [0.08333333, 0.25      , 0.41666667, 0.41666667, 0.25      ,
+#        0.08333333],
+#       [0.13888889, 0.41666667, 0.69444444, 0.69444444, 0.41666667,
+#        0.13888889],
+#       [0.13888889, 0.41666667, 0.69444444, 0.69444444, 0.41666667,
+#        0.13888889],
+#       [0.08333333, 0.25      , 0.41666667, 0.41666667, 0.25      ,
+#        0.08333333],
+#       [0.02777778, 0.08333333, 0.13888889, 0.13888889, 0.08333333,
+#        0.02777778]])
+\end{lstlisting} 
+\end{tcolorbox}
+
 
 \chapter{Contents specifically referenced}
 \noindent $\bullet$ Sect.~\ref{sect:perceptron}: the chapter of (2)Perceptron in \cite{hangli2012}; \\

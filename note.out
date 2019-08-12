@@ -7,48 +7,54 @@
 \BOOKMARK [2][-]{subsection.1.2.3}{Continuous probability distribution}{section.1.2}% 7
 \BOOKMARK [2][-]{subsection.1.2.4}{Sample mean and sample variance}{section.1.2}% 8
 \BOOKMARK [0][-]{chapter.2}{Machine Learning}{}% 9
-\BOOKMARK [1][-]{section.2.1}{Logistic regression \(LR\)}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.1.1}{Form}{section.2.1}% 11
-\BOOKMARK [1][-]{section.2.2}{Naive Bayes}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.1}{Prior and posterior}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.2}{Naive Bayesian Classifier \(NBC\)}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.3}{Parameter estimation of NBC by maximum likelihood estimation \(MLE\)}{section.2.2}% 15
-\BOOKMARK [1][-]{section.2.3}{Regularization}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.3.1}{L0}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.2}{L1 \(lasso regularization\)}{section.2.3}% 18
-\BOOKMARK [2][-]{subsection.2.3.3}{L2 \(ridge regression or weight decay\)}{section.2.3}% 19
-\BOOKMARK [1][-]{section.2.4}{Perceptron}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.4.1}{Why can't perceptron solve XOR problem?}{section.2.4}% 21
-\BOOKMARK [2][-]{subsection.2.4.2}{Definition of perceptron}{section.2.4}% 22
-\BOOKMARK [2][-]{subsection.2.4.3}{Learning Algorithm}{section.2.4}% 23
-\BOOKMARK [2][-]{subsection.2.4.4}{Dual form of perceptron learning algorithm}{section.2.4}% 24
-\BOOKMARK [1][-]{section.2.5}{Support vector machine \(SVM\)}{chapter.2}% 25
-\BOOKMARK [2][-]{subsection.2.5.1}{Form}{section.2.5}% 26
-\BOOKMARK [2][-]{subsection.2.5.2}{Lagrange duality}{section.2.5}% 27
-\BOOKMARK [2][-]{subsection.2.5.3}{Solution of SVM}{section.2.5}% 28
-\BOOKMARK [2][-]{subsection.2.5.4}{Kernel}{section.2.5}% 29
-\BOOKMARK [1][-]{section.2.6}{How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{chapter.2}% 30
-\BOOKMARK [1][-]{section.2.7}{Gaussian mixture model \(GMM\)}{chapter.2}% 31
-\BOOKMARK [2][-]{subsection.2.7.1}{Maximum likelihood estimation}{section.2.7}% 32
-\BOOKMARK [2][-]{subsection.2.7.2}{GMM and EM}{section.2.7}% 33
-\BOOKMARK [1][-]{section.2.8}{Principal components analysis \(PCA\)}{chapter.2}% 34
-\BOOKMARK [2][-]{subsection.2.8.1}{Maximum variance theory}{section.2.8}% 35
-\BOOKMARK [2][-]{subsection.2.8.2}{PCA}{section.2.8}% 36
-\BOOKMARK [1][-]{section.2.9}{Hidden Markov model \(HMM\)}{chapter.2}% 37
-\BOOKMARK [2][-]{subsection.2.9.1}{Definition}{section.2.9}% 38
-\BOOKMARK [2][-]{subsection.2.9.2}{Three basic problems}{section.2.9}% 39
-\BOOKMARK [1][-]{section.2.10}{Conditional random field \(CRF\)}{chapter.2}% 40
-\BOOKMARK [2][-]{subsection.2.10.1}{Probabilistic undirected graphical model, or Markov random field}{section.2.10}% 41
-\BOOKMARK [2][-]{subsection.2.10.2}{Conditional random field}{section.2.10}% 42
-\BOOKMARK [1][-]{section.2.11}{Generative model and discriminative model}{chapter.2}% 43
-\BOOKMARK [0][-]{chapter.3}{Deep Network}{}% 44
-\BOOKMARK [1][-]{section.3.1}{How does backpropagation work?}{chapter.3}% 45
-\BOOKMARK [1][-]{section.3.2}{Backpropagation of Convolutional Neural Network}{chapter.3}% 46
-\BOOKMARK [2][-]{subsection.3.2.1}{Backpropagation of Fully Connectional Layer}{section.3.2}% 47
-\BOOKMARK [2][-]{subsection.3.2.2}{Backpropagation of Convolutional Layer}{section.3.2}% 48
-\BOOKMARK [1][-]{section.3.3}{Why does batch normalization work?}{chapter.3}% 49
-\BOOKMARK [2][-]{subsection.3.3.1}{Dataset shift and covariate shift}{section.3.3}% 50
-\BOOKMARK [2][-]{subsection.3.3.2}{Internal covariate shift}{section.3.3}% 51
-\BOOKMARK [2][-]{subsection.3.3.3}{Batch normalization}{section.3.3}% 52
-\BOOKMARK [1][-]{section.3.4}{Why does residual learning work?}{chapter.3}% 53
-\BOOKMARK [0][-]{chapter.4}{Contents specifically referenced}{}% 54
+\BOOKMARK [1][-]{section.2.1}{Linear regression}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.1.1}{Unitary linear regression}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Linear Gression Least mean square \(LMS\)}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Logistic regression \(LR\)}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.3.1}{Form}{section.2.3}% 14
+\BOOKMARK [1][-]{section.2.4}{Naive Bayes}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.4.1}{Prior and posterior}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.2}{Naive Bayesian Classifier \(NBC\)}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.3}{Parameter estimation of NBC by maximum likelihood estimation \(MLE\)}{section.2.4}% 18
+\BOOKMARK [1][-]{section.2.5}{Regularization}{chapter.2}% 19
+\BOOKMARK [2][-]{subsection.2.5.1}{L0}{section.2.5}% 20
+\BOOKMARK [2][-]{subsection.2.5.2}{L1 \(lasso regularization\)}{section.2.5}% 21
+\BOOKMARK [2][-]{subsection.2.5.3}{L2 \(ridge regression or weight decay\)}{section.2.5}% 22
+\BOOKMARK [1][-]{section.2.6}{Perceptron}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.6.1}{Why can't perceptron solve XOR problem?}{section.2.6}% 24
+\BOOKMARK [2][-]{subsection.2.6.2}{Definition of perceptron}{section.2.6}% 25
+\BOOKMARK [2][-]{subsection.2.6.3}{Learning Algorithm}{section.2.6}% 26
+\BOOKMARK [2][-]{subsection.2.6.4}{Dual form of perceptron learning algorithm}{section.2.6}% 27
+\BOOKMARK [1][-]{section.2.7}{Support vector machine \(SVM\)}{chapter.2}% 28
+\BOOKMARK [2][-]{subsection.2.7.1}{Form}{section.2.7}% 29
+\BOOKMARK [2][-]{subsection.2.7.2}{Lagrange duality}{section.2.7}% 30
+\BOOKMARK [2][-]{subsection.2.7.3}{Solution of SVM}{section.2.7}% 31
+\BOOKMARK [2][-]{subsection.2.7.4}{Kernel}{section.2.7}% 32
+\BOOKMARK [1][-]{section.2.8}{How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{chapter.2}% 33
+\BOOKMARK [1][-]{section.2.9}{Gaussian mixture model \(GMM\)}{chapter.2}% 34
+\BOOKMARK [2][-]{subsection.2.9.1}{Maximum likelihood estimation}{section.2.9}% 35
+\BOOKMARK [2][-]{subsection.2.9.2}{GMM and EM}{section.2.9}% 36
+\BOOKMARK [1][-]{section.2.10}{Principal components analysis \(PCA\)}{chapter.2}% 37
+\BOOKMARK [2][-]{subsection.2.10.1}{Maximum variance theory}{section.2.10}% 38
+\BOOKMARK [2][-]{subsection.2.10.2}{PCA}{section.2.10}% 39
+\BOOKMARK [1][-]{section.2.11}{Hidden Markov model \(HMM\)}{chapter.2}% 40
+\BOOKMARK [2][-]{subsection.2.11.1}{Definition}{section.2.11}% 41
+\BOOKMARK [2][-]{subsection.2.11.2}{Three basic problems}{section.2.11}% 42
+\BOOKMARK [1][-]{section.2.12}{Conditional random field \(CRF\)}{chapter.2}% 43
+\BOOKMARK [2][-]{subsection.2.12.1}{Probabilistic undirected graphical model, or Markov random field}{section.2.12}% 44
+\BOOKMARK [2][-]{subsection.2.12.2}{Conditional random field}{section.2.12}% 45
+\BOOKMARK [1][-]{section.2.13}{Generative model and discriminative model}{chapter.2}% 46
+\BOOKMARK [0][-]{chapter.3}{Deep Network}{}% 47
+\BOOKMARK [1][-]{section.3.1}{How does backpropagation work?}{chapter.3}% 48
+\BOOKMARK [1][-]{section.3.2}{Backpropagation of Convolutional Neural Network}{chapter.3}% 49
+\BOOKMARK [2][-]{subsection.3.2.1}{Backpropagation of Fully Connectional Layer}{section.3.2}% 50
+\BOOKMARK [2][-]{subsection.3.2.2}{Backpropagation of Convolutional Layer}{section.3.2}% 51
+\BOOKMARK [1][-]{section.3.3}{Why does batch normalization work?}{chapter.3}% 52
+\BOOKMARK [2][-]{subsection.3.3.1}{Dataset shift and covariate shift}{section.3.3}% 53
+\BOOKMARK [2][-]{subsection.3.3.2}{Internal covariate shift}{section.3.3}% 54
+\BOOKMARK [2][-]{subsection.3.3.3}{Batch normalization}{section.3.3}% 55
+\BOOKMARK [1][-]{section.3.4}{Why does residual learning work?}{chapter.3}% 56
+\BOOKMARK [1][-]{section.3.5}{Understanding Deconvolution \046 bilinear interpolation}{chapter.3}% 57
+\BOOKMARK [2][-]{subsection.3.5.1}{Why is it called Transposed Convolution?}{section.3.5}% 58
+\BOOKMARK [2][-]{subsection.3.5.2}{Bilinear Interpolation}{section.3.5}% 59
+\BOOKMARK [0][-]{chapter.4}{Contents specifically referenced}{}% 60

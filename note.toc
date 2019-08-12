@@ -7,42 +7,45 @@
 \contentsline {subsection}{\numberline {1.2.3}Continuous probability distribution}{3}{subsection.1.2.3}
 \contentsline {subsection}{\numberline {1.2.4}Sample mean and sample variance}{4}{subsection.1.2.4}
 \contentsline {chapter}{\numberline {2}Machine Learning}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Logistic regression (LR)}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Form}{5}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Naive Bayes}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Prior and posterior}{6}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Naive Bayesian Classifier (NBC)}{6}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Parameter estimation of NBC by maximum likelihood estimation (MLE)}{6}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Regularization}{7}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}L0}{7}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}L1 (lasso regularization)}{7}{subsection.2.3.2}
-\contentsline {subsubsection}{Why does we usually use L1 to make the weights sparse instead of L0?}{7}{section*.10}
-\contentsline {subsection}{\numberline {2.3.3}L2 (ridge regression or weight decay)}{8}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Perceptron}{8}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Why can't perceptron solve XOR problem?}{8}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Definition of perceptron}{8}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Learning Algorithm}{8}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}Dual form of perceptron learning algorithm}{9}{subsection.2.4.4}
-\contentsline {section}{\numberline {2.5}Support vector machine (SVM)}{10}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Form}{10}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Lagrange duality}{11}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Solution of SVM}{11}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}Kernel}{12}{subsection.2.5.4}
-\contentsline {subsubsection}{Why can gaussian kernel map to infinite dimension in SVM?}{12}{section*.14}
-\contentsline {section}{\numberline {2.6}How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{12}{section.2.6}
-\contentsline {section}{\numberline {2.7}Gaussian mixture model (GMM)}{13}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Maximum likelihood estimation}{13}{subsection.2.7.1}
-\contentsline {subsection}{\numberline {2.7.2}GMM and EM}{14}{subsection.2.7.2}
-\contentsline {section}{\numberline {2.8}Principal components analysis (PCA)}{14}{section.2.8}
-\contentsline {subsection}{\numberline {2.8.1}Maximum variance theory}{14}{subsection.2.8.1}
-\contentsline {subsection}{\numberline {2.8.2}PCA}{15}{subsection.2.8.2}
-\contentsline {section}{\numberline {2.9}Hidden Markov model (HMM)}{16}{section.2.9}
-\contentsline {subsection}{\numberline {2.9.1}Definition}{16}{subsection.2.9.1}
-\contentsline {subsection}{\numberline {2.9.2}Three basic problems}{16}{subsection.2.9.2}
-\contentsline {section}{\numberline {2.10}Conditional random field (CRF)}{16}{section.2.10}
-\contentsline {subsection}{\numberline {2.10.1}Probabilistic undirected graphical model, or Markov random field}{16}{subsection.2.10.1}
-\contentsline {subsection}{\numberline {2.10.2}Conditional random field}{16}{subsection.2.10.2}
-\contentsline {section}{\numberline {2.11}Generative model and discriminative model}{17}{section.2.11}
+\contentsline {section}{\numberline {2.1}Linear regression}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Unitary linear regression}{5}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Linear Gression Least mean square (LMS)}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Logistic regression (LR)}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Form}{6}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}Naive Bayes}{7}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Prior and posterior}{7}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Naive Bayesian Classifier (NBC)}{7}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Parameter estimation of NBC by maximum likelihood estimation (MLE)}{7}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}Regularization}{8}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}L0}{8}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}L1 (lasso regularization)}{9}{subsection.2.5.2}
+\contentsline {subsubsection}{Why does we usually use L1 to make the weights sparse instead of L0?}{9}{section*.10}
+\contentsline {subsection}{\numberline {2.5.3}L2 (ridge regression or weight decay)}{9}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}Perceptron}{9}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Why can't perceptron solve XOR problem?}{9}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Definition of perceptron}{9}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Learning Algorithm}{9}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}Dual form of perceptron learning algorithm}{10}{subsection.2.6.4}
+\contentsline {section}{\numberline {2.7}Support vector machine (SVM)}{11}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Form}{11}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Lagrange duality}{12}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Solution of SVM}{12}{subsection.2.7.3}
+\contentsline {subsection}{\numberline {2.7.4}Kernel}{13}{subsection.2.7.4}
+\contentsline {subsubsection}{Why can gaussian kernel map to infinite dimension in SVM?}{13}{section*.14}
+\contentsline {section}{\numberline {2.8}How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{14}{section.2.8}
+\contentsline {section}{\numberline {2.9}Gaussian mixture model (GMM)}{14}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Maximum likelihood estimation}{14}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2}GMM and EM}{15}{subsection.2.9.2}
+\contentsline {section}{\numberline {2.10}Principal components analysis (PCA)}{15}{section.2.10}
+\contentsline {subsection}{\numberline {2.10.1}Maximum variance theory}{15}{subsection.2.10.1}
+\contentsline {subsection}{\numberline {2.10.2}PCA}{15}{subsection.2.10.2}
+\contentsline {section}{\numberline {2.11}Hidden Markov model (HMM)}{17}{section.2.11}
+\contentsline {subsection}{\numberline {2.11.1}Definition}{17}{subsection.2.11.1}
+\contentsline {subsection}{\numberline {2.11.2}Three basic problems}{18}{subsection.2.11.2}
+\contentsline {section}{\numberline {2.12}Conditional random field (CRF)}{18}{section.2.12}
+\contentsline {subsection}{\numberline {2.12.1}Probabilistic undirected graphical model, or Markov random field}{18}{subsection.2.12.1}
+\contentsline {subsection}{\numberline {2.12.2}Conditional random field}{18}{subsection.2.12.2}
+\contentsline {section}{\numberline {2.13}Generative model and discriminative model}{18}{section.2.13}
 \contentsline {chapter}{\numberline {3}Deep Network}{19}{chapter.3}
 \contentsline {section}{\numberline {3.1}How does backpropagation work?}{19}{section.3.1}
 \contentsline {section}{\numberline {3.2}Backpropagation of Convolutional Neural Network}{21}{section.3.2}
@@ -53,4 +56,7 @@
 \contentsline {subsection}{\numberline {3.3.2}Internal covariate shift}{23}{subsection.3.3.2}
 \contentsline {subsection}{\numberline {3.3.3}Batch normalization}{24}{subsection.3.3.3}
 \contentsline {section}{\numberline {3.4}Why does residual learning work?}{26}{section.3.4}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{27}{chapter.4}
+\contentsline {section}{\numberline {3.5}Understanding Deconvolution \& bilinear interpolation}{26}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Why is it called Transposed Convolution?}{27}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Bilinear Interpolation}{28}{subsection.3.5.2}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{31}{chapter.4}
