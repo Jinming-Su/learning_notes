@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  12 AUG 2019 19:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.13)  30 SEP 2019 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -854,7 +854,12 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 \tf@toc=\write7
 \openout7 = `note.toc'.
 
- [2] (./note.tdo)
+ [2] (./note.tdo
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 8.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+))
 \tf@tdo=\write8
 \openout8 = `note.tdo'.
 
@@ -921,37 +926,36 @@ Missing character: There is no € in font ptmr7t!
 Chapter 2.
 [5
 
-] [6] [7] <figures/l1_l2.png, id=461, 469.00218pt x 276.28218pt>
+] [6] [7] <figures/l1_l2.png, id=511, 469.00218pt x 276.28218pt>
 File: figures/l1_l2.png Graphic file (type png)
 
 <use figures/l1_l2.png>
-Package pdftex.def Info: figures/l1_l2.png used on input line 530.
+Package pdftex.def Info: figures/l1_l2.png used on input line 532.
 (pdftex.def)             Requested size: 200.19054pt x 117.92636pt.
  [8pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.549 \subsubsection
-                    {Why does we usually use L1 to make the weights sparse i...
- <./figures/l1_l2.png>]
-<figures/XOR_problem.png, id=473, 504.88625pt x 156.585pt>
+l.547 \end{equation}
+                     <./figures/l1_l2.png>]
+<figures/XOR_problem.png, id=524, 504.88625pt x 156.585pt>
 File: figures/XOR_problem.png Graphic file (type png)
 
 <use figures/XOR_problem.png>
-Package pdftex.def Info: figures/XOR_problem.png used on input line 567.
+Package pdftex.def Info: figures/XOR_problem.png used on input line 569.
 (pdftex.def)             Requested size: 200.19054pt x 62.08812pt.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.601 \end{equation}
+l.603 \end{equation}
                      <./figures/XOR_problem.png>] [10]
-<figures/svm.png, id=502, 414.54875pt x 337.26pt>
+<figures/svm.png, id=553, 414.54875pt x 337.26pt>
 File: figures/svm.png Graphic file (type png)
  <use figures/svm.png>
-Package pdftex.def Info: figures/svm.png used on input line 674.
+Package pdftex.def Info: figures/svm.png used on input line 676.
 (pdftex.def)             Requested size: 150.14671pt x 122.1494pt.
 
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.2.3
@@ -959,7 +963,7 @@ Package pdftex.def Info: figures/svm.png used on input line 674.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.717 \end{equation}
+l.719 \end{equation}
                      <./figures/svm.png>] [12] [13]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -969,32 +973,32 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [14]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 898.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 908.
+put line 900.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 910.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 908.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 910.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/pca_variance.png, id=553, 553.06625pt x 503.8825pt>
+<figures/pca_variance.png, id=604, 553.06625pt x 503.8825pt>
 File: figures/pca_variance.png Graphic file (type png)
 
 <use figures/pca_variance.png>
-Package pdftex.def Info: figures/pca_variance.png used on input line 937.
+Package pdftex.def Info: figures/pca_variance.png used on input line 939.
 (pdftex.def)             Requested size: 200.19054pt x 182.3817pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[15] <figures/hmm.png, id=563, 399.4925pt x 141.52875pt>
+[15] <figures/hmm.png, id=614, 399.4925pt x 141.52875pt>
 File: figures/hmm.png Graphic file (type png)
  <use figures/hmm.png>
-Package pdftex.def Info: figures/hmm.png used on input line 981.
+Package pdftex.def Info: figures/hmm.png used on input line 983.
 (pdftex.def)             Requested size: 200.19054pt x 70.92184pt.
 
 [16pdfTeX warning (ext4): destination with the same identifier (name{equation.2
@@ -1002,23 +1006,23 @@ Package pdftex.def Info: figures/hmm.png used on input line 981.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.983 \end{figure}
+l.985 \end{figure}
                   ] [17pdfTeX warning (ext4): destination with the same identif
 ier (name{figure.2.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1015 2
+l.1017 2
         . Learning problem: given the observation sequence $O = \{o_1, o_2, ...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.5}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1015 2
+l.1017 2
         . Learning problem: given the observation sequence $O = \{o_1, o_2, ...
  <./figures/pca_variance.png> <./figures/hmm.png>]
-Overfull \hbox (6.21004pt too wide) in paragraph at lines 1018--1019
+Overfull \hbox (6.21004pt too wide) in paragraph at lines 1020--1021
 []\OT1/ptm/m/n/10 3. Pre-dict-ing prob-lem (de-cod-ing prob-lem): given the mod
 el $\OML/cmm/m/it/10 ^^U \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 A
 ; B; []\OMS/cmsy/m/n/10 g$ \OT1/ptm/m/n/10 and ob-ser-va-tion se-quence $\OML/c
@@ -1028,11 +1032,11 @@ mm/m/it/10 O \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 o[]; o[]; []
 
 [18]
 Chapter 3.
-<figures/neural_network.png, id=596, 667.49374pt x 323.2075pt>
+<figures/neural_network.png, id=647, 667.49374pt x 323.2075pt>
 File: figures/neural_network.png Graphic file (type png)
 
 <use figures/neural_network.png>
-Package pdftex.def Info: figures/neural_network.png used on input line 1061.
+Package pdftex.def Info: figures/neural_network.png used on input line 1063.
 (pdftex.def)             Requested size: 250.24199pt x 121.16798pt.
  [19
 
@@ -1041,119 +1045,114 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1087 \end{equation}
+l.1089 \end{equation}
                       <./figures/neural_network.png>]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1160.
+(amsmath)                trying to recover with `aligned' on input line 1162.
 
 [20pdfTeX warning (ext4): destination with the same identifier (name{equation.3
 .1.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1163 \end{equation}
+l.1165 \end{equation}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{equation.3.1.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1163 \end{equation}
+l.1165 \end{equation}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{equation.3.1.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1163 \end{equation}
+l.1165 \end{equation}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{equation.3.1.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1163 \end{equation}
+l.1165 \end{equation}
                      ]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1176.
+(amsmath)                trying to recover with `aligned' on input line 1178.
 
 [21pdfTeX warning (ext4): destination with the same identifier (name{equation.3
 .2.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1225 \end{equation}
+l.1227 \end{equation}
                      ]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1280.
+(amsmath)                trying to recover with `aligned' on input line 1282.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1291.
+(amsmath)                trying to recover with `aligned' on input line 1293.
 
 [22pdfTeX warning (ext4): destination with the same identifier (name{equation.3
 .2.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1299 U
+l.1301 U
         sually, the distrbutions of training data and testing data are not e...
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.2.
 15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1299 U
+l.1301 U
         sually, the distrbutions of training data and testing data are not e...
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.2.
 15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1299 U
+l.1301 U
         sually, the distrbutions of training data and testing data are not e...
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.2.
 15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1299 U
+l.1301 U
         sually, the distrbutions of training data and testing data are not e...
 ]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1301
-.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Overfull \hbox (37.9055pt too wide) in paragraph at lines 1301--1302
+Overfull \hbox (37.9055pt too wide) in paragraph at lines 1303--1304
 \OT1/ptm/m/n/10 (re-fer-ring to []$\OT1/pcr/m/n/10 https : / / support . minita
 b . com / en-[]us / minitab / 18 / help-[]and-[]how-[]to / modeling-[]statistic
 s /
  []
 
-<figures/sigmoid.png, id=656, 561.59813pt x 182.18062pt>
+<figures/sigmoid.png, id=707, 561.59813pt x 182.18062pt>
 File: figures/sigmoid.png Graphic file (type png)
 
 <use figures/sigmoid.png>
-Package pdftex.def Info: figures/sigmoid.png used on input line 1333.
+Package pdftex.def Info: figures/sigmoid.png used on input line 1335.
 (pdftex.def)             Requested size: 400.38872pt x 129.88286pt.
  [23pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1346 T
+l.1348 T
         here are two treatments for batchnorm to address above two problems....
  <./figures/sigmoid.png>]
-<figures/sigmoid_batchnorm.png, id=668, 422.57875pt x 281.05pt>
+<figures/sigmoid_batchnorm.png, id=718, 422.57875pt x 281.05pt>
 File: figures/sigmoid_batchnorm.png Graphic file (type png)
 
 <use figures/sigmoid_batchnorm.png>
-Package pdftex.def Info: figures/sigmoid_batchnorm.png used on input line 1353.
+Package pdftex.def Info: figures/sigmoid_batchnorm.png used on input line 1355.
 
 (pdftex.def)             Requested size: 250.24199pt x 166.4356pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1363--1364
+Underfull \hbox (badness 10000) in paragraph at lines 1365--1366
 
  []
 
@@ -1162,40 +1161,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 1363--1364
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1395 \end{equation}
+l.1397 \end{equation}
                       <./figures/sigmoid_batchnorm.png>] [25pdfTeX warning (ext
 4): destination with the same identifier (name{equation.3.3.21}) has been alrea
 dy used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1427 \begin{equation}
+l.1429 \begin{equation}
                        ]
-<figures/residual_learning_block.png, id=686, 281.05pt x 152.57pt>
+<figures/residual_learning_block.png, id=736, 281.05pt x 152.57pt>
 File: figures/residual_learning_block.png Graphic file (type png)
 
 <use figures/residual_learning_block.png>
 Package pdftex.def Info: figures/residual_learning_block.png used on input line
- 1441.
+ 1443.
 (pdftex.def)             Requested size: 200.19054pt x 108.67465pt.
  [26pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1516 \end{equation}
+l.1518 \end{equation}
                       <./figures/residual_learning_block.png>]
 
-LaTeX Warning: Command \O invalid in math mode on input line 1587.
+LaTeX Warning: Command \O invalid in math mode on input line 1589.
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 1587.
+LaTeX Warning: Command \O invalid in math mode on input line 1589.
 
-<figures/bilinear.png, id=696, 183.68625pt x 149.96025pt>
+<figures/bilinear.png, id=746, 183.68625pt x 149.96025pt>
 File: figures/bilinear.png Graphic file (type png)
 
 <use figures/bilinear.png>
-Package pdftex.def Info: figures/bilinear.png used on input line 1593.
+Package pdftex.def Info: figures/bilinear.png used on input line 1595.
 (pdftex.def)             Requested size: 200.19054pt x 163.44655pt.
 
 
@@ -1208,7 +1207,7 @@ Underfull \vbox (badness 2253) has occurred while \output is active []
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Overfull \hbox (4.81877pt too wide) in paragraph at lines 1634--1635
+Overfull \hbox (4.81877pt too wide) in paragraph at lines 1636--1637
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][][][][] 
@@ -1222,33 +1221,54 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1664 \end{tcolorbox}.
-                        <./figures/bilinear.png>] [29] [30
+l.1667 
+        <./figures/bilinear.png>] [29]
+Underfull \vbox (badness 2277) has occurred while \output is active []
 
-]
+ [30]
+
+LaTeX Warning: Reference `eq:xavier_bp' on page 31 undefined on input line 1741
+.
+
+
+Underfull \vbox (badness 7203) has occurred while \output is active []
+
+ [31]
+Overfull \hbox (27.756pt too wide) in paragraph at lines 1817--1817
+\OT1/pcr/m/n/10 VictoriaW / article / details / 73166752$[] \OT1/ptm/m/n/10 and
+ []$\OT1/pcr/m/n/10 https : / / www . cnblogs . com / wangguchangqing / p / 110
+13698 .
+ []
+
+[32]
 Chapter 4.
-(./note.bbl [31] [32
+(./note.bbl [33
 
-]) [33]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1676.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1676.
+] [34
+
+]) [35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1828.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1828.
  (./note.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1676.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1676.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1828.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1828.
 
 Package rerunfilecheck Info: File `note.out' has not changed.
-(rerunfilecheck)             Checksum: 5947F48297D47DB393AA1020A1B3D1B9;4716.
+(rerunfilecheck)             Checksum: EBB433742A0C3C51662D2449B4C75A73;5276.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1676.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1828.
  ) 
 Here is how much of TeX's memory you used:
- 21491 strings out of 494910
- 397080 string characters out of 6179835
- 518129 words of memory out of 5000000
- 24035 multiletter control sequences out of 15000+600000
+ 21529 strings out of 494910
+ 397662 string characters out of 6179835
+ 520842 words of memory out of 5000000
+ 24051 multiletter control sequences out of 15000+600000
  35220 words of font info for 81 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,28n,80p,923b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1270,10 +1290,10 @@ xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on note.pdf (37 pages, 659434 bytes).
+Output written on note.pdf (39 pages, 680791 bytes).
 PDF statistics:
- 909 PDF objects out of 1000 (max. 8388607)
- 827 compressed objects within 9 object streams
- 318 named destinations out of 1000 (max. 500000)
- 543 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 991 PDF objects out of 1000 (max. 8388607)
+ 906 compressed objects within 10 object streams
+ 340 named destinations out of 1000 (max. 500000)
+ 607 words of extra memory for PDF output out of 10000 (max. 10000000)
 

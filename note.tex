@@ -428,6 +428,8 @@ l(\theta) &= \log L(\theta) \\
 
 \note[inline]{The is the opposite number of binary cross entropy loss function.}
 
+\note[inline]{It can be proved that the cross entropy function is a convex function. A detailed proof can be found in the blog \url{https://blog.csdn.net/RHONYN/article/details/80342126}. About the proof of convex function, the first-order function relies on the non-negativity of the second derivative and the higher-order function relies on the semi-postive characterization of Hessian Matrix. Therefore, we can get the global minimum value of cross entropy.}
+
 Lets start by working with just one training example $(x, y)$, and take derivatives to derive the stochastic gradient ascent rule:
 \begin{equation}
 \begin{split}
@@ -1663,6 +1665,156 @@ upsample_filt(6)
 \end{lstlisting} 
 \end{tcolorbox}
 
+\section{Activation Function}
+Since the preception is equivalent to a NAND gate (which can be regarded as universal gate), the multilayer perception can fit any linear function. However, in general, many problems are not linearly seperable, so it is necessary to introduce nonlinear transformation.
+
+\subsection{Sigmoid}
+Simoid is widely used for improving the nondifferentiable jump function. However, in biology, neurons are considered to be sparsely activated, with only 1\%-4\% activated at the same time. Meanwhile, Sigmoid has a amount of computation for derivative calculation and has the problem of gradient vanishing, which leads to the difficult of deep network training. Thus ReLU (2011, Bengio and Xavier) appears.
+
+\subsection{ReLU}
+ReLU maybe has the problem of \uline{Dead Neurons}, \ie, some parameters never are activated. The reasons are: (1) bad initialization; (2) the learning rete is too high and the parameters are updated greatly, which makes the network neter this state.
+
+The solutions to above problem include: (1) initializing with Xavier; (2) use adagrad or other methods to adaptively adjust learning rate; (3) use some improvement of ReLU (\eg, leaky ReLU, PReLU and ELU (Exponential ReLU)).
+
+However, the non-linearity of ReLU is weak, which leads to better fitting in deeper network.
+
+\section{Parameter Initialization}
+\subsection{Why not initialized with all zeros?}
+Take the task of image classification as an example, the sensitivity of neurons in the output layer is $\delta^L_j = \frac{\partial \mathcal{L}}{\partial a^L_j} \sigma'(z^L_j)$ and the gradient of weights in the output layer is $\frac{\partial \mathcal{L}}{\partial w^l_{jk}} = \delta^l_j a^{l - 1}_k$.
+
+For single-layer perceptron (logistic regression), the model can be trained normally. The reason is the different weights $w^l_{jk}$ have different updations. 
+
+But for multi-layer neural network, the training fails. (1) If the activation function of hidden layers is ReLU, all the outputs, graidents and weights in layers are zeros, which means that all the neurons except inputs are dead neurons. Thus the learning fails. (2) If Sigmoid is the used activation function, the neurons can be learned but all the outputs, graidents and weights are same, which means that the learning doesn't work.
+
+\subsection{Why not initialized with Standard Gaussian?}
+If there are $n_{in}$ (such as 50) ones in the input layer, the output after first layer is belongs to $\mathcal{N}(0, \sqrt{50})$. After activated, the output saturates. The gradient is about 0 (for Sigmoid) and the learning is slow.
+
+Solution: we usually use the Gaussian Distribution $\mathcal{N}(0, \sqrt{n_{in}})$ to initialize the weights, so that the activation does't fall into the saturation region.
+
+\subsection{xavier}
+\textbf{Glorot Condition: }\uline{In order to keep informantion flowing, the invariance of the activation value remains same during forward-propagation and the invariance of the graident with respect to the state value remains same during back-propagation}.
+
+There are some assumptions:
+1) the linear activation function is used and the derivative at zero is 1;
+2) activation value $x$ and weight $w$ are independent.
+
+Then, we have
+\begin{equation}
+\begin{split}
+a^l_i &= \sum_{k=1}^{n_{in}} w^l_{ik} x^l_{k}, \\
+Var(w_{ik} x_k) &= E(w_{ik}^2 x_k^2) - E^2(w_{ik} x_{k}) \\
+			&= E(w_{ik}^2) E(x_{k}^2) - E^2(w_{ik})E^2(x_{k}) \\
+			&= E^2(w_{ik})Var(x_{k}) + E^2(x_k)Var(w_{ik}) + Var(x_k)Var(w_{ik}). \\ 
+\end{split}
+\end{equation}
+Where $n_{in}$ is the number of input neurons.
+
+If $E(w^l_{ik}) = E(x^l_{k}) = 0$, we have
+\begin{equation}\label{eq:xavier_fp}
+\begin{split}
+Var(a^l_i) &= \sum_{k = 1}^{n_{in}} Var(x^l_{k})Var(w^l_{ik}) \\
+		&= {n_{in}} Var(x^l_k) Var(w^l_{ik}) \\
+		&= n_{in}Var(x^l) Var(w^l) \\
+		&= n_{l - 1} Var(a^{l - 1}) Var(w^l).
+\end{split}
+\end{equation}
+
+If \uline{the invariance of the activation value remains same during forward-propagation}, we need $Var(a) = Var(x)$ and we have $Var(w) = \frac{1}{n_{in}}$.
+
+If \uline{the invariance of the graident with respect to the state value remains same during back-propagation}, we need $Var(\frac{\partial{\mathcal{L}}}{\partial z^l}) = Var(\frac{\partial{\mathcal{L}}}{\partial z^{l + 1}})$, and we have
+\begin{equation}
+\begin{split}
+Var(\frac{\partial{\mathcal{L}}}{\partial z^l_{i}}) &= 
+Var( \sum_{k = 1}^{n_{out}} w^{l+1}_{ik} \frac{\partial{\mathcal{L}}}{\partial z^{l+1}_{k}}  \sigma'(z^l_k)) \\
+	&= Var( n_{out} w^{l+1}_{ik} \frac{\partial{\mathcal{L}}}{\partial z^{l+1}_k}) \\
+	&= n_{out} Var(w^{l + 1}_{ik}) Var(\frac{\partial{\mathcal{L}}}{\partial z^{l+1}_k}) \\
+	&= n_{l+1} Var(w^{l + 1}_{ik}) Var(\frac{\partial{\mathcal{L}}}{\partial z^{l+1}_k}).
+\end{split}
+\end{equation}
+Then, we have $Var(w) = \frac{1}{n_{out}}$. Since $n_{in}$ and $n_{out}$ are usually not equal, the average is taken. Thus we have $Var(w)  = \frac{2}{n_{in} + n_{out}}$.
+
+Under this condition, if $w$ obeys uniform distribution with a mean of 0, then we have $w \sim \mathcal{U}[- \frac{\sqrt{6}}{\sqrt{n_{in} + n_{out}}},  \frac{\sqrt{6}}{\sqrt{n_{in} + n_{out}}}]$.
+
+This is Xavier initialization method. A detailed derivation can be found in the blog \url{https://blog.csdn.net/victoriaw/article/details/73000632}.
+
+\subsection{msra}
+In the derivation of xaiver in Eq.~\ref{eq:xavier_fp} and \ref{eq:xavier_bp}, a linear activation function is required. However, ReLU is not a linear function. In general, if ReLU is used, we can't guarancee that \textbf{Glorot Condition} is met (\uline{\ie, the invariance of the activation value remains same during forward-propagation and the invariance of the graident with respect to the state value remains same during back-propagation}).
+
+In order to maintain a stable variance, Kaiming et al. propose a new initialization method and the purpose is to achieve that \uline{the invariance of the state value remains same during forward-propagation and the invariance of the graident with respect to the activation value remains same during back-propagation}.
+
+From this assumption, we have
+Then, we have
+\begin{equation}
+\begin{split}
+z^l_i &= \sum_{k=1}^{n_{in}} w^l_{ik} x^l_k, \\
+a^l_i &= f(z^l_i), \\
+Var(w_{ik} x_k) &= E(w_{ik}^2 x_k^2) - E^2(w_{ik} x_k) \\
+			&= E(w_{ik}^2) E(x_k^2) - E^2(w_{ik})E^2(x_k) \\ 
+\end{split}
+\end{equation}
+Where $n_{in}$ is the number of input neurons.
+
+If $E(w_{ik}) = 0$ and $E(x_k) \neq 0$ because the activation function is ReLU,  we have
+\begin{equation}\label{eq:msra_fp}
+\begin{split}
+Var(z^l_i) &= \sum_{k = 1}^{n_{in}} Var(w^l_{ik} x^l_k) \\
+		&= {n_{in}} E([w^l_{ik}]^2) E([x^l_i]^2) \\
+		&= n_{in} Var(w^l_{ik}) E([x^l_i]^2). \\
+E(z^{l - 1}_i) &= E(w^{l - 1}_{ik} x^{l - 1}_k) \\
+		&= E(w^{l - 1}_{ik}) E(x^{l - 1}_k) \\
+		& = 0 \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+E([x^l_i]^2) &= E([f(z^{l-1}_i)]^2) \\
+		&= \int_{-\infty}^{\infty} p(z^{l-1}_i) [f(z^{l-1}_i)]^2 dz^{l - 1}_i \\
+		&= \int_{-\infty}^{0} p(z^{l-1}_i) [f(z^{l-1}_i)]^2 dz^{l - 1}_i + \int_{0}^{\infty} p(z^{l-1}_i) [f(z^{l-1}_i)]^2 dz^{l - 1}_i \\ 
+		&= 0 + \int_{0}^{\infty} p(z^{l-1}_i) [z^{l-1}_i]^2 dz^{l - 1}_i \\
+		&= \frac{1}{2} \int_{0}^{\infty} p(z^{l-1}_i) [z^{l-1}_i]^2 dz^{l - 1}_i \\
+		&= \frac{1}{2} E([z^{l - 1}_i]^2) \\
+		&= \frac{1}{2} Var(z^{l - 1}_i) \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+Var(z^l_i) &= n_{in} Var(w^l_{ik}) E([x^l_i]^2) \\
+			&= \frac{1}{2} n_{in} Var(w^l_{ik})  Var(z^{l - 1}_i) \\
+\end{split}
+\end{equation}
+
+If \uline{the invariance of the state value remains same during forward-propagation}, we need $Var(z^l) = Var(z^{l - 1})$ and we have $Var(w)  = \frac{2}{n_{in}}$.
+
+If \uline{the invariance of the graident with respect to the activation value remains same during back-propagation}, we need $Var(\frac{\partial{\mathcal{L}}}{\partial a^{l}}) = Var(\frac{\partial{\mathcal{L}}}{\partial a^{l + 1}})$, and we have
+
+\begin{equation} \label{eq:activation_bp}
+\begin{split}
+ \frac{\partial{\mathcal{L}}}{\partial a^l_i} &= \sum_{k=1}^{n_{l+1}} w^{l+1}_{ik} \frac{\partial \mathcal{L}}{\partial a^{l+1}_k}
+\end{split} 
+\end{equation}
+
+\begin{equation}
+\begin{split}
+	Var(\frac{\partial{\mathcal{L}}}{\partial a^l_i}) &= n_{l+1} Var(w^{l+1}_{ik} \frac{\partial  \mathcal{L}}{\partial  a^{l+1}_k}) \\
+	&= n_{l+1} E([w^{l+1}_{ik}]^2) E([\frac{\partial  \mathcal{L}}{\partial  a^{l+1}_k})]^2) \\
+	&= n_{l+1} Var(w^{l+1}_{ik}) E([\frac{\partial  \mathcal{L}}{\partial  a^{l+1}_k}]^2 [\frac{\partial a^{l+1}_k}{\partial  z^{l+1}_k}]^2) \\
+	&= n_{l+1} Var(w^{l+1}_{ik}) E([\frac{\partial  \mathcal{L}}{\partial  a^{l+1}_k}]^2) E([f'(z^{l+1}_k)]^2) \\
+\end{split} 
+\end{equation}
+
+We can know that $E([f'(z^{l+1}_k)]^2) = \frac{1}{2}$. Moreover, from Eq.~\ref{eq:activation_bp}, we can know that $E(\frac{\partial \mathcal{L}}{\partial a^{l+1}_i}) = 0$. Thus we have
+\begin{equation}
+\begin{split}
+	Var(\frac{\partial{\mathcal{L}}}{\partial a^l_i}) &= \frac{1}{2} n_{l+1} Var(w^{l+1}_{ik}) Var(\frac{\partial  \mathcal{L}}{\partial  a^{l+1}_k}). \\
+\end{split} 
+\end{equation}
+And we have that $Var(w^{l+1}_{ik}) = \frac{2}{n_{l+1}}$, \ie $Var(w^{l}_{ik}) = \frac{2}{n_{l}}$.
+
+Under this condition, if $w$ obeys gaussian distribution with a mean of 0, then we have $w \sim \mathcal{N}[0, \frac{2}{n_{in}}]$.
+
+This is Msra initialization method. A detailed derivation can be found in the blog \url{https://blog.csdn.net/VictoriaW/article/details/73166752} and \url{https://www.cnblogs.com/wangguchangqing/p/11013698.html}. \note[inline]{We can know that Xavier and Msra can both belong to uniform distribution or gaussian distribution.}
 
 \chapter{Contents specifically referenced}
 \noindent $\bullet$ Sect.~\ref{sect:perceptron}: the chapter of (2)Perceptron in \cite{hangli2012}; \\

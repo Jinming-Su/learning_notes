@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {2.5}Regularization}{8}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}L0}{8}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}L1 (lasso regularization)}{9}{subsection.2.5.2}
-\contentsline {subsubsection}{Why does we usually use L1 to make the weights sparse instead of L0?}{9}{section*.10}
+\contentsline {subsubsection}{Why does we usually use L1 to make the weights sparse instead of L0?}{9}{section*.11}
 \contentsline {subsection}{\numberline {2.5.3}L2 (ridge regression or weight decay)}{9}{subsection.2.5.3}
 \contentsline {section}{\numberline {2.6}Perceptron}{9}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}Why can't perceptron solve XOR problem?}{9}{subsection.2.6.1}
@@ -31,7 +31,7 @@
 \contentsline {subsection}{\numberline {2.7.2}Lagrange duality}{12}{subsection.2.7.2}
 \contentsline {subsection}{\numberline {2.7.3}Solution of SVM}{12}{subsection.2.7.3}
 \contentsline {subsection}{\numberline {2.7.4}Kernel}{13}{subsection.2.7.4}
-\contentsline {subsubsection}{Why can gaussian kernel map to infinite dimension in SVM?}{13}{section*.14}
+\contentsline {subsubsection}{Why can gaussian kernel map to infinite dimension in SVM?}{13}{section*.15}
 \contentsline {section}{\numberline {2.8}How to get the update rule of parameters of backpropagation in gradient descent algorithm?}{14}{section.2.8}
 \contentsline {section}{\numberline {2.9}Gaussian mixture model (GMM)}{14}{section.2.9}
 \contentsline {subsection}{\numberline {2.9.1}Maximum likelihood estimation}{14}{subsection.2.9.1}
@@ -59,4 +59,12 @@
 \contentsline {section}{\numberline {3.5}Understanding Deconvolution \& bilinear interpolation}{26}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Why is it called Transposed Convolution?}{27}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Bilinear Interpolation}{28}{subsection.3.5.2}
-\contentsline {chapter}{\numberline {4}Contents specifically referenced}{31}{chapter.4}
+\contentsline {section}{\numberline {3.6}Activation Function}{29}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Sigmoid}{29}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}ReLU}{29}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Parameter Initialization}{30}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Why not initialized with all zeros?}{30}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Why not initialized with Standard Gaussian?}{30}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}xavier}{30}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}msra}{31}{subsection.3.7.4}
+\contentsline {chapter}{\numberline {4}Contents specifically referenced}{33}{chapter.4}
